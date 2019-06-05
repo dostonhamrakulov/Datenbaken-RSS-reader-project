@@ -2,6 +2,8 @@ Database and Web Technologies
 
 ## Backend
 
+* [X] - Connecting to Database
+* [X] - Queries over DB with Spring
 * [O] - RSS Reader
 * [O] - Inserting data into the DB
 * [O] - Updating data in the DB

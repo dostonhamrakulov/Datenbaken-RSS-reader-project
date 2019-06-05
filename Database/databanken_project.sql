@@ -58,3 +58,52 @@ CREATE TABLE IF NOT EXISTS `web_feed_providers` (
 COMMIT;
 
 
+select version();
+
+SHOW VARIABLES LIKE "%version%";
+
+
+create table user(
+id int(255),
+name varchar(255),
+email varchar(355)
+);
+
+insert into my_tab values(1, "Doston");
+
+
+SET GLOBAL time_zone = '+5:30'
+
+select * from user;
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.0.104' IDENTIFIED BY 'root2019' WITH GRANT OPTION;
+ FLUSH PRIVILEGES;
+ 
+ 
+ 
+ALTER TABLE web_feed
+MODIFY COLUMN provider_id int(255);
+
+ALTER TABLE web_feed_providers
+MODIFY COLUMN name VARCHAR(255);
+
+INSERT INTO `web_feed`(`feed_id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (1,'Title1','Link1','Description1','2019/01/01','2019/05/05',1,'img_src_1');
+
+INSERT INTO `web_feed`(`feed_id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (2,'Title2','Link2','Description2','2019/01/02','2019/05/06',2,'img_src_2');
+
+INSERT INTO `web_feed`(`feed_id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
+
+
+INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (1,'user1@gmail.com','user1','user1_pass',1);
+INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (2,'user2@gmail.com','user2','user2_pass',1);
+INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (3,'user3@gmail.com','user3','user3_pass',1);
+
+INSERT INTO `web_feed_providers`(`provider_id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (1,'wordpress','http://wordpress.org/news/feed/','2018/09/09','10',0);
+INSERT INTO `web_feed_providers`(`provider_id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0);
+INSERT INTO `web_feed_providers`(`provider_id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (3,'Random','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0);
+
+
+INSERT INTO `user_feed_providers`(`user_id`, `provider_id`, `status`) VALUES (1,1,1);
+INSERT INTO `user_feed_providers`(`user_id`, `provider_id`, `status`) VALUES (2,2,2);
+INSERT INTO `user_feed_providers`(`user_id`, `provider_id`, `status`) VALUES (3,3,3); 

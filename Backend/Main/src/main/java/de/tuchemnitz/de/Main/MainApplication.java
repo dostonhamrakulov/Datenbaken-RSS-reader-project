@@ -5,10 +5,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.Arrays;
 
 @SpringBootApplication
+////@ComponentScan({"de.tu-chemnitz.de.Main.DB_test_request"})
+//@Import({MainController.class})
+//@ComponentScan(basePackages = { "de.tu-chemnitz.de.Main","de.tu-chemnitz.de.Main.DB_test_request"} )
+//@SpringBootApplication(scanBasePackages = {"com.person"})
+//@EnableMongoRepositories(basePackages = "com.person.repositories")
 public class MainApplication {
 
 	public static void main(String[] args) {

@@ -16,6 +16,8 @@ MySQL commands:
 	- sudo systemctl start mysql
 	- sudo systemctl stop mysql
 
+	- mysql   -u  root   -p
+
 	- sudo mysqladmin -p -u root version 
 	#MySQL Admin is a client that lets you perform administrative operations on MySQL. Let us run one of the administrative commands through it as an example to check if the system is running properly and our root is configured to use it.
 

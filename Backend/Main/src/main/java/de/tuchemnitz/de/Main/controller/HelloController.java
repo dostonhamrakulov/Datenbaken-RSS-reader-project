@@ -1,4 +1,4 @@
-package de.tuchemnitz.de.Main;
+package de.tuchemnitz.de.Main.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings from Spring Boot!";
+        return "It is working now";
     }
 
 }

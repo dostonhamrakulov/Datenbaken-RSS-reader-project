@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="767f1b3f-2a2d-4469-ad17-d8b60c4a1e6a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Database/databanken_project.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../Database/databanken_project.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Main/src/main/java/de/tuchemnitz/de/Main/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Main/src/main/java/de/tuchemnitz/de/Main/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,6 +43,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Main" />
