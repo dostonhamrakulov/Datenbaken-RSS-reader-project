@@ -1,0 +1,54 @@
+
+
+
+Installing MySQL:
+	- https://vitux.com/how-to-install-and-configure-mysql-in-ubuntu-18-04-lts/
+	- 
+	- mysql --version
+
+MySQL:
+	- User: root
+	- Password: root
+	- Password: root2019
+
+MySQL commands:
+	- systemctl status mysql.service  #to check the status (running or not)
+	- sudo systemctl start mysql
+	- sudo systemctl stop mysql
+
+	- sudo mysqladmin -p -u root version 
+	#MySQL Admin is a client that lets you perform administrative operations on MySQL. Let us run one of the administrative commands through it as an example to check if the system is running properly and our root is configured to use it.
+
+
+
+Error Code: 1136. Column count doesn't match value count at row 1
+
+Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
+
+How to connect JDBC with MySQL
+	- install MySQL driver in ubuntu
+	- download MySql driver
+	- sudo apt-get install libmysql-java
+	- export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar
+
+	-Adding driver's path:
+		- Project -> Properties -> Java Build Path -> Libraries -> Add External JARs (Eclipse
+		- File->Project Structure->Libraries (Intellij)
+		- /usr/share/java/mysql.jar
+
+
+
+Task Description:
+1. Backend:
+	- Database consistency - https://www.techopedia.com/definition/27386/consistency-databases
+
+
+
+
+
+
+
+
+
+
+
