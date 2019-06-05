@@ -11,6 +11,7 @@ Database and Web Technologies
 * [O] - sd
 
 
+
 ## Database:
 
 * [X] - Create schema
@@ -26,4 +27,21 @@ Database and Web Technologies
 * [O] - two
 
 
-
+## APIs:
+* [X] - http://localhost:8080/feeds/all   ---->
+Result will be:
+```python
+[
+    {
+        "id": 0,
+        "title": "Title1",
+        "link": "Link1",
+        "description": "Description1",
+        "published_date": "2019/01/01",
+        "imported_date": "2019/05/05",
+        "provider_id": 1,
+        "image": "img_src_1"
+    },
+...
+]
+```
