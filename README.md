@@ -2,26 +2,26 @@ Database and Web Technologies
 
 ## Backend
 
-* [] - RSS Reader
-* [] - Inserting data into DB
-* [] - Updating data in the DB
-* [] - Reading data from DB
-* [] - sd
+* [O] - RSS Reader
+* [O] - Inserting data into the DB
+* [O] - Updating data in the DB
+* [O] - Reading data from DB
+* [O] - sd
 
 
 ## Database:
 
 * [X] - Create schema
 * [X] - Create tables
-* [] - Create ER Model
-* [] - Next task
-* [] - Next task
-* [] - Next task
+* [O] - Create ER Model
+* [O] - Next task
+* [O] - Next task
+* [O] - Next task
 
 
 ## Frontend
-* [] - one
-* [] - two
+* [O] - one
+* [O] - two
 
 
 
