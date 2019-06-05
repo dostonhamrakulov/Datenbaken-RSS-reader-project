@@ -1,6 +1,4 @@
-
-
-create schema databanken_project;
+CREATE DATABASE `Datenbanken` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
@@ -14,6 +12,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `user_feed_providers`
+--
 
 DROP TABLE IF EXISTS `user_feed_providers`;
 CREATE TABLE IF NOT EXISTS `user_feed_providers` (
@@ -24,6 +25,9 @@ CREATE TABLE IF NOT EXISTS `user_feed_providers` (
 
 -- --------------------------------------------------------
 
+--
+-- Table structure for table `web_feed`
+--
 
 DROP TABLE IF EXISTS `web_feed`;
 CREATE TABLE IF NOT EXISTS `web_feed` (
@@ -56,5 +60,3 @@ CREATE TABLE IF NOT EXISTS `web_feed_providers` (
   UNIQUE KEY `link` (`link`(255))
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
-
-
