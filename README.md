@@ -45,3 +45,27 @@ Result will be:
 ...
 ]
 ```
+
+
+* [X] - http://localhost:8080//web-feed-provider/all
+   * - getting all web_feed_providers:
+```json 
+[
+    {
+        "provider_id": 1,
+        "name": "wordpress",
+        "link": "http://wordpress.org/news/feed/",
+        "updated_date": "2018/09/09",
+        "num_feeds": 10,
+        "error": 0
+    },
+...
+]
+```
+
+
+* [X] - Inserting Web Feed Proviver
+   * - http://localhost:8080/feeds/add
+
+
+
