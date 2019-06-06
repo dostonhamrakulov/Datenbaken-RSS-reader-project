@@ -26,4 +26,9 @@ public class Web_feed_providersController {
     public Optional<Web_feed_providers> web_feed_providersById(@PathVariable("provider_id") int provider_id){
         return web_feed_providersRepository.findById(provider_id);
     }
+
+    @DeleteMapping("/{provider_id}")
+    public void deleteWeb_feed_providers(@PathVariable("provider_id") int provider_id){
+        web_feed_providersRepository.deleteById(provider_id);
+    }
 }

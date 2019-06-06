@@ -76,6 +76,11 @@ Result will be:
 }
 ```
 
+* [X] - http://localhost:8080//web-feed-provider/1
+   * - deleting a web_feed_provider by id
+```json
+Response HTTP OK
+```
 
 * [O] - Inserting Web Feed Proviver
    * - http://localhost:8080/feeds/add
