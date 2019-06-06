@@ -1,31 +1,29 @@
 package de.tuchemnitz.de.Main.entity;
 
-import org.hibernate.annotations.Table;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Web_feed_providers {
 
+//    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-
-    private int provider_id;
+    @Column(name = "id", updatable = false, nullable = false)
+    private int id;
     private String name;
     private String link;
     private String updated_date;
     private int num_feeds;
     private int error;
 
-    public int getProvider_id() {
-        return provider_id;
+    public int getId() {
+//        Object id = entityManagerFactory.getPersistenceUnitUtil().getIdentifier(entity);
+        return id;
     }
 
-    public void setProvider_id(int provider_id) {
-        this.provider_id = provider_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

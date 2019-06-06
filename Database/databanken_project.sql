@@ -46,17 +46,19 @@ CREATE TABLE IF NOT EXISTS `web_feed` (
 
 DROP TABLE IF EXISTS `web_feed_providers`;
 CREATE TABLE IF NOT EXISTS `web_feed_providers` (
-  `provider_id` int(255) NOT NULL AUTO_INCREMENT,
-  `name` int(255) NOT NULL,
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
   `link` longtext NOT NULL,
   `updated_date` varchar(255) NOT NULL,
   `num_feeds` int(255) NOT NULL,
   `error` int(255) NOT NULL,
-  PRIMARY KEY (`provider_id`),
-  UNIQUE KEY `link` (`link`(255))
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
+
+-- ,
+--  UNIQUE KEY `link` (`link`(255)
 
 select version();
 
@@ -99,11 +101,15 @@ INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (1,
 INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (2,'user2@gmail.com','user2','user2_pass',1);
 INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (3,'user3@gmail.com','user3','user3_pass',1);
 
-INSERT INTO `web_feed_providers`(`provider_id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (1,'wordpress','http://wordpress.org/news/feed/','2018/09/09','10',0);
-INSERT INTO `web_feed_providers`(`provider_id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0);
-INSERT INTO `web_feed_providers`(`provider_id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (3,'Random','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (1,'wordpress','http://wordpress.org/news/feed/','2018/09/09','10',0);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (3,'Random','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0);
 
 
 INSERT INTO `user_feed_providers`(`user_id`, `provider_id`, `status`) VALUES (1,1,1);
 INSERT INTO `user_feed_providers`(`user_id`, `provider_id`, `status`) VALUES (2,2,2);
 INSERT INTO `user_feed_providers`(`user_id`, `provider_id`, `status`) VALUES (3,3,3); 
+
+
+select * from web_feed_providers;
+describe web_feed_providers;

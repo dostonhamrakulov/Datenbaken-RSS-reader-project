@@ -47,8 +47,8 @@ Result will be:
 ```
 
 
-* [X] - http://localhost:8080//web-feed-provider/all
-   * - getting all web_feed_providers:
+* [X] - getting all web_feed_providers:
+   * - http://localhost:8080//web-feed-provider/all
 ```json 
 [
     {
@@ -63,8 +63,8 @@ Result will be:
 ]
 ```
 
-* [X] - http://localhost:8080//web-feed-provider/{provider}  -- provider=1
-   * - getting a web_feed_provider by id
+* [X] - getting a web_feed_provider by id
+   * - http://localhost:8080//web-feed-provider/{provider}  -- provider=1
 ```json
 {
     "provider_id": 1,
@@ -76,14 +76,35 @@ Result will be:
 }
 ```
 
-* [X] - http://localhost:8080//web-feed-provider/1
-   * - deleting a web_feed_provider by id
+* [X] - deleting a web_feed_provider by id
+   * - http://localhost:8080//web-feed-provider/1
 ```json
 Response HTTP OK
 ```
 
-* [O] - Inserting Web Feed Proviver
-   * - http://localhost:8080/feeds/add
+* [O] - adding Web Feed Proviver
+   * - http://localhost:8080//web-feed-provider/add
+```json
+Example_1:
+{
+	
+	"name" : "USA goverment",
+	"link" : "https://www.usa.gov/rss/updates.xml",
+	"updated_date" : "some_date",
+	"num_feeds" : 12,
+	"error" : 1
+}
 
+Example_2: --- without date
+
+{
+	
+	"name" : "US news",
+	"link" : "https://www.usnews.com/rss/education",
+	"num_feeds" : 12,
+	"error" : 1
+}
+
+```
 
 
