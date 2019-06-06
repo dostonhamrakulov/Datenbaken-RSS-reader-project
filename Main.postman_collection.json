@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "caf52a22-3a35-48a3-a426-9a8db7e3c3ce",
+		"name": "Main",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All_feeds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/feeds/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"feeds",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All_web_feed_providers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080//web-feed-provider/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"",
+						"web-feed-provider",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "web_feed_provider_By_ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080//web-feed-provider/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"",
+						"web-feed-provider",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
