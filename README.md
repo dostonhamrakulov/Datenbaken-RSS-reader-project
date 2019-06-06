@@ -4,10 +4,17 @@ Database and Web Technologies
 
 * [X] - Connecting to Database
 * [X] - Queries over DB with Spring
-* [O] - RSS Reader
-* [O] - Inserting data into the DB
-* [O] - Updating data in the DB
-* [O] - Reading data from DB
+
+* [X] - APIs for web_feed_providers
+* [O] - APIs for web_feed
+* [O] - APIs for User
+* [O] - APIs for User Login
+* [O] - RSS Reading
+   * [O] - Validating RSS data
+   * [O] - Getting individual RSS items
+   * [O] - other main tasks
+* [O] - Writing RSS data into DB
+* [O] - sdd
 * [O] - sd
 
 
@@ -27,28 +34,10 @@ Database and Web Technologies
 * [O] - two
 
 
-## APIs:
-* [X] - http://localhost:8080/feeds/all   ---->
-Result will be:
-```json
-[
-    {
-        "id": 0,
-        "title": "Title1",
-        "link": "Link1",
-        "description": "Description1",
-        "published_date": "2019/01/01",
-        "imported_date": "2019/05/05",
-        "provider_id": 1,
-        "image": "img_src_1"
-    },
-...
-]
-```
-
+## Web_feed_providers APIs:
 
 * [X] - getting all web_feed_providers:
-   * - http://localhost:8080//web-feed-provider/all
+   * [X] - http://localhost:8080//web-feed-provider/all
 ```json 
 [
     {
@@ -64,7 +53,7 @@ Result will be:
 ```
 
 * [X] - getting a web_feed_provider by id
-   * - http://localhost:8080//web-feed-provider/{provider}  -- provider=1
+   * [X] - http://localhost:8080//web-feed-provider/{provider}  -- provider=1
 ```json
 {
     "provider_id": 1,
@@ -77,13 +66,13 @@ Result will be:
 ```
 
 * [X] - deleting a web_feed_provider by id
-   * - http://localhost:8080//web-feed-provider/1
+   * [X] - http://localhost:8080//web-feed-provider/1
 ```json
 Response HTTP OK
 ```
 
-* [O] - adding Web Feed Proviver
-   * - http://localhost:8080//web-feed-provider/add
+* [X] - adding Web Feed Proviver
+   * [X] - http://localhost:8080//web-feed-provider/add
 ```json
 Example_1:
 {
@@ -106,5 +95,44 @@ Example_2: --- without date
 }
 
 ```
+
+
+## Web_feed APIs:
+* [X] - getting a web_feed by id
+   * [X] - http://localhost:8080/feeds/{id}  -- id=1
+
+```json
+{
+    "id": 1,
+    "title": "Title1",
+    "link": "Link1",
+    "description": "Description1",
+    "published_date": "2019/01/01",
+    "imported_date": "2019/05/05",
+    "provider_id": 1,
+    "image": "img_src_1"
+}
+
+if not found, it will return Status: 404 Not Found
+```
+
+* [X] - http://localhost:8080/feeds/all   ---->
+Response will be:
+```json
+[
+    {
+        "id": 0,
+        "title": "Title1",
+        "link": "Link1",
+        "description": "Description1",
+        "published_date": "2019/01/01",
+        "imported_date": "2019/05/05",
+        "provider_id": 1,
+        "image": "img_src_1"
+    },
+...
+]
+```
+
 
 
