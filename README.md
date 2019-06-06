@@ -30,7 +30,7 @@ Database and Web Technologies
 ## APIs:
 * [X] - http://localhost:8080/feeds/all   ---->
 Result will be:
-```python
+```json
 [
     {
         "id": 0,
@@ -63,8 +63,21 @@ Result will be:
 ]
 ```
 
+* [X] - http://localhost:8080//web-feed-provider/{provider}  -- provider=1
+   * - getting a web_feed_provider by id
+```json
+{
+    "provider_id": 1,
+    "name": "wordpress",
+    "link": "http://wordpress.org/news/feed/",
+    "updated_date": "2018/09/09",
+    "num_feeds": 10,
+    "error": 0
+}
+```
 
-* [X] - Inserting Web Feed Proviver
+
+* [O] - Inserting Web Feed Proviver
    * - http://localhost:8080/feeds/add
 
 
