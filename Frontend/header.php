@@ -1,3 +1,7 @@
+<?php
+include 'functions.php';
+//header('Access-Control-Allow-Origin: *');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +26,8 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
+                <li><a href="web_feed.php">Web Feeds</a></li>
+                <li><a href="web_feed_providers.php">Web Feed Providers</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

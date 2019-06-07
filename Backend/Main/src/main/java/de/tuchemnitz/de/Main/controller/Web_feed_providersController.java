@@ -6,6 +6,8 @@ import de.tuchemnitz.de.Main.entity.Web_feed_providers;
 import de.tuchemnitz.de.Main.repository.Web_feed_providersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
