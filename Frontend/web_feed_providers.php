@@ -1,5 +1,5 @@
 <?php include ('header.php');
-$obj= new myFunctions();
+
 if(isset($_GET['delete'])=='success'){
     echo '<script type="text/javascript">',
     'alert("Web Feed Provider Deleted Sucessfully");

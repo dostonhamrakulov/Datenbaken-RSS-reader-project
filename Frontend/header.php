@@ -1,5 +1,6 @@
 <?php
 include 'functions.php';
+$obj= new myFunctions();
 //header('Access-Control-Allow-Origin: *');
 ?>
 <!DOCTYPE html>

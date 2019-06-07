@@ -7,7 +7,7 @@
         <div class="row">
 
             <?php
-                $results = sendGetRequest("/feeds/all");
+                $results = $obj->sendGetRequest("/feeds/all");
                 echo "<table class='table table-striped'>";
                 ?>
                         <thead>
