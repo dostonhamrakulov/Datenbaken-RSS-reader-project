@@ -76,6 +76,7 @@ if(isset($_POST['submit'])) {
                     <td>
                         <a href="edit/url"><span class="glyphicon glyphicon-edit"></a>
                         <a href="delete_web_feed_providers.php?id=<?php echo $result->id; ?>"></span> <span class="glyphicon glyphicon-remove-sign"></span></a>
+                        <a href="web_feed_providers_detail.php?id=<?php echo $result->id; ?>"></span> <span class="glyphicon glyphicon-eye-open"></span></a>
                     </td>
                 </tr>
                 <?php

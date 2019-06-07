@@ -19,6 +19,7 @@
                                 <th>Imported Date</th>
                                 <th>Provider id</th>
                                 <th>Image</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,6 +34,11 @@
                                 <td><?php echo $result->imported_date; ?></td>
                                 <td><?php echo $result->provider_id; ?></td>
                                 <td><img src="<?php echo $result->image; ?>" alt="Image Here" height="50px" width="50px"> </td>
+                                <td>
+                                    <a href="edit/url"><span class="glyphicon glyphicon-edit"></a>
+                                    <a href="delete_web_feed.php?id=<?php echo $result->id; ?>"></span> <span class="glyphicon glyphicon-remove-sign"></span></a>
+                                    <a href="web_feed_detail.php?id=<?php echo $result->id; ?>"></span> <span class="glyphicon glyphicon-eye-open"></span></a>
+                                </td>
                             </tr>
                                 <?php
                                     }
