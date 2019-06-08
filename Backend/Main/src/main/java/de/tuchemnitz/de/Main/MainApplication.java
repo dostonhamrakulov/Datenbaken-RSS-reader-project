@@ -131,13 +131,17 @@ public class MainApplication {
                         HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Web_feed>>(){});
 
                 List<Web_feed> list = re1.getBody();
-                if (list.size() < 2 && re1.getStatusCode()==HttpStatus.OK){
+
+                if (re1.getStatusCode() == HttpStatus.FOUND){
+					System.out.println(list.get(0));
                     System.out.println("\n =========== Feed is FOUND ==========");
-                } else if (re1.getStatusCode() == HttpStatus.NOT_FOUND){
+                } else if (re1.getStatusCode() == HttpStatus.OK){
+
+					System.out.println("\n =========== Feed is ENTERED ==========");
                     ResponseEntity<Web_feed> responseEntity = restTemplate.exchange(REST_SERVICE_URI+"/feeds/add",
                             HttpMethod.POST, requestEntity, Web_feed.class);
 
-                    System.out.println("\n =========== Feed is ENTERED ==========");
+
                     if(responseEntity.getStatusCode() == HttpStatus.BAD_GATEWAY){
                         System.out.println("\n\n\n===================== BAD_GATEWAY =====================");
 

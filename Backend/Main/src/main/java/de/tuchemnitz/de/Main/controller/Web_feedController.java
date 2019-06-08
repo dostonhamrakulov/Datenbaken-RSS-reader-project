@@ -41,12 +41,22 @@ public class Web_feedController {
     @PostMapping(path = "/link", consumes = "application/json")
     public @ResponseBody ResponseEntity<List<Web_feed>> getWeb_feed_by_link(@RequestBody Web_feed web_feed2){
 
+        System.out.println("\nIN");
         List<Web_feed> web_feedList = feedRepository.findByLink(web_feed2.getLink());
+        System.out.println("\n OUT");
         if (web_feedList != null){
-            return new ResponseEntity<>(web_feedList, HttpStatus.OK);
+            if (web_feedList.size() > 0){
+                System.out.println("Response list > 0 ");
+                return new ResponseEntity<>(web_feedList, HttpStatus.FOUND);
+            } else {
+                System.out.println("Response list = 0 ");
+                return new ResponseEntity<>(web_feedList, HttpStatus.OK);
+            }
         } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            System.out.println("BAD Request");
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
+
 
     }
 
