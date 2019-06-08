@@ -52,7 +52,9 @@ CREATE TABLE IF NOT EXISTS `web_feed_providers` (
   `updated_date` varchar(255) NOT NULL,
   `num_feeds` int(255) NOT NULL,
   `error` int(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `user_id` int(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY `ft_provider` (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
@@ -92,13 +94,13 @@ INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `
 INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
 
 
-INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (1,'user1@gmail.com','user1','user1_pass',1);
-INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (2,'user2@gmail.com','user2','user2_pass',1);
-INSERT INTO `users`(`user_id`, `email`, `name`, `password`, `status`) VALUES (3,'user3@gmail.com','user3','user3_pass',1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (1,'user1@gmail.com','user1','user1_pass',1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (2,'user2@gmail.com','user2','user2_pass',1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (3,'user3@gmail.com','user3','user3_pass',1);
 
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (1,'wordpress','http://wordpress.org/news/feed/','2018/09/09','10',0);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`) VALUES (3,'Random','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (1,'wordpress','http://wordpress.org/news/feed/','2018/09/09','10',0, 1);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,1);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (3,'Random','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 2);
 
 
 INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (1,1,1);
@@ -110,3 +112,6 @@ select * from web_feed_providers;
 describe web_feed_providers;
 
 select * from web_feed;
+select * from user;
+
+select * from web_feed_providers wf where wf.user_id = 1;
