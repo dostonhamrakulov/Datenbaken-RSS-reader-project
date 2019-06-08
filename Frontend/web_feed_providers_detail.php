@@ -1,19 +1,7 @@
 <?php
 include ('header.php');
-//print_r($_GET['id']) ;
-//$idqw = isset($_GET['id']);
-//echo $idqw;
-//$obj = new myFunctions();
-//$delete = $obj->sendDeleteRequest($_GET['id']);
 $result = $obj->sendGetRequest('//web-feed-provider/'.$_GET['id']);
-//if(!empty($result)){
-//    echo "<pre>";
-//    print_r($result);
-//    echo "</pre>";
-//    die;
-//}else{
-//    echo"No Result Found! Please check the Id";
-//}
+
 ?>
 <?php if(!empty($result)){?>
 <div class="container">

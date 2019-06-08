@@ -74,7 +74,7 @@ if(isset($_POST['submit'])) {
                     <td><?php echo $result->num_feeds; ?></td>
                     <td><?php echo $result->error; ?></td>
                     <td>
-                        <a href="edit/url"><span class="glyphicon glyphicon-edit"></a>
+                        <a href="edit_web_feed_providers.php?id=<?php echo $result->id; ?>"><span class="glyphicon glyphicon-edit"></a>
                         <a href="delete_web_feed_providers.php?id=<?php echo $result->id; ?>"></span> <span class="glyphicon glyphicon-remove-sign"></span></a>
                         <a href="web_feed_providers_detail.php?id=<?php echo $result->id; ?>"></span> <span class="glyphicon glyphicon-eye-open"></span></a>
                     </td>
