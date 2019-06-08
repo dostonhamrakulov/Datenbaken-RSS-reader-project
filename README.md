@@ -6,16 +6,17 @@ Database and Web Technologies
 * [X] - Queries over DB with Spring
 
 * [X] - APIs for web_feed_providers
-* [O] - APIs for web_feed
+* [X] - APIs for web_feed
 * [O] - APIs for User
 * [O] - APIs for User Login
-* [O] - RSS Reading
-   * [O] - Validating RSS data
-   * [O] - Getting individual RSS items
+* [X] - RSS Reading
+   * [X] - Validating RSS data
+   * [X] - Getting individual RSS items
    * [O] - other main tasks
-* [O] - Writing RSS data into DB
-* [O] - sdd
-* [O] - sd
+* [X] - Writing RSS data into DB
+* [O] - Update web_feed_provider
+* [O] - Delete all feeds of web_feed_provider after provider is deleted
+
 
 
 
@@ -77,11 +78,7 @@ Response HTTP OK
 Example_1:
 {
 	
-	"name" : "USA goverment",
-	"link" : "https://www.usa.gov/rss/updates.xml",
-	"updated_date" : "some_date",
-	"num_feeds" : 12,
-	"error" : 1
+	"link" : "https://www.espn.com/espn/rss/news"
 }
 
 Example_2: --- without date

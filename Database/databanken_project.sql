@@ -2,14 +2,14 @@
 
 create schema databanken_project;
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(255) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `status` int(255) NOT NULL,
-  PRIMARY KEY (`user_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -74,7 +74,7 @@ email varchar(355)
 insert into my_tab values(1, "Doston");
 
 
-SET GLOBAL time_zone = '+5:30'
+SET GLOBAL time_zone = '+5:30';
 
 select * from user;
 

@@ -46,6 +46,53 @@ Task Description:
 
 
 
+1. I have updated DB
+	- making a link (web_feed_provider) not unique
+	- rename ids (feed_id -> id, provider_id -> id)
+
+2. Response with json result set or Not Found status
+	- get feed by ID then if not exists, returns not found
+
+
+Questions:
+	- Can a user delete individual web_feed?
+	- Can a user update web_feed_provider?
+
+	- adding web_feed_provider:
+Frontend send a request with link, and should there be user_id?
+
+
+	- changed Users tabel --> User table with user_id --> id
+
+
+
+
+3. Let's not push some file like .class or .project, or .iml
+
+
+worked rss links:
+	- https://www.espn.com/espn/rss/news
+	- https://www.espn.com/espn/rss/nfl/news
+	- https://www.espn.com/espn/rss/nba/news
+	- https://www.espn.com/espn/rss/mlb/news
+	- https://www.espn.com/espn/rss/nhl/news
+	- https://www.espn.com/espn/rss/poker/master
+	- https://www.espn.com/espn/rss/action/news
+	- https://www.espn.com/espn/rss/ncb/news
+	- 
+
+	- https://hnrss.org/newest
+	- https://hnrss.org/frontpage
+	- https://hnrss.org/newcomments
+	- http://podcastfeeds.nbcnews.com/meetthepress
+	- 
+	- https://rss.nytimes.com/services/xml/rss/nyt/World.xml
+	- https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+	- https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+
+
+Broken:
+-http://wordpress.org/news/feed/
 
 
 

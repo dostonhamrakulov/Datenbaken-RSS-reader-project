@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 //@Repository
 public interface Web_feed_providersRepository extends CrudRepository<Web_feed_providers, Integer> {
+
+
 }
