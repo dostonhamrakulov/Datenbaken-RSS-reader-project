@@ -6,31 +6,122 @@
 	},
 	"item": [
 		{
-			"name": "All_feeds",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+			"name": "web_feed",
+			"item": [
+				{
+					"name": "All_feeds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"all"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/feeds/all",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"feeds",
-						"all"
-					]
+				{
+					"name": "get web_feed by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a web_feed",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\n        \"title\": \"Title_3\",\n        \"link\": \"Link4\",\n        \"description\": \"Description4\",\n        \"published_date\": \"2019/01/01\",\n        \"imported_date\": \"2019/05/05\",\n        \"provider_id\": 1,\n        \"image\": \"img_src_4\"\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findByLink",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\t\n        \"title\": \"Title_3\",\n        \"link\": \"https://www.nytimes.com/2019/06/05/us/politics/amazon-apple-facebook-google-lobbying.html?emc=rss&partner=rss\",\n        \"description\": \"Description4\",\n        \"published_date\": \"2019/01/01\",\n        \"imported_date\": \"2019/05/05\",\n        \"provider_id\": 1,\n        \"image\": \"img_src_4\"\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/link",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"link"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "All_web_feed_providers",
+			"name": "get all feed providers",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -55,7 +146,7 @@
 			"response": []
 		},
 		{
-			"name": "web_feed_provider_By_ID",
+			"name": "get feed_provider by id",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -64,7 +155,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080//web-feed-provider/1",
+					"raw": "http://localhost:8080//web-feed-provider/33",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -73,7 +164,63 @@
 					"path": [
 						"",
 						"web-feed-provider",
-						"1"
+						"33"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete feed_provider by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/web-feed-provider/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"web-feed-provider",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add a feed_provider",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080//web-feed-provider/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"",
+						"web-feed-provider",
+						"add"
 					]
 				}
 			},
