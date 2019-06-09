@@ -5,6 +5,7 @@ import com.rometools.rome.feed.synd.SyndEntry;
 import com.rometools.rome.feed.synd.SyndFeed;
 import com.rometools.rome.io.SyndFeedInput;
 import com.rometools.rome.io.XmlReader;
+import de.tuchemnitz.de.Main.Feed_operation;
 import de.tuchemnitz.de.Main.entity.Web_feed;
 import de.tuchemnitz.de.Main.entity.Web_feed_providers;
 import de.tuchemnitz.de.Main.repository.Web_feed_providersRepository;
@@ -102,6 +103,9 @@ public class Web_feed_providersController {
     @DeleteMapping("/{id}")
     public void deleteWeb_feed_providers(@PathVariable("id") int id) {
         web_feed_providersRepository.deleteById(id);
+        Web_feed_providers wfp = Feed_operation.getProviderInfo(id);
+
+        Feed_operation.deleteSingleFeed(wfp.getId());
     }
 
     @GetMapping(path = "/feed-providers-of-user/{userid}")
