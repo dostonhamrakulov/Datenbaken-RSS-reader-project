@@ -16,6 +16,20 @@ public class User {
     private String name;
 
     private String email;
+    private int status;
+    private int feedage;
+    private int updateperiod;
+
+    public User() {
+    }
+
+    public User(String name, String email, int status, int feedage, int updateperiod) {
+        this.name = name;
+        this.email = email;
+        this.status = status;
+        this.feedage = feedage;
+        this.updateperiod = updateperiod;
+    }
 
     public Integer getId() {
         return id;
@@ -41,5 +55,39 @@ public class User {
         this.email = email;
     }
 
+    public int getStatus() {
+        return status;
+    }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getFeedage() {
+        return feedage;
+    }
+
+    public void setFeedage(int feedage) {
+        this.feedage = feedage;
+    }
+
+    public int getUpdateperiod() {
+        return updateperiod;
+    }
+
+    public void setUpdateperiod(int updateperiod) {
+        this.updateperiod = updateperiod;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", status=" + status +
+                ", feedage=" + feedage +
+                ", updateperiod=" + updateperiod +
+                '}';
+    }
 }

@@ -9,6 +9,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `status` int(255) NOT NULL,
+  `feedage` int(255) NOT NULL,
+  `updateperiod` int(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -95,9 +97,9 @@ GRANT ALL PRIVILEGES ON *.* TO 'root1'@'localhost' IDENTIFIED BY 'root2019' WITH
 -- INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `providerid`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
 -- 
 -- 
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (101,'user1@gmail.com','user1','user1_pass',1);
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (102,'user2@gmail.com','user2','user2_pass',1);
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (103,'user3@gmail.com','user3','user3_pass',1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (101,'user1@gmail.com','user1','user1_pass',1, 30, 5);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (102,'user2@gmail.com','user2','user2_pass',1, 30, 1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (103,'user3@gmail.com','user3','user3_pass',1, 30, 5);
 
 INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1000,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','10',0, 101);
 INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1001,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,101);
