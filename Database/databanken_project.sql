@@ -33,9 +33,10 @@ CREATE TABLE IF NOT EXISTS `web_feed` (
   `description` longtext NOT NULL,
   `published_date` varchar(255) NOT NULL,
   `imported_date` varchar(255) NOT NULL,
-  `provider_id` int(255) NOT NULL,
+  `providerid` int(255) NOT NULL DEFAULT 1000,
   `image` varchar(555) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY `ft_wfid` (`providerid`) REFERENCES `web_feed_providers` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -52,9 +53,9 @@ CREATE TABLE IF NOT EXISTS `web_feed_providers` (
   `updated_date` varchar(255) NOT NULL,
   `num_feeds` int(255) NOT NULL,
   `error` int(255) NOT NULL,
-  `user_id` int(255) NOT NULL,
+  `userid` int(255) NOT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY `ft_provider` (`user_id`) REFERENCES `user` (`id`)
+  FOREIGN KEY `ft_provider` (`userid`) REFERENCES `user` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
@@ -79,28 +80,28 @@ insert into my_tab values(1, "Doston");
 SET GLOBAL time_zone = '+5:30';
 
 select * from user;
-
-
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'192.168.0.104' IDENTIFIED BY 'root2019' WITH GRANT OPTION;
+ALTER USER 'databanken_project'@'localhost' IDENTIFIED BY 'root2019';
+ CREATE USER 'root1'@'localhost' IDENTIFIED BY 'root2019';
+GRANT ALL PRIVILEGES ON *.* TO 'root1'@'localhost' IDENTIFIED BY 'root2019' WITH GRANT OPTION;
  FLUSH PRIVILEGES;
  
 
 
 
-INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (1,'Title1','Link1','Description1','2019/01/01','2019/05/05',1,'img_src_1');
-
-INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (2,'Title2','Link2','Description2','2019/01/02','2019/05/06',2,'img_src_2');
-
-INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
-
-
+-- INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `providerid`, `image`) VALUES (1,'Title1','Link1','Description1','2019/01/01','2019/05/05',1000,'img_src_1');
+-- 
+-- INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `providerid`, `image`) VALUES (2,'Title2','Link2','Description2','2019/01/02','2019/05/06',2,'img_src_2');
+-- 
+-- INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `providerid`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
+-- 
+-- 
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (101,'user1@gmail.com','user1','user1_pass',1);
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (102,'user2@gmail.com','user2','user2_pass',1);
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (103,'user3@gmail.com','user3','user3_pass',1);
 
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (1,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','10',0, 101);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,101);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (3,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 102);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1000,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','10',0, 101);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1001,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,101);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1003,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 102);
 
 -- 
 -- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (1,1,1);
@@ -115,3 +116,5 @@ select * from web_feed;
 select * from user;
 
 select * from web_feed_providers wf where wf.user_id = 1;
+
+SHOW GRANTS;

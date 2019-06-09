@@ -26,7 +26,7 @@ Database and Web Technologies
    * [ ] - Check if a user exists or not
    * [ ] - return Status Code, OK, NOT FOUND
    * [ ] - Make POST request
-* [ ] - Inserting web feeds when a provider is added
+* [X] - Inserting web feeds when a provider is added
    * [X] - checking whether a link is present or not
    * [X] - Consitancy of data like whether title is there or published date
 * [ ]
@@ -234,6 +234,35 @@ with Http Status: OK
 
 if not found, it will return Status: BAD_GATEWAY
 
+```
+
+* [X] - get all feeds by provider_id:  --- **GET method**
+  * [X] - http://localhost:8080/feeds/feeds-of-provider/?providerid=786
+```json
+[
+    {
+        "id": 787,
+        "title": "Tech Giants Amass a Lobbying Army for an Epic Washington Battle",
+        "link": "https://www.nytimes.com/2019/06/05/us/politics/amazon-apple-facebook-google-lobbying.html?emc=rss&partner=rss",
+        "description": "Amazon, Apple, Facebook and Google, facing the growing possibility of antitrust action and legislation to rein in their power, are spending freely to gain influence and access.",
+        "published_date": "Thu, 06 Jun 2019 01:04:39 CEST",
+        "imported_date": "Sun, 09 Jun 2019 11:02:06 CEST",
+        "providerid": 786,
+        "image": "src_img"
+    },
+    {
+        "id": 788,
+        "title": "Democratic Candidates Woo Silicon Valley for Donations, Then Bash It",
+        "link": "https://www.nytimes.com/2019/06/06/us/politics/democrats-2020-donations-silicon-valley.html?emc=rss&partner=rss",
+        "description": "Until recently big tech companies were seen as one of the few relatively untainted sources of big-money donations for Democrats. Now, that’s changing.",
+        "published_date": "Fri, 07 Jun 2019 04:00:48 CEST",
+        "imported_date": "Sun, 09 Jun 2019 11:02:06 CEST",
+        "providerid": 786,
+        "image": "src_img"
+    },
+
+...
+]
 ```
 
 Setup:
