@@ -42,7 +42,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/11",
+							"raw": "http://localhost:8080/feeds/606222222",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -50,7 +50,7 @@
 							"port": "8080",
 							"path": [
 								"feeds",
-								"11"
+								"606222222"
 							]
 						}
 					},
@@ -145,135 +145,199 @@
 			]
 		},
 		{
-			"name": "get all feed providers",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "http://localhost:8080//web-feed-provider/all",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"",
-						"web-feed-provider",
-						"all"
-					]
+			"name": "User",
+			"item": [
+				{
+					"name": "get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"all"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"description": "APIs for User queiries"
 		},
 		{
-			"name": "get feed_provider by id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+			"name": "web_feed_provider",
+			"item": [
+				{
+					"name": "get all feed providers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/web-feed-provider/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"web-feed-provider",
+								"all"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080//web-feed-provider/33",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"",
-						"web-feed-provider",
-						"33"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "delete feed_provider by id",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+				{
+					"name": "get feed_provider by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/web-feed-provider/786",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"web-feed-provider",
+								"786"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/web-feed-provider/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"web-feed-provider",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add a feed_provider",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\",\n\t\"userId\":11\n}"
+				{
+					"name": "delete feed_provider by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/web-feed-provider/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"web-feed-provider",
+								"3"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080//web-feed-provider/add",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"",
-						"web-feed-provider",
-						"add"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "provider by userID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+				{
+					"name": "add a feed_provider",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\",\n\t\"userId\":12\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080//web-feed-provider/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"web-feed-provider",
+								"add"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/web-feed-provider/user/101",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"web-feed-provider",
-						"user",
-						"101"
-					]
+				{
+					"name": "provider by userID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/web-feed-provider/feed-providers-of-user/101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"web-feed-provider",
+								"feed-providers-of-user",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "provider by provider_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/feeds-of-provider/?providerid=786",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"feeds-of-provider",
+								""
+							],
+							"query": [
+								{
+									"key": "providerid",
+									"value": "786"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
