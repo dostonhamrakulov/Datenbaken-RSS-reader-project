@@ -14,7 +14,9 @@ Database and Web Technologies
    * [X] - Reading whole RSS file from url
    * [X] - Getting individual RSS items
    * [X] - Validating RSS items before inserting into DB
-* [X] - Writing individual RSS items into DB
+* [X] - Writing individual RSS items into DB in time interval
+   * [X] - checking whether a link is present or not
+   * [X] - Consitancy of data like whether title is there or published date
 * [X] - Getting all new web feeds from web feed provider when program starts
 * [X] - sdds
 * [X] - Update web_feed_provider
@@ -24,7 +26,10 @@ Database and Web Technologies
    * [ ] - Check if a user exists or not
    * [ ] - return Status Code, OK, NOT FOUND
    * [ ] - Make POST request
-
+* [ ] - Inserting web feeds when a provider is added
+   * [X] - checking whether a link is present or not
+   * [X] - Consitancy of data like whether title is there or published date
+* [ ]
 
 
 
@@ -193,7 +198,30 @@ ResponseBody:
 
 with Http Status: FOUND
 
-if not found, it will return Status: 404 Not Found
+if not found, it will return Status: NO_CONTENT
+```
+
+* [X] - adding a single web feed  - **POST method**
+   * [X] - http://localhost:8080/feeds/add
+Request:
+```json
+{
+		
+        "title": "Title_3",
+        "link": "Link4",
+        "description": "Description4",
+        "published_date": "2019/01/01",
+        "imported_date": "2019/05/05",
+        "provider_id": 1,
+        "image": "img_src_4"
+}
+
+```
+Reponse:
+```json
+with Http Status: Created
+
+if not found, it will return Status: BAD_GATEWAY
 ```
 
 * [X] - Get total number of web feeds
@@ -201,6 +229,11 @@ if not found, it will return Status: 404 Not Found
 Response is Integer number:
 ```json
 88
+
+with Http Status: OK
+
+if not found, it will return Status: BAD_GATEWAY
+
 ```
 
 Setup:
