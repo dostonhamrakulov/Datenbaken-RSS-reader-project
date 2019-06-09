@@ -16,7 +16,7 @@ and the Atom format.
 * [X] - Queries over DB with Spring
 * [X] - APIs for web_feed_providers
 * [X] - APIs for web_feed
-* [ ] - APIs for User
+* [X] - APIs for User
 * [ ] - APIs for User Login
 * [X] - RSS Reading
    * [X] - Validating RSS data
@@ -64,9 +64,9 @@ via the frontend.
 All APIs from Backend:
 
 
-## Web_feed_providers APIs:
+## APIs for Web_feed_providers:
 
-* [X] - getting all web_feed_providers:   --- **GET method**
+* [X] - getting all web_feed_providers:   --- **GET request**
    * [X] - http://localhost:8080//web-feed-provider/all
 ```json 
 [
@@ -85,7 +85,7 @@ with Http Status: OK
 if not found, it will return Status: 404 Not Found
 ```
 
-* [X] - getting a web_feed_provider by id   --- **GET method**
+* [X] - getting a web_feed_provider by id   --- **GET request**
    * [X] - http://localhost:8080//web-feed-provider/{provider}  -- provider=1
 
 **Response** will be :
@@ -104,13 +104,13 @@ with Http Status: OK
 if not found, it will return Status: 404 Not Found
 ```
 
-* [X] - deleting a web_feed_provider by id   --- **DELETE method**
+* [X] - deleting a web_feed_provider by id   --- **DELETE request**
    * [X] - http://localhost:8080//web-feed-provider/1
 ```json
 Response HTTP OK
 ```
 
-* [X] - adding Web Feed Proviver    - **POST method**
+* [X] - adding Web Feed Proviver    - **POST request**
    * [X] - http://localhost:8080//web-feed-provider/add
 ```json
 {
@@ -122,7 +122,7 @@ Response HTTP OK
 
 ```
 
-* [X] - get all web_feed_providers by user_id:   **GET method**
+* [X] - get all web_feed_providers by user_id:   **GET request**
    * [X] - **http://localhost:8080/web-feed-provider/feed-providers-of-user/101**
 ```json
 [
@@ -141,9 +141,9 @@ Response HTTP OK
 
 
 
-## Web_feed APIs:
+## APIs for Web_feed:
 * [X] - getting a web_feed by id
-   * [X] - http://localhost:8080/feeds/{id}  -- id=1   **GET method**
+   * [X] - http://localhost:8080/feeds/{id}  -- id=1   **GET request**
 
 Response:
 ```json
@@ -163,7 +163,7 @@ with Http Status: OK
 if not found, it will return Status: 404 Not Found
 ```
 
-* [X] - http://localhost:8080/feeds/all   ---->  **GET method**
+* [X] - http://localhost:8080/feeds/all   ---->  **GET request**
 Response will be:
 ```json
 [
@@ -186,7 +186,7 @@ if not found, it will return Status: 404 Not Found
 
 
 *  [X] - get a single web feed by a link
-  * [X] - http://localhost:8080/feeds/link   - **POST method**
+  * [X] - http://localhost:8080/feeds/link   - **POST request**
 RequestBody:
 ```json
 {
@@ -214,7 +214,7 @@ with Http Status: FOUND
 if not found, it will return Status: NO_CONTENT
 ```
 
-* [X] - adding a single web feed  - **POST method**
+* [X] - adding a single web feed  - **POST request**
    * [X] - http://localhost:8080/feeds/add
 Request:
 ```json
@@ -238,7 +238,7 @@ if not found, it will return Status: BAD_GATEWAY
 ```
 
 * [X] - Get total number of web feeds
-  * [X] - http://localhost:8080/feeds/number-of-feeds   --- **GET method**
+  * [X] - http://localhost:8080/feeds/number-of-feeds   --- **GET request**
 Response is Integer number:
 ```json
 88
@@ -249,7 +249,7 @@ if not found, it will return Status: BAD_GATEWAY
 
 ```
 
-* [X] - get all feeds by provider_id:  --- **GET method**
+* [X] - get all feeds by provider_id:  --- **GET request**
   * [X] - http://localhost:8080/feeds/feeds-of-provider/?providerid=786
 ```json
 [
@@ -278,9 +278,9 @@ if not found, it will return Status: BAD_GATEWAY
 ]
 ```
 
-## User APIs:
+## APIs for User:
 
-* [X] - get all users   --- **GET method**
+* [X] - get all users   --- **GET request**
    * [X] - http://localhost:8080/user/all
 
 Response:
@@ -302,7 +302,7 @@ with Http Status: FOUND (302)
 if not found, it will return Status: NOT_FOUND (404)
 ```
 
-* [X] - get user by id --- --- **GET method**
+* [X] - get user by id --- --- **GET request**
    * [X] - http://localhost:8080/user/?id=101
 Response:
 ```json
@@ -320,7 +320,7 @@ with Http Status: FOUND (302)
 if not found, it will return Status: NOT_FOUND (404)
 ```
 
-* [X] - update feed-age by id and feed-age **PUT method**
+* [X] - update feed-age by id and feed-age **PUT request**
    * [X] - http://localhost:8080/user/update-feed-age
 Request:
 ```json
@@ -345,7 +345,7 @@ with Http Status: OK (200)
 if not found, it will return Status: BAD_REQUEST(400)
 ```
 
-* [X] - update **update-period** by id and update-period **PUT method**
+* [X] - update **update-period** by id and update-period **PUT request**
    * [X] - http://localhost:8080/user/update-updateperiod
 Request:
 ```json
