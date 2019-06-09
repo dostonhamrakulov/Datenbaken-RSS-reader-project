@@ -53,7 +53,7 @@ INSERT INTO `PLAYER`(`NAME`, `AGE`, `MATCHES`)
 INSERT INTO `PLAYER`(`NAME`, `AGE`, `MATCHES`) 
             VALUES ("Mahela Jayawardene",37,145);
             
-select * from PLAYER;         
+select * from user;         
 
   
 DROP TABLE IF EXISTS cities;

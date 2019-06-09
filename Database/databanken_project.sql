@@ -113,6 +113,7 @@ select * from web_feed_providers;
 describe web_feed_providers;
 
 select * from web_feed;
+select * from web_feed where providerid = 786;
 select * from user;
 
 select * from web_feed_providers wf where wf.user_id = 1;
