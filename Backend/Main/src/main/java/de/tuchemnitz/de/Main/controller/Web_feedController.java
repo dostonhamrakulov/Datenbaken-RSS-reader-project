@@ -94,6 +94,17 @@ public class Web_feedController {
     }
 
 
+    @RequestMapping(value= "/feeds-of-provider/", method = RequestMethod.GET)
+    public ResponseEntity<List<Web_feed>> feeds_of_provider(@RequestParam("providerid") int providerid){
+        List<Web_feed> list = feedRepository.findByProviderid(providerid);
+        if (!list.isEmpty()){
+            return new ResponseEntity<>(list, HttpStatus.FOUND);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 
 
 
