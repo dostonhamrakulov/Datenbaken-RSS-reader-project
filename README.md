@@ -38,8 +38,8 @@ Database and Web Technologies
 
 
 ## Frontend
-* [O] - one
-* [O] - two
+* [O] - TASK_1
+* [O] - TASK_2
 
 
 ## Web_feed_providers APIs:
