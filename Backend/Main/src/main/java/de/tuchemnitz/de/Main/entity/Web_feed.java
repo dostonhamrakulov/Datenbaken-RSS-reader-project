@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity // This tells Hibernate to make a table out of this class
 @NamedQueries({
         @NamedQuery(name="Web_feed.findByLink", query = "SELECT w from Web_feed w WHERE w.link = ?1"),
-        @NamedQuery(name = "Web_feed.findByProviderid", query = "SELECT w from Web_feed w where w.providerid = ?1")
+        @NamedQuery(name = "Web_feed.findByProviderid", query = "SELECT w from Web_feed w where w.providerid = ?1"),
+        @NamedQuery(name = "Web_feed.deleteByProviderid", query = "DELETE FROM Web_feed w where w.providerid = ?1")
 })
 
 //@Table(name= "web_feed")

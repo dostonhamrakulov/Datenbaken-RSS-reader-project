@@ -104,9 +104,15 @@ public class Web_feedController {
         }
     }
 
+    @DeleteMapping(path = "/delete-by-providerid/")
+    public ResponseEntity<String> deleteByProviderid(@RequestParam("providerid") int providerid){
+        int affected_rows = feedRepository.deleteByProviderid(providerid);
 
+        if (affected_rows > 0){
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
 
-
-
-
+        } else {
+            return new ResponseEntity<>("cannot deleted", HttpStatus.NOT_FOUND);
+        }
+    }
 }
