@@ -278,6 +278,59 @@ if not found, it will return Status: BAD_GATEWAY
 ]
 ```
 
+## User APIs:
+
+* [X] - get all users   --- **GET method**
+   * [X] - http://localhost:8080/user/all
+
+Response:
+```json
+[
+    {
+        "id": 101,
+        "name": "user1",
+        "email": "user1@gmail.com",
+        "status": 1,
+        "feedage": 11,
+        "updateperiod": 55
+    },
+...
+]
+
+with Http Status: FOUND (302)
+
+if not found, it will return Status: NOT_FOUND (404)
+```
+
+* [X] - get user by id --- --- **GET method**
+   * [X] - http://localhost:8080/user/?id=101
+Response:
+```json
+{
+    "id": 101,
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "status": 1,
+    "feedage": 11,
+    "updateperiod": 5
+}
+
+with Http Status: FOUND (302)
+
+if not found, it will return Status: NOT_FOUND (404)
+```
+
+* [X] - update feed-age by id and feed-age **PUT method**
+   * [X] - http://localhost:8080/user/update-feed-age
+Request:
+```json
+{
+    "id": 101,
+    "feedage": 22
+}
+```
+Response
+
 Setup:
 	- Installing Rome in Eclipse
 
