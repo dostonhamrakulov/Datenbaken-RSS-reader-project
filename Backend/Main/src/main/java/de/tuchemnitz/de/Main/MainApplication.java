@@ -46,7 +46,7 @@ public class MainApplication {
 		};
 		Timer timer = new Timer();
 		long delay = 0;
-		long intevalPeriod = 40 * 1000;
+		long intevalPeriod = 300 * 1000;
 		// schedules the task to be run in an interval
 		timer.scheduleAtFixedRate(task, delay, intevalPeriod);
 
@@ -135,7 +135,7 @@ public class MainApplication {
                 if (re1.getStatusCode() == HttpStatus.FOUND){
 					System.out.println(list.get(0));
                     System.out.println("\n =========== Feed is FOUND ==========");
-                } else if (re1.getStatusCode() == HttpStatus.NOT_FOUND){
+                } else if (re1.getStatusCode() == HttpStatus.NO_CONTENT){
 
 					System.out.println("\n =========== Feed is ENTERED ==========");
                     ResponseEntity<Web_feed> responseEntity = restTemplate.exchange(REST_SERVICE_URI+"/feeds/add",

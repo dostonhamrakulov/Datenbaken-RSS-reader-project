@@ -57,7 +57,7 @@ public class Web_feedController {
         if (!web_feedList.isEmpty()){
             return new ResponseEntity<>(web_feedList, HttpStatus.FOUND);
         } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
         }
 
 
