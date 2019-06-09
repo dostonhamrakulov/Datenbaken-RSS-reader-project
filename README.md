@@ -141,6 +141,14 @@ Response HTTP OK
 ]
 ```
 
+* [X] - delete a provider by user_id  - **DELETE request**
+   * [X] - http://localhost:8080/web-feed-provider/delete-by-userid/?userid=0
+Response:
+```json
+Deleted with Status code: OK 200
+or
+cannot delete with Status code: NOT_FOUND 404
+```
 
 
 ## APIs for Web_feed:
@@ -280,7 +288,7 @@ if not found, it will return Status: BAD_GATEWAY
 ]
 ```
 
-* [X] - delete feeds by provider_id
+* [X] - delete feeds by provider_id -   **DELETE request**
    * [X] - http://localhost:8080/feeds/delete-by-providerid/?providerid=940
 Response:
 ```json
