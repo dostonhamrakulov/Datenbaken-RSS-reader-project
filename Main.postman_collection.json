@@ -170,6 +170,98 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "user by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/?id=101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "101"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-feed-age",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 101,\n    \"feedage\": 22\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/update-feed-age",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"update-feed-age"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update update-period",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 101,\n    \"updateperiod\": 66\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/update-updateperiod",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"update-updateperiod"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "APIs for User queiries"
