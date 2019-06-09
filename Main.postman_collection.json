@@ -141,6 +141,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "delete-by-providerid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/delete-by-providerid/?providerid=940",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"delete-by-providerid",
+								""
+							],
+							"query": [
+								{
+									"key": "providerid",
+									"value": "940"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -349,13 +380,13 @@
 							{
 								"key": "Content-Type",
 								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\",\n\t\"userId\":12\n}"
+							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://hnrss.org/frontpage\",\n\t\"userid\":888\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080//web-feed-provider/add",
@@ -423,6 +454,37 @@
 								{
 									"key": "providerid",
 									"value": "786"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-by-userid",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/web-feed-provider/delete-by-userid/?userid=0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"web-feed-provider",
+								"delete-by-userid",
+								""
+							],
+							"query": [
+								{
+									"key": "userid",
+									"value": "0"
 								}
 							]
 						}
