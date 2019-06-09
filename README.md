@@ -330,7 +330,45 @@ Request:
 }
 ```
 Response
+```json
+{
+    "id": 101,
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "status": 1,
+    "feedage": 22,
+    "updateperiod": 55
+}
 
+with Http Status: OK (200)
+
+if not found, it will return Status: BAD_REQUEST(400)
+```
+
+* [X] - update **update-period** by id and update-period **PUT method**
+   * [X] - http://localhost:8080/user/update-updateperiod
+Request:
+```json
+{
+    "id": 101,
+    "updateperiod": 66
+}
+```
+Response
+```json
+{
+    "id": 101,
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "status": 1,
+    "feedage": 22,
+    "updateperiod": 66
+}
+
+with Http Status: OK (200)
+
+if not found, it will return Status: BAD_REQUEST(400)
+```
 Setup:
 	- Installing Rome in Eclipse
 
