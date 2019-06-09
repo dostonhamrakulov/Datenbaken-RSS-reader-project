@@ -32,14 +32,14 @@ Database and Web Technologies
 
 * [X] - Create schema
 * [X] - Create tables
-* [O] - Create ER Model
+* [0] - Create ER Model
 * [X] - Inserting
 * [X] - Configuration with Spring JPA
 
 
 ## Frontend
-* [O] - TASK_1
-* [O] - TASK_2
+* [0] - TASK_1
+* [0] - TASK_2
 
 
 ## Web_feed_providers APIs:
