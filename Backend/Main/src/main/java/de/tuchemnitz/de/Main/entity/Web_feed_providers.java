@@ -1,9 +1,10 @@
 package de.tuchemnitz.de.Main.entity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
+//@Table(name = "web_feed_providers")
+@NamedQuery(name="Web_feed.findByWUser_id", query = "select w from Web_feed_providers w WHERE userid = :userid")
 public class Web_feed_providers {
 
 //    private static final long serialVersionUID = 1L;
@@ -12,12 +13,21 @@ public class Web_feed_providers {
     @GeneratedValue(strategy=GenerationType.AUTO)
 //    @Column(name = "id", updatable = false, nullable = false)
     private int id;
+
+    @Column(name = "name")
     private String name;
+    @Column(name = "link")
     private String link;
+    @Column(name = "updated_date")
     private String updated_date;
+
+    @Column(name = "num_feeds")
     private int num_feeds;
+    @Column(name = "error")
     private int error;
-    private int user_id;
+
+    @Column(name = "userid")
+    private int userid;
 
     public int getId() {
 //        Object id = entityManagerFactory.getPersistenceUnitUtil().getIdentifier(entity);
@@ -68,18 +78,24 @@ public class Web_feed_providers {
         this.error = error;
     }
 
+    public int getUserid() {
+        return userid;
+    }
 
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
 
     public Web_feed_providers() {
     }
 
-    public Web_feed_providers(String name, String link, String updated_date, int num_feeds, int error, int user_id) {
+    public Web_feed_providers(String name, String link, String updated_date, int num_feeds, int error, int userid) {
         this.name = name;
         this.link = link;
         this.updated_date = updated_date;
         this.num_feeds = num_feeds;
         this.error = error;
-        this.user_id = user_id;
+        this.userid = userid;
     }
 
     @Override
@@ -91,7 +107,7 @@ public class Web_feed_providers {
                 ", updated_date='" + updated_date + '\'' +
                 ", num_feeds=" + num_feeds +
                 ", error=" + error +
-                ", user_id=" + user_id +
+                ", userid=" + userid +
                 '}';
     }
 }

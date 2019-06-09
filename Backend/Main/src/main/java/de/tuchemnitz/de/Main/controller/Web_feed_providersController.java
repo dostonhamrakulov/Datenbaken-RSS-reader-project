@@ -9,6 +9,7 @@ import de.tuchemnitz.de.Main.entity.Web_feed;
 import de.tuchemnitz.de.Main.entity.Web_feed_providers;
 import de.tuchemnitz.de.Main.repository.Web_feed_providersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -48,7 +49,7 @@ public class Web_feed_providersController {
             List<SyndEntry> syndEntryList = feed.getEntries();
 
             web_feed_providers.setNum_feeds(syndEntryList.size());
-            web_feed_providers.setName(feed.getTitle());
+//            web_feed_providers.setName(feed.getTitle());
 
 //            for (int i = 0; i < syndEntryList.size(); i++) {
 //                SyndEntry syndEntry = syndEntryList.get(i);
@@ -69,19 +70,44 @@ public class Web_feed_providersController {
 
     @GetMapping(path="/all")
     public @ResponseBody
-    Iterable<Web_feed_providers> allWeb_feed_providers(){
-        return web_feed_providersRepository.findAll();
+    ResponseEntity<List<Web_feed_providers>> allWeb_feed_providers(){
+        Iterable<Web_feed_providers> list = web_feed_providersRepository.findAll();
+
+        List<Web_feed_providers> web_feedList = new ArrayList<>();
+        list.forEach(web_feedList::add);
+        if(!web_feedList.isEmpty()){
+            return new ResponseEntity<>(web_feedList, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/{id}")
-    public Optional<Web_feed_providers> web_feed_providersById(@PathVariable("id") int id) {
+    public ResponseEntity<Web_feed_providers> web_feed_providersById(@PathVariable("id") int id) {
 
-        return web_feed_providersRepository.findById(id);
+        Optional<Web_feed_providers> optionalWeb_feed = web_feed_providersRepository.findById(id);
+
+        if (optionalWeb_feed.isPresent()){
+            return new ResponseEntity<>(optionalWeb_feed.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/{id}")
     public void deleteWeb_feed_providers(@PathVariable("id") int id){
         web_feed_providersRepository.deleteById(id);
+    }
+
+    @GetMapping(path = "/feed-providers-of-user/{userid}")
+    public @ResponseBody ResponseEntity<List<Web_feed_providers>> getWeb_feed_by_link(@PathVariable("userid") int userid){
+
+        List<Web_feed_providers> wl = web_feed_providersRepository.findByUserid(userid);
+        if (wl != null){
+            return new ResponseEntity<>(wl, HttpStatus.FOUND);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
     //TODO - implement updating error status of the provider
@@ -133,11 +159,11 @@ public class Web_feed_providersController {
 //        }
 //    }
 
-    public void add_web_feeds(Web_feed web_feed_){
-
-        RestTemplate restTemplate = new RestTemplate();
-        Web_feed web_feed = web_feed_;
-        URI uri = restTemplate.postForLocation(REST_SERVICE_URI+"/user/", web_feed, Web_feed.class);
-
-    }
+//    public void add_web_feeds(Web_feed web_feed_){
+//
+//        RestTemplate restTemplate = new RestTemplate();
+//        Web_feed web_feed = web_feed_;
+//        URI uri = restTemplate.postForLocation(REST_SERVICE_URI+"/user/", web_feed, Web_feed.class);
+//
+//    }
 }
