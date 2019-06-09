@@ -103,7 +103,7 @@ INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `upda
 
 INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1000,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','10',0, 101);
 INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1001,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,101);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1003,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 102);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1003,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 1022);
 
 -- 
 -- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (1,1,1);
@@ -111,12 +111,16 @@ INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feed
 -- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (3,3,3); 
 
 
-select * from web_feed_providers;
+select * from web_feed_providers where userid = 1022;
 describe web_feed_providers;
 
 select * from web_feed;
 select * from web_feed where providerid = 786;
 select * from user;
+
+update user s set s.feedage = 100 where s.id = 101;
+
+delete from web_feed_providers where userid = 1022;
 
 select * from web_feed_providers wf where wf.user_id = 1;
 

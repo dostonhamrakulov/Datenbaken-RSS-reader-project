@@ -17,7 +17,7 @@ and the Atom format.
 * [X] - APIs for web_feed_providers
 * [X] - APIs for web_feed
 * [X] - APIs for User
-* [ ] - APIs for User Login
+* [X] - APIs for User Login
 * [X] - RSS Reading
    * [X] - Validating RSS data
    * [X] - Reading whole RSS file from url
@@ -44,7 +44,7 @@ and the Atom format.
 * [ ] - The time interval for the web feed update blockade and the age for deleting old records can be set
 via the frontend.
 
-* [ ] - userid is always zero while adding provider
+* [X] - Fixing userid is always zero while adding provider
 
 
 
@@ -119,7 +119,7 @@ Response HTTP OK
 	
 	"name":"Name_1",
 	"link" : "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
-	"userId":11
+	"userid":11
 }
 
 ```
@@ -279,6 +279,16 @@ if not found, it will return Status: BAD_GATEWAY
 ...
 ]
 ```
+
+* [X] - delete feeds by provider_id
+   * [X] - http://localhost:8080/feeds/delete-by-providerid/?providerid=940
+Response:
+```json
+Deleted with Status code: OK 200
+or
+cannot delete with Status code: NOT_FOUND 404
+```
+
 
 ## APIs for User:
 

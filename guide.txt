@@ -76,7 +76,10 @@ Frontend send a request with link, and should there be user_id?
 
 2. Existing records can also be updated, but no duplicates are created.
 
-3. 
+3. When provider is deleted by user then we should delete all of its feeds but:
+	- when we add new provider_1 for user_1 then all feeds from provider_1 will be stored in web feeds with providerid=provider_1.id then
+	- user_2 wants to add the same provider_1 and we can add it with different id BUT
+	- once we delete provider_1 for user_1 then we will delete of feeds of provider_1 with providerid and user_2 will not see the feed from the same provider_1 until next time interval
 
 
 worked rss links:
