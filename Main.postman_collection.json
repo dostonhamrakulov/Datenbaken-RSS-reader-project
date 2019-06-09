@@ -101,7 +101,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\t\n        \"title\": \"Title_3\",\n        \"link\": \"https://www.nytimes.com/2019/06/05/us/politics/amazon-apple-facebook-google-lobbying.html?emc=rss&partner=rss\",\n        \"description\": \"Description4\",\n        \"published_date\": \"2019/01/01\",\n        \"imported_date\": \"2019/05/05\",\n        \"provider_id\": 1,\n        \"image\": \"img_src_4\"\n    }"
+							"raw": "{\n    \"link\": \"https://www.nytimes.com/2019/06/08/world/americas/mexico-tariffs-migration.html?emc=rss&partner=rss\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/feeds/link",
@@ -113,6 +113,30 @@
 							"path": [
 								"feeds",
 								"link"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "total num of feeds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/number-of-feeds",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"number-of-feeds"
 							]
 						}
 					},
@@ -180,7 +204,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/web-feed-provider/7",
+					"raw": "http://localhost:8080/web-feed-provider/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -188,7 +212,7 @@
 					"port": "8080",
 					"path": [
 						"web-feed-provider",
-						"7"
+						"3"
 					]
 				}
 			},
@@ -208,7 +232,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\"\n}"
+					"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\",\n\t\"userId\":11\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080//web-feed-provider/add",
@@ -221,6 +245,31 @@
 						"",
 						"web-feed-provider",
 						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "provider by userID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/web-feed-provider/user/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"web-feed-provider",
+						"user",
+						"101"
 					]
 				}
 			},
