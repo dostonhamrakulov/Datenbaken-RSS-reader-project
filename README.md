@@ -44,6 +44,8 @@ and the Atom format.
 * [ ] - The time interval for the web feed update blockade and the age for deleting old records can be set
 via the frontend.
 
+* [ ] - userid is always zero while adding provider
+
 
 
 ## Database:
