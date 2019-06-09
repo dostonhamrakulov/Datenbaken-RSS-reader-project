@@ -7,8 +7,8 @@ Database and Web Technologies
 
 * [X] - APIs for web_feed_providers
 * [X] - APIs for web_feed
-* [O] - APIs for User
-* [O] - APIs for User Login
+* [ ] - APIs for User
+* [ ] - APIs for User Login
 * [X] - RSS Reading
    * [X] - Validating RSS data
    * [X] - Reading whole RSS file from url
@@ -18,12 +18,12 @@ Database and Web Technologies
 * [X] - Getting all new web feeds from web feed provider when program starts
 * [X] - sdds
 * [X] - Update web_feed_provider
-* [O] - Delete all feeds of web_feed_provider after provider is deleted
-* [O] - Rewrite delete method of web_feed_providers properly with userid
-   * [O] - Check if feed_provider exists or not
-   * [O] - Check if a user exists or not
-   * [O] - return Status Code, OK, NOT FOUND
-   * [O] - Make POST request
+* [ ] - Delete all feeds of web_feed_provider after provider is deleted
+* [ ] - Rewrite delete method of web_feed_providers properly with userid
+   * [ ] - Check if feed_provider exists or not
+   * [ ] - Check if a user exists or not
+   * [ ] - return Status Code, OK, NOT FOUND
+   * [ ] - Make POST request
 
 
 
@@ -32,14 +32,18 @@ Database and Web Technologies
 
 * [X] - Create schema
 * [X] - Create tables
-* [0] - Create ER Model
+* [ ] - Create ER Model
 * [X] - Inserting
 * [X] - Configuration with Spring JPA
 
 
 ## Frontend
-* [0] - TASK_1
-* [0] - TASK_2
+* [ ] - TASK_1
+* [ ] - TASK_2
+
+
+
+All APIs from Backend:
 
 
 ## Web_feed_providers APIs:
