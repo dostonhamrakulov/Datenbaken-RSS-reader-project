@@ -19,4 +19,8 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Modifying
     public int updateByFeedage(int feedage, int id);
 
+    @Transactional
+    @Modifying
+    public int updateByUpdateperiod(int updateperiod, int id);
+
 }

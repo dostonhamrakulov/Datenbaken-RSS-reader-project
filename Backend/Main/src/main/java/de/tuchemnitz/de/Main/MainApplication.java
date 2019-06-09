@@ -32,14 +32,13 @@ public class MainApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MainApplication.class, args);
 
-		DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH);
-		String date;
+
 
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				// task to run goes here
-				System.out.println("\n\n\n\n\n\n\n\nUpdated at " + formatter.format(new Date())+"\n");
+//				System.out.println("\n\n\n\n\n\n\n\nUpdated at " + formatter.format(new Date())+"\n");
 
 				add_web_feeds();
 			}

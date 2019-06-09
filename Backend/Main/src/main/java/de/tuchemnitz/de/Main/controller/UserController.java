@@ -20,6 +20,8 @@ public class UserController {
     public static final String REST_SERVICE_URI = "http://localhost:8080/";
     static RestTemplate restTemplate;
 
+    User user_queried;
+
     @GetMapping(path = "/all")
     public @ResponseBody
     ResponseEntity<List<User>> getAllUser(){
@@ -51,22 +53,34 @@ public class UserController {
     public @ResponseBody ResponseEntity<User> updateFeedAge(@RequestBody User user){
        int affected_rows = userRepository.updateByFeedage(user.getFeedage(), user.getId());
 
-        restTemplate = new RestTemplate();
-        Map<String, Integer> params = new HashMap<String, Integer>();
-        params.put("id", user.getId());
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity entity = new HttpEntity(headers);
-
-//        ResponseEntity<User> userResponseEntity = restTemplate.exchange(REST_SERVICE_URI+"/user/", HttpMethod.GET, entity, User.class, params);
-        ResponseEntity<User> re = restTemplate.getForEntity(REST_SERVICE_URI+"/user/?id="+user.getId(), User.class);
-//        restTemplate.get
+        user_queried = getUserIn(user.getId());
         if (affected_rows > 0){
             System.out.println("Updated");
-            return new ResponseEntity<>(re.getBody(), HttpStatus.OK);
+            return new ResponseEntity<>(user_queried, HttpStatus.OK);
 
         } else {
-            return new ResponseEntity<>(re.getBody(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(user_queried, HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PutMapping(path = "/update-updateperiod")
+    public @ResponseBody ResponseEntity<User> updateUpdateperiod(@RequestBody User user){
+        int affected_rows = userRepository.updateByUpdateperiod(user.getUpdateperiod(), user.getId());
+
+        user_queried = getUserIn(user.getId());
+        if (affected_rows > 0){
+            System.out.println("Updated");
+            return new ResponseEntity<>(user_queried, HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity<>(user_queried, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    public User getUserIn(int id){
+        restTemplate = new RestTemplate();
+        ResponseEntity<User> re = restTemplate.getForEntity(REST_SERVICE_URI+"/user/?id="+id, User.class);
+        return re.getBody();
     }
 
 
