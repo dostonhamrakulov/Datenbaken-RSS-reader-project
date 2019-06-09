@@ -15,12 +15,12 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- --------------------------------------------------------
 
 
-DROP TABLE IF EXISTS `user_feed_providers`;
-CREATE TABLE IF NOT EXISTS `user_feed_providers` (
-  `user_id` int(255) NOT NULL,
-  `provider_id` int(255) NOT NULL,
-  `status` int(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+-- DROP TABLE IF EXISTS `user_feed_providers`;
+-- CREATE TABLE IF NOT EXISTS `user_feed_providers` (
+--   `user_id` int(255) NOT NULL,
+--   `provider_id` int(255) NOT NULL,
+--   `status` int(255) NOT NULL
+-- ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -94,18 +94,18 @@ INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `
 INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `provider_id`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
 
 
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (1,'user1@gmail.com','user1','user1_pass',1);
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (2,'user2@gmail.com','user2','user2_pass',1);
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (3,'user3@gmail.com','user3','user3_pass',1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (101,'user1@gmail.com','user1','user1_pass',1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (102,'user2@gmail.com','user2','user2_pass',1);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`) VALUES (103,'user3@gmail.com','user3','user3_pass',1);
 
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (1,'wordpress','http://wordpress.org/news/feed/','2018/09/09','10',0, 1);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,1);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (3,'Random','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 2);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (1,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','10',0, 101);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (2,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,101);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `user_id`) VALUES (3,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 102);
 
-
-INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (1,1,1);
-INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (2,2,2);
-INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (3,3,3); 
+-- 
+-- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (1,1,1);
+-- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (2,2,2);
+-- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (3,3,3); 
 
 
 select * from web_feed_providers;
