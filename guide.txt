@@ -69,6 +69,15 @@ Frontend send a request with link, and should there be user_id?
 
 3. Let's not push some file like .class or .project, or .iml
 
+09.06.2019
+1. Frontend should have "update" button and 
+	- Backend prevents the updating of web feeds in a too small time interval, so that it waits at least 10 minutes between two requests for a web feed (and blocks other requests to do so).
+
+
+2. Existing records can also be updated, but no duplicates are created.
+
+3. 
+
 
 worked rss links:
 	- https://www.espn.com/espn/rss/news

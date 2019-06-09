@@ -2,9 +2,18 @@ Database and Web Technologies
 
 ## Backend
 
+* [X] - It can handle multiple standards of web feeds, supporting at least one version of RSS
+and the Atom format.
+   * [X] - supporting RSS format
+   * [ ] - supporting Atom format
+* [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
+10 minutes between two requests for a web feed (and blocks other requests to do so).
+* [ ] - Records that have reached a certain age are deleted and no longer inserted. By default, this age should be 30 days.
+
+
+
 * [X] - Connecting to Database
 * [X] - Queries over DB with Spring
-
 * [X] - APIs for web_feed_providers
 * [X] - APIs for web_feed
 * [ ] - APIs for User
@@ -28,8 +37,12 @@ Database and Web Technologies
    * [ ] - Make POST request
 * [X] - Inserting web feeds when a provider is added
    * [X] - checking whether a link is present or not
-   * [X] - Consitancy of data like whether title is there or published date
+   * [X] - Consistancy of data like whether title is there or published date
 * [ ]
+
+### Additional Task
+* [ ] - The time interval for the web feed update blockade and the age for deleting old records can be set
+via the frontend.
 
 
 
