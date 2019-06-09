@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 //@Table(name = "web_feed_providers")
-@NamedQuery(name="Web_feed.findByWUser_id", query = "select w from Web_feed_providers w WHERE userid = :userid")
+@NamedQuery(name="Web_feed.findByWUser_id", query = "select w from Web_feed_providers w WHERE w.userid = ?1")
 public class Web_feed_providers {
 
 //    private static final long serialVersionUID = 1L;
@@ -13,20 +13,11 @@ public class Web_feed_providers {
     @GeneratedValue(strategy=GenerationType.AUTO)
 //    @Column(name = "id", updatable = false, nullable = false)
     private int id;
-
-    @Column(name = "name")
     private String name;
-    @Column(name = "link")
     private String link;
-    @Column(name = "updated_date")
     private String updated_date;
-
-    @Column(name = "num_feeds")
     private int num_feeds;
-    @Column(name = "error")
     private int error;
-
-    @Column(name = "userid")
     private int userid;
 
     public int getId() {

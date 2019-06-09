@@ -20,6 +20,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static de.tuchemnitz.de.Main.Common_code.getCurrentDate;
+import static de.tuchemnitz.de.Main.ImportRSS.adding_single;
+
 @RestController
 @RequestMapping(path = "/web-feed-provider")
 public class Web_feed_providersController {
@@ -37,13 +40,10 @@ public class Web_feed_providersController {
     public ResponseEntity<Web_feed_providers> addWeb_feed_providers(@RequestBody Web_feed_providers web_feed_providers) {
 
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
-            Date d = new Date();
-            String current_date = sdf.format(d);
-
-            web_feed_providers.setUpdated_date(current_date);
+            web_feed_providers.setUpdated_date(getCurrentDate());
 
             URL url = new URL(web_feed_providers.getLink());
+
             System.out.println("Link: " + web_feed_providers.getLink());
 
             XmlReader reader = new XmlReader(url);
@@ -62,7 +62,11 @@ public class Web_feed_providersController {
 
         Web_feed_providers wf = web_feed_providersRepository.save(web_feed_providers);
         if (wf != null) {
-            add_single_feeds(web_feed_providers);
+            try {
+                adding_single(web_feed_providers);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             return new ResponseEntity<>(web_feed_providers, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -112,85 +116,7 @@ public class Web_feed_providersController {
         }
     }
 
-    public static void add_single_feeds(Web_feed_providers wfp) {
-        try {
 
-            DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH);
-            Date d = new Date();
-            String current_date = formatter.format(d);
-
-            wfp.setUpdated_date(current_date);
-
-            URL url = new URL(wfp.getLink());
-
-            System.out.println("Link: " + wfp.getLink());
-
-            XmlReader reader = new XmlReader(url);
-
-            SyndFeed feed = new SyndFeedInput().build(reader);
-            List<SyndEntry> syndEntryList = feed.getEntries();
-
-            SyndEntry syndEntry;
-
-            for (int i = 0; i < syndEntryList.size(); i++) {
-                restTemplate = new RestTemplate();
-
-                syndEntry = syndEntryList.get(i);
-
-                String date;
-                if (syndEntry.getPublishedDate() != null) {
-                    date = formatter.format(syndEntry.getPublishedDate());
-                } else {
-                    date = "null";
-                }
-
-                Web_feed w = new Web_feed(syndEntry.getTitle(), syndEntry.getLink(), syndEntry.getDescription().getValue(), date, current_date, wfp.getId(), "src_img");
-
-                HttpHeaders headers = new HttpHeaders();
-
-                headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-                headers.setContentType(MediaType.APPLICATION_JSON);
-
-                //TODO - find a link from DB
-                HttpEntity<Web_feed> requestEntity = new HttpEntity<>(w, headers);
-                ResponseEntity<List<Web_feed>> re1 = restTemplate.exchange(REST_SERVICE_URI + "/feeds/link",
-                        HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Web_feed>>() {
-                        });
-
-                List<Web_feed> list = re1.getBody();
-
-                if (re1.getStatusCode() == HttpStatus.FOUND) {
-                    System.out.println(list.get(0));
-                    System.out.println("\n =========== Feed is FOUND ==========");
-                } else if (re1.getStatusCode() == HttpStatus.NO_CONTENT) {
-
-                    System.out.println("\n =========== Feed is ENTERED ==========");
-                    ResponseEntity<Web_feed> responseEntity = restTemplate.exchange(REST_SERVICE_URI + "/feeds/add",
-                            HttpMethod.POST, requestEntity, Web_feed.class);
-
-
-                    if (responseEntity.getStatusCode() == HttpStatus.BAD_GATEWAY) {
-                        System.out.println("\n\n\n===================== BAD_GATEWAY =====================");
-
-                        System.out.println("Implement TODO - update error status of the provider");
-
-                    }
-                } else {
-                    System.out.println("\n\n\n===================== SOMETHING ELSE happened in Feed creation =====================");
-
-                    System.out.println("Implement TODO - MAIN APplication");
-                }
-
-
-            }
-
-
-            reader.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
     //TODO - implement updating error status of the provider
