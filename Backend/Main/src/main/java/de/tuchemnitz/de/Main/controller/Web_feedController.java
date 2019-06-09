@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,13 +19,6 @@ public class Web_feedController {
     @Autowired
     Web_feedRepository feedRepository;
     Web_feed web_feed;
-    @GetMapping(path="/all")
-    public @ResponseBody
-    ResponseEntity<Iterable<Web_feed>> allFeeds() {
-
-//        return feedRepository.findAll();
-        return new ResponseEntity<>(feedRepository.findAll(), HttpStatus.OK);
-    }
 
     @GetMapping(path = "/{id}")
     public @ResponseBody ResponseEntity<Web_feed> getWed_feed(@PathVariable("id") int id){
@@ -38,23 +32,32 @@ public class Web_feedController {
         }
     }
 
+    @GetMapping(path="/all")
+    public @ResponseBody
+    ResponseEntity<Iterable<Web_feed>> allFeeds() {
+
+//        return feedRepository.findAll();
+        Iterable<Web_feed> web_feedIterable = feedRepository.findAll();
+        List<Web_feed> web_feedList = new ArrayList<>();
+        web_feedIterable.forEach(web_feedList::add);
+
+        if(web_feedList.isEmpty()){
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(feedRepository.findAll(), HttpStatus.OK);
+        }
+    }
+
+
+
     @PostMapping(path = "/link", consumes = "application/json")
     public @ResponseBody ResponseEntity<List<Web_feed>> getWeb_feed_by_link(@RequestBody Web_feed web_feed2){
 
-        System.out.println("\nIN");
         List<Web_feed> web_feedList = feedRepository.findByLink(web_feed2.getLink());
-        System.out.println("\n OUT");
-        if (web_feedList != null){
-            if (web_feedList.size() > 0){
-                System.out.println("Response list > 0 ");
-                return new ResponseEntity<>(web_feedList, HttpStatus.FOUND);
-            } else {
-                System.out.println("Response list = 0 ");
-                return new ResponseEntity<>(web_feedList, HttpStatus.OK);
-            }
+        if (!web_feedList.isEmpty()){
+            return new ResponseEntity<>(web_feedList, HttpStatus.FOUND);
         } else {
-            System.out.println("BAD Request");
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
 
 
@@ -74,6 +77,20 @@ public class Web_feedController {
         } else {
             return new ResponseEntity<>(new Web_feed(), HttpStatus.BAD_GATEWAY);
         }
+    }
+
+    @GetMapping(path = "/number-of-feeds")
+    public @ResponseBody ResponseEntity<Integer> numFeed(){
+        Iterable<Web_feed> list = feedRepository.findAll();
+
+        List<Web_feed> web_feedList = new ArrayList<>();
+        list.forEach(web_feedList::add);
+        if(web_feedList.size() > 0){
+            return new ResponseEntity<>(web_feedList.size(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(0, HttpStatus.BAD_GATEWAY);
+        }
+
     }
 
 
