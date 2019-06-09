@@ -135,7 +135,7 @@ public class MainApplication {
                 if (re1.getStatusCode() == HttpStatus.FOUND){
 					System.out.println(list.get(0));
                     System.out.println("\n =========== Feed is FOUND ==========");
-                } else if (re1.getStatusCode() == HttpStatus.OK){
+                } else if (re1.getStatusCode() == HttpStatus.NOT_FOUND){
 
 					System.out.println("\n =========== Feed is ENTERED ==========");
                     ResponseEntity<Web_feed> responseEntity = restTemplate.exchange(REST_SERVICE_URI+"/feeds/add",
@@ -149,7 +149,7 @@ public class MainApplication {
 
                     }
                 } else {
-                    System.out.println("\n\n\n===================== BAD_GATEWAY =====================");
+                    System.out.println("\n\n\n===================== SOMETHING ELSE happened in Feed creation =====================");
 
                     System.out.println("Implement TODO - MAIN APplication");
                 }
