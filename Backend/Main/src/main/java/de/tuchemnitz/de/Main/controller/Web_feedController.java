@@ -1,5 +1,6 @@
 package de.tuchemnitz.de.Main.controller;
 
+import de.tuchemnitz.de.Main.ImportRSS;
 import de.tuchemnitz.de.Main.entity.Web_feed;
 import de.tuchemnitz.de.Main.entity.Web_feed_providers;
 import de.tuchemnitz.de.Main.repository.Web_feedRepository;
@@ -125,5 +126,17 @@ public class Web_feedController {
         } else {
             return new ResponseEntity<>("cannot updated", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping(path = "/export")
+    public @ResponseBody ResponseEntity<List<Web_feed>> exportFeeds(@RequestParam("ids") String ids){
+        List<Web_feed> web_feedList = null;
+        try {
+            web_feedList = ImportRSS.exportFeedsJSON(ids);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<>(web_feedList, HttpStatus.OK);
     }
 }

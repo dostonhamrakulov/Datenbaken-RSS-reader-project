@@ -126,4 +126,14 @@ public class ImportRSS {
 
 //
     }
+
+    public static List<Web_feed> exportFeedsJSON(String ids) throws Exception{
+        List<Web_feed> web_feedList = new ArrayList<>();
+        String[] splited_ids = ids.split(",");
+        for (int i = 0; i < splited_ids.length; i++) {
+            ResponseEntity<Web_feed> re = restTemplate.getForEntity(REST_SERVICE_URI+"/feeds/"+splited_ids[i], Web_feed.class);
+            web_feedList.add(re.getBody());
+        }
+        return web_feedList;
+    }
 }
