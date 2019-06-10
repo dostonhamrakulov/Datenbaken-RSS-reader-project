@@ -88,8 +88,18 @@ public class ImportRSS {
                 List<Web_feed> list = re1.getBody();
 
                 if (re1.getStatusCode() == HttpStatus.FOUND){
-                    System.out.println(list.get(0));
                     System.out.println("\n =========== Feed is FOUND ==========");
+                    System.out.println(list.get(0));
+                    Web_feed web_feed = list.get(0);
+                    if ((w.getTitle() != web_feed.getTitle()) ||
+                            (w.getPublisheddate() != web_feed.getPublisheddate())){
+                        System.out.println("Different");
+                        HttpEntity<Web_feed> requestEntity1 = new HttpEntity<>(w, headers);
+                        ResponseEntity<String> re12 = restTemplate.exchange(REST_SERVICE_URI+"/feeds/update",
+                                HttpMethod.PUT, requestEntity1, String.class);
+                        System.out.println(re12.getBody() + re12.getStatusCode());
+                    }
+
                 } else if (re1.getStatusCode() == HttpStatus.NO_CONTENT){
 
                     System.out.println("\n =========== Feed is ENTERED ==========");
