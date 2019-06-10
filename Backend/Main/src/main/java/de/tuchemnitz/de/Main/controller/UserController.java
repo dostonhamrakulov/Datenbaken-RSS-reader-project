@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 import javax.jws.soap.SOAPBinding;
 import java.util.*;
 
+import static de.tuchemnitz.de.Main.Common_code.REST_SERVICE_URI;
+
 @RestController
 @RequestMapping(path="/user")
 public class UserController {
@@ -17,7 +19,6 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    public static final String REST_SERVICE_URI = "http://localhost:8080/";
     static RestTemplate restTemplate;
 
     User user_queried;

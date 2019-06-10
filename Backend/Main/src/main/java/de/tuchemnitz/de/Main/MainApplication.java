@@ -28,7 +28,7 @@ import static de.tuchemnitz.de.Main.ImportRSS.add_web_feeds;
 
 public class MainApplication {
 
-	public static final String REST_SERVICE_URI = "http://localhost:8080/";
+
 	static RestTemplate restTemplate;
 
 	public static void main(String[] args) {

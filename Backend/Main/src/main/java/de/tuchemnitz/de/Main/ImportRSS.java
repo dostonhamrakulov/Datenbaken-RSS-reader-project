@@ -15,8 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static de.tuchemnitz.de.Main.Common_code.convertDateToString;
-import static de.tuchemnitz.de.Main.Common_code.getCurrentDate;
+import static de.tuchemnitz.de.Main.Common_code.*;
 
 public class ImportRSS {
 
@@ -24,7 +23,6 @@ public class ImportRSS {
     }
 
 
-    public static final String REST_SERVICE_URI = "http://localhost:8080/";
     static RestTemplate restTemplate;
 
     public static void add_web_feeds() throws Exception {
@@ -50,7 +48,7 @@ public class ImportRSS {
 
     public static void adding_single(Web_feed_providers wfp) throws Exception{
 
-            wfp.setUpdated_date(Common_code.getCurrentDate());
+            wfp.setUpdateddate(Common_code.getCurrentDate());
 
             URL url  = new URL(wfp.getLink());
 

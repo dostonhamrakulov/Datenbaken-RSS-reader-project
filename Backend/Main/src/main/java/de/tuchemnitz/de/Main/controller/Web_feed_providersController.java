@@ -22,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static de.tuchemnitz.de.Main.Common_code.getCurrentDate;
+import static de.tuchemnitz.de.Main.ImportRSS.add_web_feeds;
 import static de.tuchemnitz.de.Main.ImportRSS.adding_single;
 
 @RestController
@@ -32,16 +33,13 @@ public class Web_feed_providersController {
     @Autowired
     Web_feed_providersRepository web_feed_providersRepository;
 
-    public static final String REST_SERVICE_URI = "http://localhost:8080/";
-    static RestTemplate restTemplate;
 
-//    public static final String REST_SERVICE_URI = "http://localhost:8080/feeds";
 
     @PostMapping(path = "/add", consumes = "application/json")
     public ResponseEntity<Web_feed_providers> addWeb_feed_providers(@RequestBody Web_feed_providers web_feed_providers) {
 
         try {
-            web_feed_providers.setUpdated_date(getCurrentDate());
+            web_feed_providers.setUpdateddate(getCurrentDate());
 
             URL url = new URL(web_feed_providers.getLink());
 
@@ -52,7 +50,9 @@ public class Web_feed_providersController {
             SyndFeed feed = new SyndFeedInput().build(reader);
             List<SyndEntry> syndEntryList = feed.getEntries();
 
-            web_feed_providers.setNum_feeds(syndEntryList.size());
+            web_feed_providers.setNumfeeds(syndEntryList.size());
+            web_feed_providers.setLastattempt(getCurrentDate());
+            web_feed_providers.setLatestrecorddate(getCurrentDate());
 
 
             reader.close();
@@ -103,9 +103,8 @@ public class Web_feed_providersController {
     @DeleteMapping("/{id}")
     public void deleteWeb_feed_providers(@PathVariable("id") int id) {
         web_feed_providersRepository.deleteById(id);
-        Web_feed_providers wfp = Feed_operation.getProviderInfo(id);
 
-        Feed_operation.deleteSingleFeed(wfp.getId());
+        Feed_operation.deleteSingleFeed(id);
     }
 
     @GetMapping(path = "/feed-providers-of-user/{userid}")
@@ -130,6 +129,18 @@ public class Web_feed_providersController {
         } else {
             return new ResponseEntity<>("cannot deleted", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping(path = "/update")
+    public @ResponseBody ResponseEntity<String> updateProviders(){
+        try {
+            add_web_feeds();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ResponseEntity<>("Updated", HttpStatus.OK);
+
     }
 
 
