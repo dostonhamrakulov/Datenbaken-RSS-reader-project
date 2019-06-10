@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface Web_feedRepository extends CrudRepository<Web_feed, Integer> {
 
-    public List<Web_feed> findByLink(String link);
+    public List<Web_feed> findByLink(String link, int providerid);
     public List<Web_feed> findByProviderid(int providerid);
 
     @Transactional

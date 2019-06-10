@@ -77,6 +77,17 @@ public class UserController {
         }
     }
 
+    @PostMapping(path = "/add-user")
+    public @ResponseBody ResponseEntity<String> addUser(@RequestBody User user){
+
+        User user1 = userRepository.save(user);
+        if (user1 != null){
+            return new ResponseEntity<>("Created", HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>("Not Created", HttpStatus.BAD_REQUEST);
+        }
+    }
+
     public User getUserIn(int id){
         restTemplate = new RestTemplate();
         ResponseEntity<User> re = restTemplate.getForEntity(REST_SERVICE_URI+"/user/?id="+id, User.class);

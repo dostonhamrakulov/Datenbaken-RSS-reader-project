@@ -53,7 +53,7 @@ public class Web_feedController {
     @PostMapping(path = "/link", consumes = "application/json")
     public @ResponseBody ResponseEntity<List<Web_feed>> getWeb_feed_by_link(@RequestBody Web_feed web_feed2){
 
-        List<Web_feed> web_feedList = feedRepository.findByLink(web_feed2.getLink());
+        List<Web_feed> web_feedList = feedRepository.findByLink(web_feed2.getLink(), web_feed2.getProviderid());
         if (!web_feedList.isEmpty()){
             return new ResponseEntity<>(web_feedList, HttpStatus.FOUND);
         } else {
