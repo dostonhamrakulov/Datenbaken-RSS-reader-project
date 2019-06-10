@@ -88,6 +88,17 @@ public class UserController {
         }
     }
 
+    @PostMapping(path = "get-user")
+    public @ResponseBody ResponseEntity<User> getUser(@RequestBody User user){
+        User user1 = userRepository.getUser(user.getEmail(), user.getPassword());
+
+        if (user1 != null){
+            return new ResponseEntity<>(user1, HttpStatus.FOUND);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
     public User getUserIn(int id){
         restTemplate = new RestTemplate();
         ResponseEntity<User> re = restTemplate.getForEntity(REST_SERVICE_URI+"/user/?id="+id, User.class);

@@ -120,9 +120,9 @@ public class Web_feed_providersController {
         }
     }
 
-    @RequestMapping(path = "delete-by-userid/", method = RequestMethod.DELETE)
-    public @ResponseBody ResponseEntity<String> deleteByUserid(@RequestParam("userid") int userid){
-        int affected_rows = web_feed_providersRepository.deleteByUserid(userid);
+    @DeleteMapping(path = "delete-by-userid/")
+    public @ResponseBody ResponseEntity<String> deleteByUserid(@RequestBody Web_feed_providers w){
+        int affected_rows = web_feed_providersRepository.deleteProvider(w.getId(), w.getUserid());
 
         if (affected_rows > 0){
             return new ResponseEntity<>("Deleted", HttpStatus.OK);

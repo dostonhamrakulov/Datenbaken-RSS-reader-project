@@ -45,6 +45,8 @@ and the Atom format.
 via the frontend.
 
 * [X] - Fixing userid is always zero while adding provider
+* [X] - Deleting all feeds when their provider is deleted by id
+
 
 
 
@@ -389,6 +391,50 @@ with Http Status: OK (200)
 
 if not found, it will return Status: BAD_REQUEST(400)
 ```
+
+* [X] - add a user
+   * [X] - http://localhost:8080/user/add-user
+Request:
+```json
+{
+        
+        "email": "user1@gmail.com",
+        "name": "user1",
+        "password":"user1@"
+}
+```
+Response:
+```json 
+Created - CREATED 301
+
+or bad quest
+```
+* [X] - login request
+   * [X] - http://localhost:8080/user/get-user
+```json
+{
+        
+        "email": "user1@gmail.com",
+        "password":"user1@"
+}
+```
+Response:
+```json
+{
+    "id": 1084,
+    "email": "user1@gmail.com",
+    "name": "user1",
+    "password": "user1@",
+    "status": 0,
+    "feedage": 0,
+    "updateperiod": 0
+}
+
+with Status code: FOUND 302
+or 
+HTTP Status Code: NOT_FOUND
+```
+
 Setup:
 	- Installing Rome in Eclipse
 

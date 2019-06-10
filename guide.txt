@@ -80,7 +80,7 @@ Frontend send a request with link, and should there be user_id?
 	- when we add new provider_1 for user_1 then all feeds from provider_1 will be stored in web feeds with providerid=provider_1.id then
 	- user_2 wants to add the same provider_1 and we can add it with different id BUT
 	- once we delete provider_1 for user_1 then we will delete of feeds of provider_1 with providerid and user_2 will not see the feed from the same provider_1 until next time interval
-
+x
 
 worked rss links:
 	- https://www.espn.com/espn/rss/news
@@ -102,9 +102,22 @@ worked rss links:
 	- https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
 	- https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
 
+	- https://www-356.ibm.com/partnerworld/wps/servlet/ContentHandler/isv_com_nws_rss_feeds
+
+ATOM:
+https://www.theregister.co.uk/business/policy/headlines.atom
+https://www.theregister.co.uk/business/channel/headlines.atom
+https://www.theregister.co.uk/emergent_tech/artificial_intelligence/headlines.atom
+https://www.theregister.co.uk/emergent_tech/internet_of_things/headlines.atom
+https://www.theregister.co.uk/bootnotes/stob/headlines.atom
+
 
 Broken:
 -http://wordpress.org/news/feed/
+
+https://charlieharvey.org.uk/about/feeds
+https://charlieharvey.org.uk/page/feed/atom
+null point exception for getDescription:
 
 
 

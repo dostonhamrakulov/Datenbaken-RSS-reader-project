@@ -6,7 +6,7 @@ import javax.persistence.*;
 //@Table(name = "web_feed_providers")
 @NamedQueries({
         @NamedQuery(name="Web_feed.findByWUser_id", query = "select w from Web_feed_providers w WHERE w.userid = ?1"),
-        @NamedQuery(name = "Web_feed_providers.deleteByUserid", query = "delete from Web_feed_providers w where w.userid = ?1")
+        @NamedQuery(name = "Web_feed_providers.deleteProvider", query = "delete from Web_feed_providers w where w.id = ?1 and w.userid = ?2")
 })
 
 

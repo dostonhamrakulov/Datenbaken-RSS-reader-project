@@ -6,31 +6,36 @@ import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 @NamedQueries({
-        @NamedQuery(name="User.updateByFeedage", query = "UPDATE User u SET u.feedage = ?1 WHERE u.id = ?2"),
-        @NamedQuery(name = "User.updateByUpdateperiod", query = "UPDATE User u SET u.updateperiod = ?1 WHERE u.id = ?2")
+        @NamedQuery(name = "User.updateByFeedage", query = "UPDATE User u SET u.feedage = ?1 WHERE u.id = ?2"),
+        @NamedQuery(name = "User.updateByUpdateperiod", query = "UPDATE User u SET u.updateperiod = ?1 WHERE u.id = ?2"),
+        @NamedQuery(name = "User.getUser", query = "SELECT u FROM User u WHERE u.email = ?1 AND u.password = ?2")
 })
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    private String name;
+
 
     private String email;
+    private String name;
+    private String password;
     private int status;
     private int feedage;
     private int updateperiod;
 
-    public User() {
-    }
-
-    public User(String name, String email, int status, int feedage, int updateperiod) {
-        this.name = name;
+    public User(String email, String name, String password, int status, int feedage, int updateperiod) {
         this.email = email;
+        this.name = name;
+        this.password = password;
         this.status = status;
         this.feedage = feedage;
         this.updateperiod = updateperiod;
     }
+
+    public User() {
+    }
+
 
     public Integer getId() {
         return id;
@@ -78,6 +83,14 @@ public class User {
 
     public void setUpdateperiod(int updateperiod) {
         this.updateperiod = updateperiod;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

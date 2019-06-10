@@ -23,4 +23,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Modifying
     public int updateByUpdateperiod(int updateperiod, int id);
 
+    public User getUser(String email, String pasword);
+
 }
