@@ -44,7 +44,8 @@ and the Atom format.
 * [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
 10 minutes between two requests for a web feed (and blocks other requests to do so). **Sagar**
 * [X] - It ensures a consistent storage of the data in a database.
-* [ ] - Existing records can also be updated, but no duplicates are created
+* [X] - Existing records can also be updated, but no duplicates are created
+   * [X] - based on title and published date
 * [ ] - Records that have reached a certain age are deleted and no longer inserted. By
 default, this age should be 30 days.
 * [ ] - Furthermore, it is possible to use the REST based interface to initiate an update of the
