@@ -1,6 +1,6 @@
 
 
-create schema databanken_project;
+-- create schema databanken_project;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
@@ -67,25 +67,18 @@ COMMIT;
 
 select version();
 
-SHOW VARIABLES LIKE "%version%";
+-- SHOW VARIABLES LIKE "%version%";
 
 
-create table user(
-id int(255),
-name varchar(255),
-email varchar(355)
-);
-
-insert into my_tab values(1, "Doston");
 
 
 SET GLOBAL time_zone = '+5:30';
 
-select * from user;
-ALTER USER 'databanken_project'@'localhost' IDENTIFIED BY 'root2019';
- CREATE USER 'root1'@'localhost' IDENTIFIED BY 'root2019';
-GRANT ALL PRIVILEGES ON *.* TO 'root1'@'localhost' IDENTIFIED BY 'root2019' WITH GRANT OPTION;
- FLUSH PRIVILEGES;
+-- select * from user;
+-- ALTER USER 'databanken_project'@'localhost' IDENTIFIED BY 'root2019';
+--  CREATE USER 'root1'@'localhost' IDENTIFIED BY 'root2019';
+-- GRANT ALL PRIVILEGES ON *.* TO 'root1'@'localhost' IDENTIFIED BY 'root2019' WITH GRANT OPTION;
+--  FLUSH PRIVILEGES;
  
 
 
