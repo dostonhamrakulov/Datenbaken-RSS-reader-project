@@ -350,6 +350,23 @@ or
 cannot delete with Status code: NOT_FOUND 404
 ```
 
+* [X] - Update a web_feed--- **PUT request**
+   * [X] - http://localhost:8080/feeds/update
+Request:
+```json
+{
+        "title": "Updated again",
+        "link": "https://www.nytimes.com/2019/06/10/world/asia/sewol-ferry-accident.html?emc=rss&partner=rss",
+        "publisheddate": "Mon, 10 Jun 2019 23:54:20 CEST"
+	
+}
+```
+Response:
+```json
+Updated with Status code: OK 200
+or
+cannot update with Status code: BAD_REQUEST
+```
 
 ## APIs for User:
 

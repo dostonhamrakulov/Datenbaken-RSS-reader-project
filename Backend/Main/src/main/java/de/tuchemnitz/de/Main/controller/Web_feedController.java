@@ -121,9 +121,9 @@ public class Web_feedController {
         int affected_rows = feedRepository.updateFeed(web_feed1.getTitle(), web_feed1.getPublisheddate(), web_feed1.getLink());
 
         if (affected_rows > 0){
-            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("cannot deleted", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("cannot updated", HttpStatus.BAD_REQUEST);
         }
     }
 }
