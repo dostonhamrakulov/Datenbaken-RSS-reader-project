@@ -300,6 +300,24 @@ cannot delete with Status code: NOT_FOUND 404
 ```
 
 
+* [X] - delete feeds by provider_id -   **DELETE request**
+   * [X] - http://localhost:8080/web-feed-provider/delete-by-id-and-userid
+Request:
+```json
+{
+        "id": 1003,
+        "userid": 102
+}
+```
+
+Response:
+```json
+Deleted with Status code: OK 200
+or
+cannot delete with Status code: NOT_FOUND 404
+```
+
+
 ## APIs for User:
 
 * [X] - get all users   --- **GET request**
@@ -434,6 +452,8 @@ with Status code: FOUND 302
 or 
 HTTP Status Code: NOT_FOUND
 ```
+
+
 
 Setup:
 	- Installing Rome in Eclipse
