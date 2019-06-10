@@ -293,6 +293,37 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "add-user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \n        \"email\": \"user1@gmail.com\",\n        \"name\": \"user1\",\n        \"password\":\"user1@\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/add-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"add-user"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "APIs for User queiries"
@@ -461,16 +492,23 @@
 					"response": []
 				},
 				{
-					"name": "delete-by-userid",
+					"name": "delete by id and userid",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n        \"id\": 1003,\n        \"userid\": 102\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/web-feed-provider/delete-by-userid/?userid=0",
+							"raw": "http://localhost:8080/web-feed-provider/delete-by-id-and-userid",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -478,14 +516,7 @@
 							"port": "8080",
 							"path": [
 								"web-feed-provider",
-								"delete-by-userid",
-								""
-							],
-							"query": [
-								{
-									"key": "userid",
-									"value": "0"
-								}
+								"delete-by-id-and-userid"
 							]
 						}
 					},
