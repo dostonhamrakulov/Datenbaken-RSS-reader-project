@@ -22,8 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static de.tuchemnitz.de.Main.Common_code.getCurrentDate;
-import static de.tuchemnitz.de.Main.ImportRSS.add_web_feeds;
-import static de.tuchemnitz.de.Main.ImportRSS.adding_single;
+import static de.tuchemnitz.de.Main.ImportRSS.*;
 
 @RestController
 @RequestMapping(path = "/web-feed-provider")
@@ -135,6 +134,7 @@ public class Web_feed_providersController {
     public @ResponseBody ResponseEntity<String> updateProviders(){
         try {
             add_web_feeds();
+            delete_old_records();
 
         } catch (Exception e) {
             e.printStackTrace();

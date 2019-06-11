@@ -139,4 +139,9 @@ public class Web_feedController {
 
         return new ResponseEntity<>(web_feedList, HttpStatus.OK);
     }
+    @DeleteMapping(path = "/delete")
+    public @ResponseBody ResponseEntity<String> deleteFeed(@RequestParam("id") int id){
+        feedRepository.deleteById(id);
+        return new ResponseEntity<>("deleted", HttpStatus.OK);
+    }
 }
