@@ -9,8 +9,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+import static de.tuchemnitz.de.Main.Common_code.REST_SERVICE_URI;
+
 public class Feed_operation {
-    public static final String REST_SERVICE_URI = "http://localhost:8080/";
     static RestTemplate restTemplate;
 
     public static void deleteSingleFeed(int providerid){

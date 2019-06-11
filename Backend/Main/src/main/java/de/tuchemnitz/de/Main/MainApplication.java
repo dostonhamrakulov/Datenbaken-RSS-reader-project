@@ -23,12 +23,13 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static de.tuchemnitz.de.Main.ImportRSS.add_web_feeds;
+import static de.tuchemnitz.de.Main.ImportRSS.delete_old_records;
 
 @SpringBootApplication
 
 public class MainApplication {
 
-	public static final String REST_SERVICE_URI = "http://localhost:8080/";
+
 	static RestTemplate restTemplate;
 
 	public static void main(String[] args) {
@@ -44,6 +45,7 @@ public class MainApplication {
 
                 try {
                     add_web_feeds();
+					delete_old_records();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

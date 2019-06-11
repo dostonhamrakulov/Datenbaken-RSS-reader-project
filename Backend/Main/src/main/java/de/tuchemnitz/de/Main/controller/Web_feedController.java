@@ -1,5 +1,6 @@
 package de.tuchemnitz.de.Main.controller;
 
+import de.tuchemnitz.de.Main.ImportRSS;
 import de.tuchemnitz.de.Main.entity.Web_feed;
 import de.tuchemnitz.de.Main.entity.Web_feed_providers;
 import de.tuchemnitz.de.Main.repository.Web_feedRepository;
@@ -95,7 +96,7 @@ public class Web_feedController {
 
 
     @RequestMapping(value= "/feeds-of-provider/", method = RequestMethod.GET)
-    public ResponseEntity<List<Web_feed>> feeds_of_provider(@RequestParam("providerid") int providerid){
+    public @ResponseBody ResponseEntity<List<Web_feed>> feeds_of_provider(@RequestParam("providerid") int providerid){
         List<Web_feed> list = feedRepository.findByProviderid(providerid);
         if (!list.isEmpty()){
             return new ResponseEntity<>(list, HttpStatus.FOUND);
@@ -105,7 +106,7 @@ public class Web_feedController {
     }
 
     @DeleteMapping(path = "/delete-by-providerid/")
-    public ResponseEntity<String> deleteByProviderid(@RequestParam("providerid") int providerid){
+    public @ResponseBody ResponseEntity<String> deleteByProviderid(@RequestParam("providerid") int providerid){
         int affected_rows = feedRepository.deleteByProviderid(providerid);
 
         if (affected_rows > 0){
@@ -114,5 +115,33 @@ public class Web_feedController {
         } else {
             return new ResponseEntity<>("cannot deleted", HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping(path = "/update")
+    public @ResponseBody ResponseEntity<String> updateFeed(@RequestBody Web_feed web_feed1){
+        int affected_rows = feedRepository.updateFeed(web_feed1.getTitle(), web_feed1.getPublisheddate(), web_feed1.getLink());
+
+        if (affected_rows > 0){
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("cannot updated", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping(path = "/export")
+    public @ResponseBody ResponseEntity<List<Web_feed>> exportFeeds(@RequestParam("ids") String ids){
+        List<Web_feed> web_feedList = null;
+        try {
+            web_feedList = ImportRSS.exportFeedsJSON(ids);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<>(web_feedList, HttpStatus.OK);
+    }
+    @DeleteMapping(path = "/delete")
+    public @ResponseBody ResponseEntity<String> deleteFeed(@RequestParam("id") int id){
+        feedRepository.deleteById(id);
+        return new ResponseEntity<>("deleted", HttpStatus.OK);
     }
 }

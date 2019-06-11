@@ -29,26 +29,60 @@ and the Atom format.
 * [X] - Getting all new web feeds from web feed provider when program starts
 * [X] - sdds
 * [X] - Update web_feed_provider
-* [ ] - Delete all feeds of web_feed_provider after provider is deleted
-* [ ] - Rewrite delete method of web_feed_providers properly with userid
-   * [ ] - Check if feed_provider exists or not
-   * [ ] - Check if a user exists or not
-   * [ ] - return Status Code, OK, NOT FOUND
-   * [ ] - Make POST request
+* [X] - Delete all feeds of web_feed_provider after provider is deleted
+* [X] - Rewrite delete method of web_feed_providers properly with userid
+   * [X] - Check if feed_provider exists or not
+   * [X] - Check if a user exists or not
+   * [X] - return Status Code, OK, NOT FOUND
+   * [X] - Make DELETE request
 * [X] - Inserting web feeds when a provider is added
    * [X] - checking whether a link is present or not
    * [X] - Consistancy of data like whether title is there or published date
 * [ ]
 
-### Additional Task
-* [ ] - The time interval for the web feed update blockade and the age for deleting old records can be set
+### Some Tasks
+* [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
+10 minutes between two requests for a web feed (and blocks other requests to do so). **Sagar**
+* [X] - It ensures a consistent storage of the data in a database.
+* [X] - Existing records can also be updated, but no duplicates are created
+   * [X] - based on title and published date
+* [X] - Records that have reached a certain age are deleted and no longer inserted. By
+default, this age should be 30 days.
+* [ ] - Furthermore, it is possible to use the REST based interface to initiate an update of the
+web feeds by the backend. Therefore, it is not necessary to implement a proactive
+service which automatically performs the update.
+* [ ] - The display of the contents of individual providers, i.e. web feed links, can be enabled
+or disabled.
+* [ ] - Date of the latest record according to information from the web feed (the date should also be
+available if all records are older than the threshold for deleting old records and therefore no
+record of the web feed is in the database anymore)
+* [ ] - date of the last attempt to update with the number of records found or an indication of an
+error that occurred during the update attempt
+* [ ] - 
+* [X] - The time interval for the web feed update blockade and the age for deleting old records can be set
 via the frontend.
 
 * [X] - Fixing userid is always zero while adding provider
 * [X] - Deleting all feeds when their provider is deleted by id
 
 
-
+## Additional Tasks:
+* [ ] - The backend can also handle "broken" web feeds that do not fully adhere to the labelled standard.
+* [X] - For each record, there is a detail view that shows the contents included in the web feed.
+* [X] - The time interval for the web feed update blockade and the age for deleting old records can be set
+via the frontend.
+* [X] - The complete web feed management takes place via the frontend, whereby at least the following
+options exist beyond the previous display options:
+   * [X] - Insert new web feeds with address (URL) and display name, which is also used in the overview
+   * [ ] - Modify the entry of a web feed (change the URL or display name) while preserving existing records in the
+database
+   * [X] - Delete the entry of a web feed, deleting all associated data from the database
+* [ ] - It is possible to export the data of the web feeds selected in the frontend view as a new web feed in
+RSS or Atom format. This export should also be reachable via a normal URL with a GET request
+and contain all stored data. Ultimately, this should make it possible to transform a web feed from
+RSS to Atom format or vice versa.
+   * [X] - Exporting as JSON to Frontend is done
+   * [X] - Converting JSON into RSS or ATOM **Sagar**
 
 ## Database:
 
@@ -317,6 +351,43 @@ or
 cannot delete with Status code: NOT_FOUND 404
 ```
 
+* [X] - Update a web_feed--- **PUT request**
+   * [X] - http://localhost:8080/feeds/update
+Request:
+```json
+{
+        "title": "Updated again",
+        "link": "https://www.nytimes.com/2019/06/10/world/asia/sewol-ferry-accident.html?emc=rss&partner=rss",
+        "publisheddate": "Mon, 10 Jun 2019 23:54:20 CEST"
+	
+}
+```
+Response:
+```json
+Updated with Status code: OK 200
+or
+cannot update with Status code: BAD_REQUEST
+```
+
+* [X] - Export feeds --- **GET request**
+   * [X] - http://localhost:8080/feeds/export?ids=1322,1323,1324,1325,1326 --- **ids are separated by commas**
+Response:
+```json
+[
+    {
+        "id": 1322,
+        "title": "An Overloaded Ferry Flipped and Drowned Hundreds of Schoolchildren. Could It Happen Again?",
+        "link": "https://www.nytimes.com/2019/06/10/world/asia/sewol-ferry-accident.html?emc=rss&partner=rss",
+        "description": "South Korea promised to root out a culture that put profit ahead of safety. But cheating and corruption continue to endanger travelers.",
+        "publisheddate": "Mon, 10 Jun 2019 23:54:20 CEST",
+        "importeddate": "Tue, 11 Jun 2019 01:14:03 CEST",
+        "providerid": 1173,
+        "image": "src_img"
+    },
+...
+with Status Code: OK
+]
+```
 
 ## APIs for User:
 

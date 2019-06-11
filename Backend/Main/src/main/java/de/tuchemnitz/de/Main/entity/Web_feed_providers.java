@@ -20,8 +20,10 @@ public class Web_feed_providers {
     private int id;
     private String name;
     private String link;
-    private String updated_date;
-    private int num_feeds;
+    private String updateddate;
+    private String latestrecorddate;
+    private String lastattempt;
+    private int numfeeds;
     private int error;
     private int userid;
 
@@ -29,6 +31,7 @@ public class Web_feed_providers {
 //        Object id = entityManagerFactory.getPersistenceUnitUtil().getIdentifier(entity);
         return id;
     }
+
 
     public void setId(int id) {
         this.id = id;
@@ -50,21 +53,6 @@ public class Web_feed_providers {
         this.link = link;
     }
 
-    public String getUpdated_date() {
-        return updated_date;
-    }
-
-    public void setUpdated_date(String updated_date) {
-        this.updated_date = updated_date;
-    }
-
-    public int getNum_feeds() {
-        return num_feeds;
-    }
-
-    public void setNum_feeds(int num_feeds) {
-        this.num_feeds = num_feeds;
-    }
 
     public int getError() {
         return error;
@@ -85,11 +73,45 @@ public class Web_feed_providers {
     public Web_feed_providers() {
     }
 
-    public Web_feed_providers(String name, String link, String updated_date, int num_feeds, int error, int userid) {
+    public String getUpdateddate() {
+        return updateddate;
+    }
+
+    public void setUpdateddate(String updateddate) {
+        this.updateddate = updateddate;
+    }
+
+    public String getLatestrecorddate() {
+        return latestrecorddate;
+    }
+
+    public void setLatestrecorddate(String latestrecorddate) {
+        this.latestrecorddate = latestrecorddate;
+    }
+
+    public String getLastattempt() {
+        return lastattempt;
+    }
+
+    public void setLastattempt(String lastattempt) {
+        this.lastattempt = lastattempt;
+    }
+
+    public int getNumfeeds() {
+        return numfeeds;
+    }
+
+    public void setNumfeeds(int numfeeds) {
+        this.numfeeds = numfeeds;
+    }
+
+    public Web_feed_providers(String name, String link, String updateddate, String latestrecorddate, String lastattempt, int numfeeds, int error, int userid) {
         this.name = name;
         this.link = link;
-        this.updated_date = updated_date;
-        this.num_feeds = num_feeds;
+        this.updateddate = updateddate;
+        this.latestrecorddate = latestrecorddate;
+        this.lastattempt = lastattempt;
+        this.numfeeds = numfeeds;
         this.error = error;
         this.userid = userid;
     }
@@ -100,8 +122,10 @@ public class Web_feed_providers {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", link='" + link + '\'' +
-                ", updated_date='" + updated_date + '\'' +
-                ", num_feeds=" + num_feeds +
+                ", updateddate='" + updateddate + '\'' +
+                ", latestrecorddate='" + latestrecorddate + '\'' +
+                ", lastattempt='" + lastattempt + '\'' +
+                ", numfeeds=" + numfeeds +
                 ", error=" + error +
                 ", userid=" + userid +
                 '}';

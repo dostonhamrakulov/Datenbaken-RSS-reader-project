@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `web_feed` (
   `title` varchar(255) NOT NULL,
   `link` varchar(1000) NOT NULL,
   `description` longtext NOT NULL,
-  `published_date` varchar(255) NOT NULL,
-  `imported_date` varchar(255) NOT NULL,
+  `publisheddate` varchar(255) NOT NULL,
+  `importeddate` varchar(255) NOT NULL,
   `providerid` int(255) NOT NULL DEFAULT 1000,
   `image` varchar(555) NOT NULL,
   PRIMARY KEY (`id`),
@@ -52,8 +52,10 @@ CREATE TABLE IF NOT EXISTS `web_feed_providers` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `link` longtext NOT NULL,
-  `updated_date` varchar(255) NOT NULL,
-  `num_feeds` int(255) NOT NULL,
+  `updateddate` varchar(255) NOT NULL,
+  `latestrecorddate` varchar(255) NOT NULL,
+  `lastattempt` varchar(255) NOT NULL,
+  `numfeeds` int(255) NOT NULL,
   `error` int(255) NOT NULL,
   `userid` int(255) NOT NULL,
   PRIMARY KEY (`id`),
@@ -112,8 +114,11 @@ select * from web_feed where providerid = 786;
 select * from user;
 
 update user s set s.feedage = 100 where s.id = 101;
-
+update web_feed w set w.title = 'updated title' where w.id = 1322;
 delete from web_feed_providers where userid = 1022;
+
+update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1500;
+update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1501;
 
 select * from web_feed_providers wf where wf.user_id = 1;
 

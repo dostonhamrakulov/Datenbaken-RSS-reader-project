@@ -152,7 +152,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/delete-by-providerid/?providerid=940",
+							"raw": "http://localhost:8080/feeds/delete-by-providerid/?providerid=1089",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -166,7 +166,99 @@
 							"query": [
 								{
 									"key": "providerid",
-									"value": "940"
+									"value": "1089"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "feed by providerid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/feeds-of-provider/?providerid=786",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"feeds-of-provider",
+								""
+							],
+							"query": [
+								{
+									"key": "providerid",
+									"value": "786"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a feed",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\": \"Updated again\",\n        \"link\": \"https://www.nytimes.com/2019/06/10/world/asia/sewol-ferry-accident.html?emc=rss&partner=rss\",\n        \"publisheddate\": \"Mon, 10 Jun 2019 23:54:20 CEST\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "export feeds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/export?ids=1322,1323,1324,1325,1326",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"export"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "1322,1323,1324,1325,1326"
 								}
 							]
 						}
@@ -448,7 +540,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://hnrss.org/frontpage\",\n\t\"userid\":888\n}"
+							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://www.espn.com/espn/rss/news\",\n\t\"userid\":102\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080//web-feed-provider/add",
@@ -536,7 +628,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"id\": 1003,\n        \"userid\": 102\n}"
+							"raw": "{\n        \"id\": 1058,\n        \"userid\": 7771\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/web-feed-provider/delete-by-id-and-userid",
@@ -548,6 +640,31 @@
 							"path": [
 								"web-feed-provider",
 								"delete-by-id-and-userid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update providers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080//web-feed-provider/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"web-feed-provider",
+								"update"
 							]
 						}
 					},
