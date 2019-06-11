@@ -1,7 +1,7 @@
 <?php
 include ('header.php');
 $result = $obj->sendGetRequest('//feeds/'.$_GET['id']);
-$provider = $obj->sendGetRequest('//web-feed-provider/'.$result->provider_id);
+$provider = $obj->sendGetRequest('//web-feed-provider/'.$result->providerid);
 
 ?>
 
@@ -22,7 +22,7 @@ $provider = $obj->sendGetRequest('//web-feed-provider/'.$result->provider_id);
                     <td>Imported Date : </td>
                     <td  width="100px;"><?php echo $result->imported_date; ?></td>
                     <td>Web Feed Provider : </td>
-                    <td  width="100px;"><a href="web_feed_providers_detail.php?id=<?php echo $result->provider_id; ?>"><?php echo $provider->name; ?></a></td>
+                    <td  width="100px;"><a href="web_feed_providers_detail.php?id=<?php echo $result->providerid; ?>"><?php echo $provider->name; ?></a></td>
                     <td>Link to feed : </td>
                     <td><a href="<?php echo $result->link; ?>" target="_blank"><?php echo $result->link; ?></a></td>
                 </tr>

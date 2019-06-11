@@ -32,7 +32,7 @@
                                 <td><?php echo $result->description; ?></td>
                                 <td><?php echo $result->published_date; ?></td>
                                 <td><?php echo $result->imported_date; ?></td>
-                                <td><?php echo $result->provider_id; ?></td>
+                                <td><?php echo $result->providerid; ?></td>
                                 <td><img src="<?php echo $result->image; ?>" alt="Image Here" height="50px" width="50px"> </td>
                                 <td>
                                     <a href="edit/url"><span class="glyphicon glyphicon-edit"></a>

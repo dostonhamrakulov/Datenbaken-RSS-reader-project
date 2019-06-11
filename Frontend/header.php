@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include 'functions.php';
 $obj= new myFunctions();
 //header('Access-Control-Allow-Origin: *');
@@ -30,10 +32,25 @@ $obj= new myFunctions();
                 <li><a href="web_feed.php">Web Feeds</a></li>
                 <li><a href="web_feed_providers.php">Web Feed Providers</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
+            <?php
+            if(isset($_SESSION['user_name'])){
+             ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.php"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            <?php
+            }else{
+            ?>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            <?php
+            }
+            ?>
+
         </div>
     </nav>
 </div>
