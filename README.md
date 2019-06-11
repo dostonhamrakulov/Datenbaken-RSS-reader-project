@@ -81,7 +81,8 @@ database
 RSS or Atom format. This export should also be reachable via a normal URL with a GET request
 and contain all stored data. Ultimately, this should make it possible to transform a web feed from
 RSS to Atom format or vice versa.
-
+   * [X] - Exporting as JSON to Frontend is done
+   * [X] - Converting JSON into RSS or ATOM **Sagar**
 
 ## Database:
 
@@ -366,6 +367,26 @@ Response:
 Updated with Status code: OK 200
 or
 cannot update with Status code: BAD_REQUEST
+```
+
+* [X] - Export feeds --- **GET request**
+   * [X] - http://localhost:8080/feeds/export?ids=1322,1323,1324,1325,1326 --- **ids are separated by commas**
+Response:
+```json
+[
+    {
+        "id": 1322,
+        "title": "An Overloaded Ferry Flipped and Drowned Hundreds of Schoolchildren. Could It Happen Again?",
+        "link": "https://www.nytimes.com/2019/06/10/world/asia/sewol-ferry-accident.html?emc=rss&partner=rss",
+        "description": "South Korea promised to root out a culture that put profit ahead of safety. But cheating and corruption continue to endanger travelers.",
+        "publisheddate": "Mon, 10 Jun 2019 23:54:20 CEST",
+        "importeddate": "Tue, 11 Jun 2019 01:14:03 CEST",
+        "providerid": 1173,
+        "image": "src_img"
+    },
+...
+with Status Code: OK
+]
 ```
 
 ## APIs for User:
