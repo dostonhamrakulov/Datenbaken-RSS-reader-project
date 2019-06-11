@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static de.tuchemnitz.de.Main.ImportRSS.add_web_feeds;
+import static de.tuchemnitz.de.Main.ImportRSS.delete_old_records;
 
 @SpringBootApplication
 
@@ -44,6 +45,7 @@ public class MainApplication {
 
                 try {
                     add_web_feeds();
+					delete_old_records();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
