@@ -114,8 +114,11 @@ select * from web_feed where providerid = 786;
 select * from user;
 
 update user s set s.feedage = 100 where s.id = 101;
-
+update web_feed w set w.title = 'updated title' where w.id = 1322;
 delete from web_feed_providers where userid = 1022;
+
+update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1500;
+update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1501;
 
 select * from web_feed_providers wf where wf.user_id = 1;
 
