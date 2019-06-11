@@ -46,7 +46,7 @@ and the Atom format.
 * [X] - It ensures a consistent storage of the data in a database.
 * [X] - Existing records can also be updated, but no duplicates are created
    * [X] - based on title and published date
-* [ ] - Records that have reached a certain age are deleted and no longer inserted. By
+* [X] - Records that have reached a certain age are deleted and no longer inserted. By
 default, this age should be 30 days.
 * [ ] - Furthermore, it is possible to use the REST based interface to initiate an update of the
 web feeds by the backend. Therefore, it is not necessary to implement a proactive
