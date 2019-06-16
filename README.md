@@ -187,6 +187,24 @@ or
 cannot delete with Status code: NOT_FOUND 404
 ```
 
+* [X] - update a provider with new number of feeds, updateDate, LastAttempDate, LatestFeedDate
+  * [X] - http://localhost:8080//web-feed-provider/update-provider -- **PUT request**
+Request:
+```json
+{
+        "id": 1173,
+        "updateddate": "Tue, 11 Jun 2019 00:30:19 CEST",
+        "latestrecorddate": "Tue, 30 Jun 2019 00:30:21 CEST",
+        "lastattempt": "Tue, 30 Jun 2019 00:30:21 CEST",
+        "numfeeds": 130
+}
+
+Reponse:
+1 (Updated) with Status code: OK 200
+or
+0(cannot update) with Status code: NOT_FOUND 404
+```
+
 
 ## APIs for Web_feed:
 * [X] - getting a web_feed by id
