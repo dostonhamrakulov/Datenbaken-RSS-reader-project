@@ -408,6 +408,17 @@ with Status Code: OK
 ]
 ```
 
+* [X] - Get total number of web feeds for a **specific provider**
+  * [X] - http://localhost:8080/feeds/num-of-feeds-of-provider?providerid=1173   --- **GET request**
+Response is Integer number:
+```json
+88
+
+with Http Status: OK
+
+if not found, it will return Status: NOT_FOUND
+```
+
 ## APIs for User:
 
 * [X] - get all users   --- **GET request**
@@ -517,7 +528,7 @@ Created - CREATED 301
 
 or bad quest
 ```
-* [X] - login request
+* [X] - login request -- **POST request**
    * [X] - http://localhost:8080/user/get-user
 ```json
 {
@@ -542,6 +553,8 @@ with Status code: FOUND 302
 or 
 HTTP Status Code: NOT_FOUND
 ```
+
+
 
 
 
