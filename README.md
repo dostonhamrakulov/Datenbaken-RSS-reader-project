@@ -38,7 +38,8 @@ and the Atom format.
 * [X] - Inserting web feeds when a provider is added
    * [X] - checking whether a link is present or not
    * [X] - Consistancy of data like whether title is there or published date
-* [ ]
+* [X] - getting number of all feeds -- **GET request**
+* [ ] - getting number of feeds for a specific provider -- **GET request**
 
 ### Some Tasks
 * [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
