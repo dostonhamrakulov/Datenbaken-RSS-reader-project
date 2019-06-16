@@ -1,29 +1,12 @@
 package de.tuchemnitz.de.Main;
 
-import com.rometools.rome.feed.synd.SyndEntry;
-import com.rometools.rome.feed.synd.SyndFeed;
-import com.rometools.rome.io.SyndFeedInput;
-import com.rometools.rome.io.XmlReader;
-import de.tuchemnitz.de.Main.entity.Web_feed;
-import de.tuchemnitz.de.Main.entity.Web_feed_providers;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static de.tuchemnitz.de.Main.ImportRSS.add_web_feeds;
-import static de.tuchemnitz.de.Main.ImportRSS.delete_old_records;
+import static de.tuchemnitz.de.Main.ImportRSS.*;
 
 @SpringBootApplication
 
@@ -44,8 +27,7 @@ public class MainApplication {
 //				System.out.println("\n\n\n\n\n\n\n\nUpdated at " + formatter.format(new Date())+"\n");
 
                 try {
-                    add_web_feeds();
-					delete_old_records();
+                    update_all_users_providers();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -54,7 +36,7 @@ public class MainApplication {
 		};
 		Timer timer = new Timer();
 		long delay = 0;
-		long intevalPeriod = 300 * 1000;
+		long intevalPeriod = 120 * 1000;
 		// schedules the task to be run in an interval
 		timer.scheduleAtFixedRate(task, delay, intevalPeriod);
 
