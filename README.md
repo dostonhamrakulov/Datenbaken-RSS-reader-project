@@ -39,7 +39,8 @@ and the Atom format.
    * [X] - checking whether a link is present or not
    * [X] - Consistancy of data like whether title is there or published date
 * [X] - getting number of all feeds -- **GET request**
-* [ ] - getting number of feeds for a specific provider -- **GET request**
+* [X] - getting number of feeds for a specific provider -- **GET request**
+
 
 ### Some Tasks
 * [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
@@ -54,10 +55,10 @@ web feeds by the backend. Therefore, it is not necessary to implement a proactiv
 service which automatically performs the update.
 * [ ] - The display of the contents of individual providers, i.e. web feed links, can be enabled
 or disabled.
-* [ ] - Date of the latest record according to information from the web feed (the date should also be
+* [X] - Date of the latest record according to information from the web feed (the date should also be
 available if all records are older than the threshold for deleting old records and therefore no
 record of the web feed is in the database anymore)
-* [ ] - date of the last attempt to update with the number of records found or an indication of an
+* [X] - date of the last attempt to update with the number of records found or an indication of an
 error that occurred during the update attempt
 * [ ] - 
 * [X] - The time interval for the web feed update blockade and the age for deleting old records can be set
@@ -65,6 +66,11 @@ via the frontend.
 
 * [X] - Fixing userid is always zero while adding provider
 * [X] - Deleting all feeds when their provider is deleted by id
+
+**16 June 2019**
+* [X] - updating number of Feeds of a provider
+* [X] - updating Latest_record_date of a provider(it means taking a publishedDate of latest web_feed and inserting into the provider)
+
 
 
 ## Additional Tasks:

@@ -185,9 +185,7 @@ public class ImportRSS {
                                 null, String.class
                         );
                         if (re4.getStatusCode() == HttpStatus.OK){
-                            System.out.println("\n\n\n\n\n\n\n\n\n");
                             System.out.println("--------- deleted ---------");
-                            System.out.println("\n\n\n\n\n\n\n\n\n");
                         }
                     }
                 }
