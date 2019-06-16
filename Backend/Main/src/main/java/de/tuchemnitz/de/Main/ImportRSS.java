@@ -51,6 +51,7 @@ public class ImportRSS {
     public static void adding_single(Web_feed_providers wfp) throws Exception{
 
             wfp.setUpdateddate(Common_code.getCurrentDate());
+            wfp.setLastattempt(Common_code.getCurrentDate());
 
             URL url  = new URL(wfp.getLink());
 
@@ -114,6 +115,12 @@ public class ImportRSS {
                         System.out.println("Implement TODO - update error status of the provider");
 
                     }
+
+                    // update provider
+
+                    wfp.setLatestrecorddate(w.getPublisheddate());
+
+                    updateProvider(wfp);
                 } else {
                     System.out.println("\n\n\n===================== SOMETHING ELSE happened in Feed creation =====================");
 
@@ -195,8 +202,18 @@ public class ImportRSS {
                 REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+wfp.getId(),
                 HttpMethod.GET, null, Integer.class);
 
+        wfp.setNumfeeds(res1.getBody());
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<Web_feed_providers> requestEntity1 = new HttpEntity<>(wfp, headers);
+
         if (res1.getStatusCode() == HttpStatus.OK){
 
+            ResponseEntity<Integer> res2 = restTemplate.exchange(
+                    REST_SERVICE_URI+"web-feed-provider/update-provider",
+                    HttpMethod.PUT, requestEntity1, Integer.class);
+            if (res2.getStatusCode() == HttpStatus.OK){
+                System.out.println("updatedProvider");
+            }
         }
     }
 
