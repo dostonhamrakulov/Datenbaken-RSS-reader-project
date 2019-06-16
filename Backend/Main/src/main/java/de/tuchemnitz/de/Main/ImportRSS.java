@@ -45,6 +45,7 @@ public class ImportRSS {
 
             adding_single(wfp);
         }
+
     }
 
     public static void adding_single(Web_feed_providers wfp) throws Exception{
@@ -188,4 +189,15 @@ public class ImportRSS {
 
 
     }
+
+    public static void updateProvider(Web_feed_providers wfp){
+        ResponseEntity<Integer> res1 = restTemplate.exchange(
+                REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+wfp.getId(),
+                HttpMethod.GET, null, Integer.class);
+
+        if (res1.getStatusCode() == HttpStatus.OK){
+
+        }
+    }
+
 }

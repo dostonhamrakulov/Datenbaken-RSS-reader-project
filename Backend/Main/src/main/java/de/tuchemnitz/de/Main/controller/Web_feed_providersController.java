@@ -143,6 +143,19 @@ public class Web_feed_providersController {
 
     }
 
+    @PutMapping(path = "/update-provider")
+    public @ResponseBody ResponseEntity<Integer> updateProvider(@RequestBody Web_feed_providers wfp){
+        int affected_row = 0;
+        affected_row = web_feed_providersRepository.updateProvider(wfp.getNumfeeds(), wfp.getUpdateddate(),
+                wfp.getLastattempt(), wfp.getLatestrecorddate(), wfp.getId());
+
+        if (affected_row > 0){
+            return new ResponseEntity<>(affected_row, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 
 

@@ -16,4 +16,8 @@ public interface Web_feed_providersRepository extends CrudRepository<Web_feed_pr
     @Transactional
     @Modifying
     public int deleteProvider(int id, int userid);
+
+    @Transactional
+    @Modifying
+    public int updateProvider(int numfeeds, String updateddate, String lastattempt, String latestrecorddate, int id);
 }

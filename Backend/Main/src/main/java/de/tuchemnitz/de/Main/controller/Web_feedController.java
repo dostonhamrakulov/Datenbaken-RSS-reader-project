@@ -139,9 +139,24 @@ public class Web_feedController {
 
         return new ResponseEntity<>(web_feedList, HttpStatus.OK);
     }
+
     @DeleteMapping(path = "/delete")
     public @ResponseBody ResponseEntity<String> deleteFeed(@RequestParam("id") int id){
         feedRepository.deleteById(id);
         return new ResponseEntity<>("deleted", HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/num-of-feeds-of-provider")
+    public @ResponseBody ResponseEntity<Integer> numFeedsOfProvider(@RequestParam("providerid") int providerid){
+
+        int number_of_feeds = 0;
+        number_of_feeds = feedRepository.numFeedsOfProvider(providerid);
+
+        if (number_of_feeds > 0){
+            return new ResponseEntity<>(number_of_feeds, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+        }
+
     }
 }
