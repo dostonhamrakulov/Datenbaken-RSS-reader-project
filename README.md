@@ -5,10 +5,10 @@ Database and Web Technologies
 * [X] - It can handle multiple standards of web feeds, supporting at least one version of RSS
 and the Atom format.
    * [X] - supporting RSS format
-   * [ ] - supporting Atom format
-* [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
+   * [X] - supporting Atom format
+* [X] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
 10 minutes between two requests for a web feed (and blocks other requests to do so).
-* [ ] - Records that have reached a certain age are deleted and no longer inserted. By default, this age should be 30 days.
+* [X] - Records that have reached a certain age are deleted and no longer inserted. By default, this age should be 30 days.
 
 
 
@@ -70,7 +70,7 @@ via the frontend.
 **16 June 2019**
 * [X] - updating number of Feeds of a provider
 * [X] - updating Latest_record_date of a provider(it means taking a publishedDate of latest web_feed and inserting into the provider)
-
+* [X] - update providers of a user based on his/her update-period
 
 
 ## Additional Tasks:
