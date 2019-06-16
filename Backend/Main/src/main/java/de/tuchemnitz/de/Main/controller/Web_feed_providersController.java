@@ -133,8 +133,8 @@ public class Web_feed_providersController {
     @GetMapping(path = "/update")
     public @ResponseBody ResponseEntity<String> updateProviders(){
         try {
-            add_web_feeds();
-            delete_old_records();
+
+            update_all_users_providers();
 
         } catch (Exception e) {
             e.printStackTrace();
