@@ -20,12 +20,12 @@ Frontend:
 	- Intellij Idea, 
 	- Postman
 	- Eclipse
-- 
 ```
 
 ## Authors
-**Doston Hamrakulov**
-**Sagar Kafle**
+>*Doston Hamrakulov*
+>*Sagar Kafle*
+## Positions
 >*Software Engineers, Web Developers, Freelancers*
 
 
@@ -179,10 +179,6 @@ RSS to Atom format or vice versa.
    * [X] - Exporting as JSON to Frontend is done
    * [X] - Converting JSON into RSS or ATOM **Sagar**
 
-
-
-
-All APIs from Backend:
 
 
 ## APIs for Web_feed_providers:
