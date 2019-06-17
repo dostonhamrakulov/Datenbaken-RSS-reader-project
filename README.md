@@ -1,6 +1,67 @@
 Database and Web Technologies
 
+
+
 ## Backend
+### 2.2.1 Backend
+* [X] - 1.The backend aggregates and processes the data of the various web feeds.
+* [X] - It can handle multiple standards of web feeds, supporting at least one version of RSS
+and the Atom format.
+* [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
+10 minutes between two requests for a web feed (and blocks other requests to do so).
+* [X] - It ensures a consistent storage of the data in a database.
+* [X] - Existing records can also be updated, but no duplicates are created.
+* [X] - Records that have reached a certain age are deleted and no longer inserted. By
+default, this age should be 30 days.
+
+### 2.2.2 Database
+* [X] - The database stores the aggregated and processed data of the web feeds.
+* [X] - It can also be used to store the configuration.
+* [X] - The frontend must never communicate directly with the database.
+
+
+### 2.2.3 REST based interface
+* [X] - The REST based interface provides communication between the frontend and the
+database.
+* [X] - It delivers the data from the database to the frontend.
+* [X] - It can also be used to store configuration settings in the database.
+* [X] - Furthermore, it is possible to use the REST based interface to initiate an update of the web feeds by the backend. Therefore, it is not necessary to implement a proactive service which automatically performs the update.
+
+
+### 2.2.4 Frontend
+* [X] - The information of all web feeds can be displayed. The following details must at least
+be available:
+  * [X] - a)title of the content
+  * [X] - b)clickable link to the webpage with the actual content
+  * [X] - c)date when the content was published according to the web feed
+  * [X] - d)date when the entry in the web feed first got detected by the program
+  * [X] - e)provider where the content is available
+* [X] - The display of the contents of individual providers, i.e. web feed links, can be enabled
+or disabled.
+* [ ] - Usability aspects are taken into account.
+* [ ] - The design is appealing.
+
+### 2.2.4 Frontend
+* [X] - The following information can be displayed for each provider:
+  * [X] - a)address (URL) of the web feed
+  * [X] - b)date of the last successful update of the web feed
+  * [ ] - c)Date of the latest record according to information from the web feed (the date should also be available if all records are older than the threshold for deleting old records and therefore no record of the web feed is in the database anymore)
+  * [X] - d)date of the last attempt to update with the number of records found or an indication of an error that occurred during the update attempt
+* [X] - At least five different working web feeds and a malfunctioning web feed are available for demonstration purposes.
+
+
+### 2.2.5 Additional task for groups
+* [X] - The backend can also handle "broken" web feeds that do not fully adhere to the labelled standard.
+* [X] - For each record, there is a detail view that shows the contents included in the web feed.
+* [ ] - The time interval for the web feed update blockade and the age for deleting old records can be set via the frontend.
+* [ ] - The complete web feed management takes place via the frontend, whereby at least the following options exist beyond the previous display options:
+  * [ ] - Insert new web feeds with address (URL) and display name, which is also used in the overview
+  * [ ] - Modify the entry of a web feed (change the URL or display name) while preserving existing records in the database
+  * [ ] - Delete the entry of a web feed, deleting all associated data from the database
+* [ ] - It is possible to export the data of the web feeds selected in the frontend view as a new web feed in RSS or Atom format. This export should also be reachable via a normal URL with a GET request and contain all stored data. Ultimately, this should make it possible to transform a web feed from RSS to Atom format or vice versa.
+
+
+
 
 * [X] - It can handle multiple standards of web feeds, supporting at least one version of RSS
 and the Atom format.
