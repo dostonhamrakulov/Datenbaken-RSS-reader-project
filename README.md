@@ -7,8 +7,7 @@ Database and Web Technologies
 * [X] - 1.The backend aggregates and processes the data of the various web feeds.
 * [X] - It can handle multiple standards of web feeds, supporting at least one version of RSS
 and the Atom format.
-* [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least
-10 minutes between two requests for a web feed (and blocks other requests to do so).
+* [ ] - It prevents the updating of web feeds in a too small time interval, so that it waits at least 10 minutes between two requests for a web feed (and blocks other requests to do so).
 * [X] - It ensures a consistent storage of the data in a database.
 * [X] - Existing records can also be updated, but no duplicates are created.
 * [X] - Records that have reached a certain age are deleted and no longer inserted. By
@@ -152,18 +151,6 @@ RSS to Atom format or vice versa.
    * [X] - Exporting as JSON to Frontend is done
    * [X] - Converting JSON into RSS or ATOM **Sagar**
 
-## Database:
-
-* [X] - Create schema
-* [X] - Create tables
-* [ ] - Create ER Model
-* [X] - Inserting
-* [X] - Configuration with Spring JPA
-
-
-## Frontend
-* [ ] - TASK_1
-* [ ] - TASK_2
 
 
 
