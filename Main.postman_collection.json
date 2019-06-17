@@ -152,7 +152,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/delete-by-providerid/?providerid=1089",
+							"raw": "http://localhost:8080/feeds/delete-by-providerid/?providerid=1518",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -166,7 +166,7 @@
 							"query": [
 								{
 									"key": "providerid",
-									"value": "1089"
+									"value": "1518"
 								}
 							]
 						}
@@ -183,7 +183,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/feeds-of-provider/?providerid=786",
+							"raw": "http://localhost:8080/feeds/feeds-of-provider/?providerid=1173",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -197,7 +197,7 @@
 							"query": [
 								{
 									"key": "providerid",
-									"value": "786"
+									"value": "1173"
 								}
 							]
 						}
@@ -259,6 +259,36 @@
 								{
 									"key": "ids",
 									"value": "1322,1323,1324,1325,1326"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "num-of-feeds-of-provider",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/num-of-feeds-of-provider?providerid=1173",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"num-of-feeds-of-provider"
+							],
+							"query": [
+								{
+									"key": "providerid",
+									"value": "1173"
 								}
 							]
 						}
@@ -369,7 +399,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 101,\n    \"updateperiod\": 66\n}"
+							"raw": "{\n    \"id\": 103,\n    \"updateperiod\": 6\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/user/update-updateperiod",
@@ -400,7 +430,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \n        \"email\": \"user1@gmail.com\",\n        \"name\": \"user1\",\n        \"password\":\"user1@\"\n}"
+							"raw": "{\n        \n        \"email\": \"tk@gmail.com\",\n        \"name\": \"tk\",\n        \"password\":\"tk@\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/user/add-user",
@@ -540,7 +570,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://www.espn.com/espn/rss/news\",\n\t\"userid\":102\n}"
+							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\",\n\t\"userid\":1548\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080//web-feed-provider/add",
@@ -665,6 +695,37 @@
 								"",
 								"web-feed-provider",
 								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-provider",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 1173,\n        \"updateddate\": \"Tue, 11 Jun 2019 00:30:19 CEST\",\n        \"latestrecorddate\": \"Tue, 30 Jun 2019 00:30:21 CEST\",\n        \"lastattempt\": \"Tue, 30 Jun 2019 00:30:21 CEST\",\n        \"numfeeds\": 130\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/web-feed-provider/update-provider",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"web-feed-provider",
+								"update-provider"
 							]
 						}
 					},

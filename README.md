@@ -23,8 +23,11 @@ Frontend:
 ```
 
 ## Authors
->*Doston Hamrakulov*
->*Sagar Kafle*
+```json
+ - Doston Hamrakulov 
+ - Sagar Kafle
+```
+
 ## Positions
 >*Software Engineers, Web Developers, Freelancers*
 
