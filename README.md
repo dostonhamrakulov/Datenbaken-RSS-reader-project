@@ -1,5 +1,33 @@
 Database and Web Technologies
 
+### Programming languages and frameworks
+```json
+Backend:
+	- Java
+	- Java Spring Boot Framework
+
+Database:
+	- MySQL
+
+Frontend:
+	- PHP
+	- Javascript
+	- HTML5, CSS and Bootstrap
+```
+
+### IDE and tools
+```Json
+	- Intellij Idea, 
+	- Postman
+	- Eclipse
+- 
+```
+
+## Authors
+**Doston Hamrakulov**
+**Sagar Kafle**
+>*Software Engineers, Web Developers, Freelancers*
+
 
 
 ## Backend
