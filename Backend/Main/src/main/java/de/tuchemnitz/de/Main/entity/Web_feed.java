@@ -7,7 +7,8 @@ import javax.persistence.*;
         @NamedQuery(name="Web_feed.findByLink", query = "SELECT w from Web_feed w WHERE w.link = ?1 AND w.providerid = ?2"),
         @NamedQuery(name = "Web_feed.findByProviderid", query = "SELECT w from Web_feed w where w.providerid = ?1"),
         @NamedQuery(name = "Web_feed.deleteByProviderid", query = "DELETE FROM Web_feed w where w.providerid = ?1"),
-        @NamedQuery(name = "Web_feed.updateFeed", query = "UPDATE Web_feed w SET w.title = ?1, w.publisheddate = ?2 where w.link = ?3")
+        @NamedQuery(name = "Web_feed.updateFeed", query = "UPDATE Web_feed w SET w.title = ?1, w.publisheddate = ?2 where w.link = ?3"),
+        @NamedQuery(name = "Web_feed.numFeedsOfProvider", query = "SELECT COUNT(w) from Web_feed w where w.providerid = ?1")
 })
 
 //@Table(name= "web_feed")

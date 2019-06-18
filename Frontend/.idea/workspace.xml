@@ -193,6 +193,7 @@
       <workItem from="1560237910854" duration="2038000" />
       <workItem from="1560278190985" duration="12617000" />
       <workItem from="1560609572889" duration="596000" />
+      <workItem from="1560850971853" duration="234000" />
     </task>
     <servers />
   </component>
@@ -202,7 +203,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21700405" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22024292" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />

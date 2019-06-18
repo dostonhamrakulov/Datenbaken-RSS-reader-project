@@ -109,7 +109,6 @@ INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestreco
 
 select * from web_feed_providers where userid = 1022;
 describe web_feed_providers;
-
 select * from web_feed;
 select * from web_feed where providerid = 786;
 select * from user;
@@ -122,5 +121,8 @@ update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.
 update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1501;
 
 select * from web_feed_providers wf where wf.user_id = 1;
+
+
+select count(*) from web_feed where providerid = 1173;
 
 SHOW GRANTS;

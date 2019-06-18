@@ -11,9 +11,8 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.ParameterizedType;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static de.tuchemnitz.de.Main.Common_code.*;
@@ -45,11 +44,13 @@ public class ImportRSS {
 
             adding_single(wfp);
         }
+
     }
 
     public static void adding_single(Web_feed_providers wfp) throws Exception{
 
             wfp.setUpdateddate(Common_code.getCurrentDate());
+            wfp.setLastattempt(Common_code.getCurrentDate());
 
             URL url  = new URL(wfp.getLink());
 
@@ -83,7 +84,7 @@ public class ImportRSS {
 
                 //TODO - find a link from DB
                 HttpEntity<Web_feed> requestEntity = new HttpEntity<>(w, headers);
-                ResponseEntity<List<Web_feed>> re1 = restTemplate.exchange(REST_SERVICE_URI+"/feeds/link",
+                ResponseEntity<List<Web_feed>> re1 = restTemplate.exchange(REST_SERVICE_URI+"feeds/link",
                         HttpMethod.POST, requestEntity, new ParameterizedTypeReference<List<Web_feed>>(){});
 
                 List<Web_feed> list = re1.getBody();
@@ -95,7 +96,7 @@ public class ImportRSS {
                             (w.getPublisheddate() != web_feed.getPublisheddate())){
 //                        System.out.println("Different");
                         HttpEntity<Web_feed> requestEntity1 = new HttpEntity<>(w, headers);
-                        ResponseEntity<String> re12 = restTemplate.exchange(REST_SERVICE_URI+"/feeds/update",
+                        ResponseEntity<String> re12 = restTemplate.exchange(REST_SERVICE_URI+"feeds/update",
                                 HttpMethod.PUT, requestEntity1, String.class);
 //                        System.out.println(re12.getBody()+ " "  + re12.getStatusCode());
                     }
@@ -103,7 +104,7 @@ public class ImportRSS {
                 } else if (re1.getStatusCode() == HttpStatus.NO_CONTENT){
 
 //                    System.out.println("\n =========== Feed is ENTERED ==========");
-                    ResponseEntity<Web_feed> responseEntity = restTemplate.exchange(REST_SERVICE_URI+"/feeds/add",
+                    ResponseEntity<Web_feed> responseEntity = restTemplate.exchange(REST_SERVICE_URI+"feeds/add",
                             HttpMethod.POST, requestEntity, Web_feed.class);
 
 
@@ -113,6 +114,12 @@ public class ImportRSS {
                         System.out.println("Implement TODO - update error status of the provider");
 
                     }
+
+                    // update provider
+
+                    wfp.setLatestrecorddate(w.getPublisheddate());
+
+                    updateProvider(wfp);
                 } else {
                     System.out.println("\n\n\n===================== SOMETHING ELSE happened in Feed creation =====================");
 
@@ -128,18 +135,23 @@ public class ImportRSS {
     }
 
     public static List<Web_feed> exportFeedsJSON(String ids) throws Exception{
+        restTemplate = new RestTemplate();
         List<Web_feed> web_feedList = new ArrayList<>();
         String[] splited_ids = ids.split(",");
         for (int i = 0; i < splited_ids.length; i++) {
-            ResponseEntity<Web_feed> re = restTemplate.getForEntity(REST_SERVICE_URI+"/feeds/"+splited_ids[i], Web_feed.class);
+            ResponseEntity<Web_feed> re = restTemplate.getForEntity(REST_SERVICE_URI+"feeds/"+splited_ids[i], Web_feed.class);
             web_feedList.add(re.getBody());
         }
         return web_feedList;
     }
 
-    public static void delete_old_records() throws Exception{
-        ResponseEntity<List<User>> re = restTemplate.exchange(REST_SERVICE_URI+"/user/all", HttpMethod.GET,
+    public static void update_all_users_providers() throws Exception{
+        restTemplate = new RestTemplate();
+
+        ResponseEntity<List<User>> re = restTemplate.exchange(REST_SERVICE_URI+"user/all", HttpMethod.GET,
                 null, new ParameterizedTypeReference<List<User>>(){});
+
+
         List<User> userList = new ArrayList<>();
         if (re.getStatusCode() == HttpStatus.FOUND){
              userList = re.getBody();
@@ -147,45 +159,88 @@ public class ImportRSS {
         for (int i = 0; i < userList.size(); i++) {
             User user = userList.get(i);
             String current_date = getCurrentDate();
+
+
             ResponseEntity<List<Web_feed_providers>> re2 = restTemplate.exchange(
-                    REST_SERVICE_URI+"/web-feed-provider/feed-providers-of-user/"+user.getId(), HttpMethod.GET, null,
+                    REST_SERVICE_URI+"web-feed-provider/feed-providers-of-user/"+user.getId(), HttpMethod.GET, null,
                     new ParameterizedTypeReference<List<Web_feed_providers>>(){});
+
 
             List<Web_feed_providers> wpl = new ArrayList<>();
             if (re2.getStatusCode() == HttpStatus.FOUND){
                 wpl = re2.getBody();
             }
             for (int j = 0; j < wpl.size(); j++) {
+                System.out.println("\n\n\n\n");
+                System.out.println("User: " + user.getId());
                 Web_feed_providers feed_p = wpl.get(j);
-                ResponseEntity<List<Web_feed>> re3 = restTemplate.exchange(
-                        REST_SERVICE_URI + "feeds/feeds-of-provider/?providerid=" + feed_p.getId(), HttpMethod.GET,
-                        null, new ParameterizedTypeReference<List<Web_feed>>() {
-                        });
-                List<Web_feed> web_feedList = new ArrayList<>();
-                if (re3.getStatusCode() == HttpStatus.FOUND){
-                    web_feedList = re3.getBody();
-                }
-                for (int k = 0; k < web_feedList.size(); k++) {
-                    Web_feed web_feed = web_feedList.get(k);
-                    Date importedDate = Common_code.convertStringToDate(web_feed.getImporteddate());
-                    importedDate = Common_code.addDays(importedDate, user.getFeedage());
+                Date lastUpdateDate = Common_code.convertStringToDate(feed_p.getUpdateddate());
+                lastUpdateDate = Common_code.addMinutes(lastUpdateDate, user.getUpdateperiod());
 
-                    // if imported date + feed-age is still before current date then delete a feed
-                    if (importedDate.before(getCurrentDateinDate())){
-                        ResponseEntity<String> re4 = restTemplate.exchange(
-                                REST_SERVICE_URI+"feeds/delete?id="+web_feed.getId(), HttpMethod.DELETE,
-                                null, String.class
-                        );
-                        if (re4.getStatusCode() == HttpStatus.OK){
-                            System.out.println("\n\n\n\n\n\n\n\n\n");
-                            System.out.println("--------- deleted ---------");
-                            System.out.println("\n\n\n\n\n\n\n\n\n");
-                        }
-                    }
+                if (lastUpdateDate.before(getCurrentDateinDate())){
+
+                    add_web_feeds();
+                    deleteOldFeeds(user, feed_p);
+
+                } else {
+                    System.out.println("\n\n\nSkippen because of time");
+
                 }
+
+
             }
         }
 
 
     }
+
+    public static void deleteOldFeeds(User user, Web_feed_providers feed_p) throws Exception {
+        restTemplate = new RestTemplate();
+        ResponseEntity<List<Web_feed>> re3 = restTemplate.exchange(
+                REST_SERVICE_URI + "feeds/feeds-of-provider/?providerid=" + feed_p.getId(), HttpMethod.GET,
+                null, new ParameterizedTypeReference<List<Web_feed>>() {
+                });
+        List<Web_feed> web_feedList = new ArrayList<>();
+        if (re3.getStatusCode() == HttpStatus.FOUND){
+            web_feedList = re3.getBody();
+        }
+        for (int k = 0; k < web_feedList.size(); k++) {
+            Web_feed web_feed = web_feedList.get(k);
+            Date importedDate = Common_code.convertStringToDate(web_feed.getImporteddate());
+            importedDate = Common_code.addDays(importedDate, user.getFeedage());
+
+            // if imported date + feed-age is still before current date then delete a feed
+            if (importedDate.before(getCurrentDateinDate())){
+                ResponseEntity<String> re4 = restTemplate.exchange(
+                        REST_SERVICE_URI+"feeds/delete?id="+web_feed.getId(), HttpMethod.DELETE,
+                        null, String.class
+                );
+                if (re4.getStatusCode() == HttpStatus.OK){
+                    System.out.println("--------- deleted ---------");
+                }
+            }
+        }
+    }
+
+    public static void updateProvider(Web_feed_providers wfp){
+        restTemplate = new RestTemplate();
+        ResponseEntity<Integer> res1 = restTemplate.exchange(
+                REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+wfp.getId(),
+                HttpMethod.GET, null, Integer.class);
+
+        wfp.setNumfeeds(res1.getBody());
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<Web_feed_providers> requestEntity1 = new HttpEntity<>(wfp, headers);
+
+        if (res1.getStatusCode() == HttpStatus.OK){
+
+            ResponseEntity<Integer> res2 = restTemplate.exchange(
+                    REST_SERVICE_URI+"web-feed-provider/update-provider",
+                    HttpMethod.PUT, requestEntity1, Integer.class);
+            if (res2.getStatusCode() == HttpStatus.OK){
+                System.out.println("updatedProvider");
+            }
+        }
+    }
+
 }

@@ -37,6 +37,14 @@ public class Common_code {
         return cal.getTime();
     }
 
+    public static Date addMinutes(Date date, int minutes){
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.MINUTE, minutes);
+        return  cal.getTime();
+    }
+
 //    public static String compareDates(String date1, String date2) throws Exception {
 //        sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
 //        Date d1 = convertStringToDate(date1);

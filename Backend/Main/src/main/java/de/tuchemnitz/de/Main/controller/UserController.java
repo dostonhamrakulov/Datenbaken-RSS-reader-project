@@ -89,7 +89,7 @@ public class UserController {
         }
     }
 
-    @PostMapping(path = "get-user")
+    @PostMapping(path = "/get-user")
     public @ResponseBody ResponseEntity<User> getUser(@RequestBody User user){
         User user1 = userRepository.getUser(user.getEmail(), user.getPassword());
 

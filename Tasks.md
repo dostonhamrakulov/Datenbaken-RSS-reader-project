@@ -1,36 +1,5 @@
 Database and Web Technologies
 
-### Programming languages and frameworks
-```json
-Backend:
-	- Java
-	- Java Spring Boot Framework
-
-Database:
-	- MySQL
-
-Frontend:
-	- PHP
-	- Javascript
-	- HTML5, CSS and Bootstrap
-```
-
-### IDE and tools
-```Json
-	- Intellij Idea, 
-	- Postman
-	- Eclipse
-```
-
-## Authors
-```json
- - Doston Hamrakulov 
- - Sagar Kafle
-```
-
-## Positions
->*Software Engineers, Web Developers, Freelancers*
-
 
 
 ## Backend
@@ -93,6 +62,7 @@ or disabled.
 
 
 
+## Tasks during development
 * [X] - It can handle multiple standards of web feeds, supporting at least one version of RSS
 and the Atom format.
    * [X] - supporting RSS format
@@ -182,6 +152,10 @@ RSS to Atom format or vice versa.
    * [X] - Exporting as JSON to Frontend is done
    * [X] - Converting JSON into RSS or ATOM **Sagar**
 
+
+
+
+All APIs from Backend:
 
 
 ## APIs for Web_feed_providers:
