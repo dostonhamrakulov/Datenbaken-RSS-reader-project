@@ -12,10 +12,10 @@ $result = $obj->sendGetRequest('//web-feed-provider/'.$_GET['id']);
                 <td>Link : </td><td> <?php echo $result->link; ?></td>
             </tr>
             <tr>
-                <td>last Updated Date : </td><td> <?php echo $result->updated_date; ?></td>
+                <td>last Updated Date : </td><td> <?php echo $result->updateddate; ?></td>
             </tr>
             <tr>
-                <td>Number of Feeds : </td><td> <?php echo $result->num_feeds; ?></td>
+                <td>Number of Feeds : </td><td> <?php echo $result->numfeeds; ?></td>
             </tr>
             <tr>
                 <td>Was there error while fetching data  : </td>
