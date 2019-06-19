@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `web_feed` (
   `publisheddate` varchar(255) NOT NULL,
   `importeddate` varchar(255) NOT NULL,
   `providerid` int(255) NOT NULL DEFAULT 1000,
-  `image` varchar(555) NOT NULL,
+  `deleted` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY `ft_wfid` (`providerid`) REFERENCES `web_feed_providers` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
