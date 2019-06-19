@@ -77,7 +77,7 @@ public class ImportRSS {
                     date = "null";
                 }
 
-                Web_feed w = new Web_feed(syndEntry.getTitle(), syndEntry.getLink(), syndEntry.getDescription().getValue(), date, Common_code.getCurrentDate(), wfp.getId(), "src_img");
+                Web_feed w = new Web_feed(syndEntry.getTitle(), syndEntry.getLink(), syndEntry.getDescription().getValue(), date, Common_code.getCurrentDate(), wfp.getId(), "False");
 
                 HttpHeaders headers = new HttpHeaders();
 
