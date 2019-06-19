@@ -42,7 +42,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/606222222",
+							"raw": "http://localhost:8080/feeds/2142",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -50,7 +50,7 @@
 							"port": "8080",
 							"path": [
 								"feeds",
-								"606222222"
+								"2142"
 							]
 						}
 					},
@@ -289,6 +289,36 @@
 								{
 									"key": "providerid",
 									"value": "1173"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update deleted status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/delete-feed?id=2142",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"delete-feed"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2142"
 								}
 							]
 						}
