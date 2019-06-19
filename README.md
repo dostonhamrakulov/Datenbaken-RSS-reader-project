@@ -500,6 +500,19 @@ with Http Status: OK
 if not found, it will return Status: NOT_FOUND
 ```
 
+* [X] - update "deleted" status of a feed
+  * [X] - http://localhost:8080/feeds/delete-feed?id=2142   --- **PUT request**
+Response
+```json
+Deleted
+
+with Http Status: OK
+
+or
+"Error occured" Status Code: INTERNAL_SERVER_ERROR
+```
+
+
 ## APIs for User:
 
 * [X] - get all users   --- **GET request**
