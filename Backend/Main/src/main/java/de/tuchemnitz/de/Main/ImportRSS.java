@@ -51,6 +51,8 @@ public class ImportRSS {
 
             wfp.setUpdateddate(Common_code.getCurrentDate());
             wfp.setLastattempt(Common_code.getCurrentDate());
+            String pubDate = "";
+
 
             URL url  = new URL(wfp.getLink());
 
@@ -99,6 +101,7 @@ public class ImportRSS {
                         ResponseEntity<String> re12 = restTemplate.exchange(REST_SERVICE_URI+"feeds/update",
                                 HttpMethod.PUT, requestEntity1, String.class);
 //                        System.out.println(re12.getBody()+ " "  + re12.getStatusCode());
+
                     }
 
                 } else if (re1.getStatusCode() == HttpStatus.NO_CONTENT){
@@ -116,20 +119,24 @@ public class ImportRSS {
                     }
 
                     // update provider
+                    pubDate = w.getPublisheddate();
 
-                    wfp.setLatestrecorddate(w.getPublisheddate());
 
-                    updateProvider(wfp);
                 } else {
                     System.out.println("\n\n\n===================== SOMETHING ELSE happened in Feed creation =====================");
 
                     System.out.println("Implement TODO - MAIN APplication");
+
+                    wfp.setError(1);
                 }
 
 
 
-
             }
+
+        wfp.setLatestrecorddate(pubDate);
+
+        updateProvider(wfp);
 
 //
     }
@@ -173,13 +180,19 @@ public class ImportRSS {
             for (int j = 0; j < wpl.size(); j++) {
                 System.out.println("\n\n\n\n");
                 System.out.println("User: " + user.getId());
+
                 Web_feed_providers feed_p = wpl.get(j);
                 Date lastUpdateDate = Common_code.convertStringToDate(feed_p.getUpdateddate());
                 lastUpdateDate = Common_code.addMinutes(lastUpdateDate, user.getUpdateperiod());
 
+                System.out.println("Current: " + getCurrentDate());
+                System.out.println("Updated_original: " + feed_p.getUpdateddate());
+                System.out.println("Updated_minutes_added: " + convertDateToString(lastUpdateDate));
+                System.out.println("Minutes: " + user.getUpdateperiod());
+
                 if (lastUpdateDate.before(getCurrentDateinDate())){
 
-                    add_web_feeds();
+                    adding_single(feed_p);
                     deleteOldFeeds(user, feed_p);
 
                 } else {
@@ -241,6 +254,12 @@ public class ImportRSS {
                 System.out.println("updatedProvider");
             }
         }
+
+        System.out.println("\n==========");
+        System.out.println("Current: " + getCurrentDate());
+        System.out.println("Updated: " + wfp.getUpdateddate());
+
+
     }
 
 }
