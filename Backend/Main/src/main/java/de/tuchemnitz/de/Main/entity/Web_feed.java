@@ -8,7 +8,8 @@ import javax.persistence.*;
         @NamedQuery(name = "Web_feed.findByProviderid", query = "SELECT w from Web_feed w where w.providerid = ?1"),
         @NamedQuery(name = "Web_feed.deleteByProviderid", query = "DELETE FROM Web_feed w where w.providerid = ?1"),
         @NamedQuery(name = "Web_feed.updateFeed", query = "UPDATE Web_feed w SET w.title = ?1, w.publisheddate = ?2 where w.link = ?3"),
-        @NamedQuery(name = "Web_feed.numFeedsOfProvider", query = "SELECT COUNT(w) from Web_feed w where w.providerid = ?1")
+        @NamedQuery(name = "Web_feed.numFeedsOfProvider", query = "SELECT COUNT(w) from Web_feed w where w.providerid = ?1"),
+        @NamedQuery(name = "Web_feed.updateDeleted", query = "UPDATE Web_feed  w SET w.deleted = ?1 WHERE w.id = ?2")
 })
 
 //@Table(name= "web_feed")
@@ -25,7 +26,7 @@ public class Web_feed {
     private String publisheddate;
     private String importeddate;
     private int providerid;
-    private String image;
+    private String deleted;
 
 
     public int getId() {
@@ -84,25 +85,25 @@ public class Web_feed {
         this.providerid = providerid;
     }
 
-    public String getImage() {
-        return image;
+    public String getDeleted() {
+        return deleted;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
     }
 
     public Web_feed() {
     }
 
-    public Web_feed(String title, String link, String description, String publisheddate, String importeddate, int providerid, String image) {
+    public Web_feed(String title, String link, String description, String publisheddate, String importeddate, int providerid, String deleted) {
         this.title = title;
         this.link = link;
         this.description = description;
         this.publisheddate = publisheddate;
         this.importeddate = importeddate;
         this.providerid = providerid;
-        this.image = image;
+        this.deleted = deleted;
     }
 
     @Override
@@ -115,7 +116,7 @@ public class Web_feed {
                 ", publisheddate='" + publisheddate + '\'' +
                 ", importeddate='" + importeddate + '\'' +
                 ", providerid=" + providerid +
-                ", image='" + image + '\'' +
+                ", deleted='" + deleted + '\'' +
                 '}';
     }
 }
