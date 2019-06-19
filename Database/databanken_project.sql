@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `web_feed_providers` (
   `name` varchar(255) NOT NULL,
   `link` longtext NOT NULL,
   `updateddate` varchar(255) NOT NULL,
-  `latestrecorddate` varchar(255) NOT NULL,
+  `latestrecorddate` varchar(255) NOT NULL, 
   `lastattempt` varchar(255) NOT NULL,
   `numfeeds` int(255) NOT NULL,
   `error` int(255) NOT NULL,
@@ -96,9 +96,10 @@ INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `upda
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (102,'user2@gmail.com','user2','user2_pass',1, 30, 1);
 INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (103,'user3@gmail.com','user3','user3_pass',1, 30, 5);
 
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1000,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','10',0, 101);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1001,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','13',0,101);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updated_date`, `num_feeds`, `error`, `userid`) VALUES (1003,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','11',0, 1022);
+  
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1000,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','2018/09/09','2018/09/09','10',0, 101);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1001,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','2018/09/09','2018/09/09','13',0,101);
+INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1003,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','2018/09/09','2018/09/09','11',0, 1022);
 
 -- 
 -- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (1,1,1);

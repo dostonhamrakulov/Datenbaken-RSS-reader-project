@@ -1,5 +1,8 @@
 <?php include ('header.php');
 
+if(!isset($_SESSION['user_id'] )){
+    echo "Please Login to continue";die;
+}
 if(isset($_GET['delete'])=='success'){
     echo '<script type="text/javascript">',
     'alert("Web Feed Provider Deleted Sucessfully");
@@ -14,9 +17,15 @@ if(isset($_POST['submit'])) {
     $myObj = new \stdClass();
     $myObj->name = $feed_provider_name;
     $myObj->link = $feed_provider_link;
+    $myObj->userid = $_SESSION['user_id'];
     $data = json_encode($myObj);
-    $url ="//web-feed-provider/add";
+    $url ="//web-feed-provider/add" ;
     $result = $obj->sendPostRequest($url,$data);
+//    echo "<pre>";
+//    print_r($result);
+//    echo "</pre>";
+//    die;
+
     echo '<script type="text/javascript">',
     'alert("Web Feed Provider Added Sucessfully");',
     '</script>'
@@ -50,7 +59,8 @@ if(isset($_POST['submit'])) {
         <div class="row">
 
             <?php
-            $results = $obj->sendGetRequest("//web-feed-provider/all");
+            $results = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$_SESSION['user_id'] );
+            $results = array_reverse($results);
             echo "<table class='table table-striped'>";
             ?>
             <thead>
@@ -70,8 +80,8 @@ if(isset($_POST['submit'])) {
                 <tr>
                     <td><?php echo $result->name ;?></td>
                     <td><a href="<?php echo $result->link; ?>" target="_blank"><?php echo $result->link; ?></a> </td>
-                    <td><?php echo $result->updated_date; ?></td>
-                    <td><?php echo $result->num_feeds; ?></td>
+                    <td><?php echo $result->updateddate; ?></td>
+                    <td><?php echo $result->numfeeds; ?></td>
                     <td><?php echo $result->error; ?></td>
                     <td>
                         <a href="edit_web_feed_providers.php?id=<?php echo $result->id; ?>"><span class="glyphicon glyphicon-edit"></a>
