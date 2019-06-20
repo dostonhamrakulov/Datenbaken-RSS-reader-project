@@ -86,7 +86,7 @@ cannot delete with Status code: NOT_FOUND 404
 ```
 
 * [X] - update a provider with new number of feeds, updateDate, LastAttempDate, LatestFeedDate
-  * [X] - http://localhost:8080//web-feed-provider/update-provider -- **PUT request**
+  * [X] - http://localhost:8080//web-feed-provider/update-provider -- **PUT request**  -- **ONLY for Backend**
 Request:
 ```json
 {
@@ -101,6 +101,24 @@ Reponse:
 1 (Updated) with Status code: OK 200
 or
 0(cannot update) with Status code: NOT_FOUND 404
+```
+
+* [X] - update a provider with new number of feeds, updateDate, LastAttempDate, LatestFeedDate
+  * [X] - http://localhost:8080/web-feed-provider/update-only-provider -- **PUT request**
+Request:
+```json
+{
+   
+	"id": 1173,
+	"name": "New name",
+	"link": "new url"
+
+}
+
+Reponse:
+Updated with Status code: OK 200
+or
+cannot update with Status code: NOT_FOUND 404
 ```
 
 
@@ -316,6 +334,19 @@ with Http Status: OK
 
 if not found, it will return Status: NOT_FOUND
 ```
+
+* [X] - update "deleted" status of a feed
+  * [X] - http://localhost:8080/feeds/delete-feed?id=2142   --- **PUT request**
+Response
+```json
+Deleted
+
+with Http Status: OK
+
+or
+"Error occured" Status Code: INTERNAL_SERVER_ERROR
+```
+
 
 ## APIs for User:
 

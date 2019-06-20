@@ -159,4 +159,14 @@ public class Web_feedController {
         }
 
     }
+
+    @PutMapping(path = "/delete-feed")
+    public @ResponseBody ResponseEntity<String> updateDeletedFeed(@RequestParam("id") int id){
+        int affected_row = feedRepository.updateDeleted("True", id);
+        if (affected_row > 0){
+            return new ResponseEntity<>("Deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Error occured", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -156,6 +156,18 @@ public class Web_feed_providersController {
         }
     }
 
+    @PutMapping(path = "/update-only-provider")
+    public @ResponseBody ResponseEntity<String> updateProviderOnly(@RequestBody Web_feed_providers wfp){
+        int affected_row = 0;
+        affected_row = web_feed_providersRepository.updateProviderOnly(wfp.getName(), wfp.getLink(), wfp.getId());
+
+        if (affected_row > 0){
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("cannot update", HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 
 
