@@ -92,15 +92,15 @@ SET GLOBAL time_zone = '+5:30';
 -- INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `providerid`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
 -- 
 -- 
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (101,'user1@gmail.com','user1','user1_pass',1, 30, 5);
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (102,'user2@gmail.com','user2','user2_pass',1, 30, 1);
-INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (103,'user3@gmail.com','user3','user3_pass',1, 30, 5);
-
-  
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1000,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','2018/09/09','2018/09/09','10',0, 101);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1001,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','2018/09/09','2018/09/09','13',0,101);
-INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1003,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','2018/09/09','2018/09/09','11',0, 1022);
-
+-- INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (101,'user1@gmail.com','user1','user1_pass',1, 30, 5);
+-- INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (102,'user2@gmail.com','user2','user2_pass',1, 30, 1);
+-- INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (103,'user3@gmail.com','user3','user3_pass',1, 30, 5);
+-- 
+--   
+-- INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1000,'NEW YORK Times','https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml','2018/09/09','2018/09/09','2018/09/09','10',0, 101);
+-- INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1001,'BBC','http://feeds.bbci.co.uk/news/world/europe/rss.xml','2018/04/07','2018/09/09','2018/09/09','13',0,101);
+-- INSERT INTO `web_feed_providers`(`id`, `name`, `link`, `updateddate`,`latestrecorddate`,`lastattempt`, `numfeeds`, `error`, `userid`) VALUES (1003,'ZDnet news','https://www.zdnet.com/news/rss.xml','2018/02/03','2018/09/09','2018/09/09','11',0, 1022);
+-- 
 -- 
 -- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (1,1,1);
 -- INSERT INTO `user_feed_providers`(`id`, `provider_id`, `status`) VALUES (2,2,2);
@@ -113,19 +113,25 @@ select * from web_feed;
 select * from web_feed where providerid = 786;
 select * from user;
 
-update user s set s.feedage = 100 where s.id = 101;
-update web_feed w set w.title = 'updated title' where w.id = 1322;
-delete from web_feed_providers where userid = 1022;
-
-update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1500;
-update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1501;
-
-select * from web_feed_providers wf where wf.user_id = 1;
+-- update user s set s.feedage = 100 where s.id = 101;
+-- update web_feed w set w.title = 'updated title' where w.id = 1322;
+-- delete from web_feed_providers where userid = 1022;
+-- 
+-- update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1500;
+-- update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1501;
+-- 
+-- select * from web_feed_providers wf where wf.user_id = 1;
 
 
 select count(*) from web_feed where providerid = 1173;
 
-select * from web_feed;
+select * from web_feed where providerid = 1;
 
+-- update web_feed set deleted = "True" where id = 3334433;
 
+-- insert into web_feed value(122221, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false"),
+-- (22221, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false"),
+-- (22222, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false"),
+-- (222214, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false");
+-- 
 SHOW GRANTS;

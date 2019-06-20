@@ -451,7 +451,7 @@ cannot delete with Status code: NOT_FOUND 404
 ```
 
 
-* [X] - delete feeds by provider_id -   **DELETE request**
+* [X] - delete feeds by provider_id and userid -   **DELETE request**
    * [X] - http://localhost:8080/web-feed-provider/delete-by-id-and-userid
 Request:
 ```json
@@ -517,7 +517,7 @@ with Http Status: OK
 if not found, it will return Status: NOT_FOUND
 ```
 
-* [X] - update "deleted" status of a feed
+* [X] - update "deleted" of web feed status of a feed
   * [X] - http://localhost:8080/feeds/delete-feed?id=2142   --- **PUT request**
 Response
 ```json
@@ -529,7 +529,7 @@ or
 "Error occured" Status Code: INTERNAL_SERVER_ERROR
 ```
 
-* [X] - update "deleted" status of a feed
+* [X] - modify a web feed 
   * [X] - http://localhost:8080/feeds/update-feed-by-user   --- **PUT request**
 Request
 ```json
