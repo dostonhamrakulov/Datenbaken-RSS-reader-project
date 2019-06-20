@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static de.tuchemnitz.de.Main.Common_code.getCurrentDate;
+
 
 @RestController
 @RequestMapping(path="/feeds")
@@ -74,6 +76,9 @@ public class Web_feedController {
 //        System.out.println(web_feed1.getImported_date());
 //        System.out.println(web_feed1.getImage());
 //        System.out.println(web_feed1.getProvider_id());
+
+        web_feed1.setImporteddate(getCurrentDate());
+        web_feed1.setPublisheddate(getCurrentDate());
         web_feed = feedRepository.save(web_feed1);
         if (web_feed != null){
             return new ResponseEntity<>(new Web_feed(), HttpStatus.CREATED);
