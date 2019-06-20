@@ -10,7 +10,8 @@ import javax.persistence.*;
         @NamedQuery(name = "Web_feed.updateFeed", query = "UPDATE Web_feed w SET w.title = ?1, w.publisheddate = ?2 where w.link = ?3"),
         @NamedQuery(name = "Web_feed.numOfFeedsOfAProvider", query = "SELECT COUNT(w) from Web_feed w where w.providerid = ?1"),
         @NamedQuery(name = "Web_feed.updateDeleted", query = "UPDATE Web_feed  w SET w.deleted = ?1 WHERE w.id = ?2"),
-        @NamedQuery(name = "Web_feed.updateFeedByUser", query = "UPDATE Web_feed w SET w.title = ?1, w.link = ?2 WHERE w.id = ?3")
+        @NamedQuery(name = "Web_feed.updateFeedByUser", query = "UPDATE Web_feed w SET w.title = ?1, w.link = ?2 WHERE w.id = ?3"),
+        @NamedQuery(name = "Web_feed.getNumberErrors", query = "SELECT COUNT(w) FROM Web_feed w WHERE w.error = ?1 and w.providerid = ?2")
 })
 
 //@Table(name= "web_feed")
@@ -28,6 +29,7 @@ public class Web_feed {
     private String importeddate;
     private int providerid;
     private String deleted;
+    private String error;
 
 
     public int getId() {
@@ -94,10 +96,19 @@ public class Web_feed {
         this.deleted = deleted;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     public Web_feed() {
     }
 
-    public Web_feed(String title, String link, String description, String publisheddate, String importeddate, int providerid, String deleted) {
+
+    public Web_feed(String title, String link, String description, String publisheddate, String importeddate, int providerid, String deleted, String error) {
         this.title = title;
         this.link = link;
         this.description = description;
@@ -105,6 +116,7 @@ public class Web_feed {
         this.importeddate = importeddate;
         this.providerid = providerid;
         this.deleted = deleted;
+        this.error = error;
     }
 
     @Override
@@ -118,6 +130,7 @@ public class Web_feed {
                 ", importeddate='" + importeddate + '\'' +
                 ", providerid=" + providerid +
                 ", deleted='" + deleted + '\'' +
+                ", error='" + error + '\'' +
                 '}';
     }
 }

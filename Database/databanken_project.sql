@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `web_feed` (
   `importeddate` varchar(255) NOT NULL,
   `providerid` int(255) NOT NULL DEFAULT 1000,
   `deleted` varchar(255) NOT NULL,
+  `error` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY `ft_wfid` (`providerid`) REFERENCES `web_feed_providers` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -123,9 +124,10 @@ select * from user;
 -- select * from web_feed_providers wf where wf.user_id = 1;
 
 
-select count(*) from web_feed where providerid = 1173;
-
-select * from web_feed where providerid = 1;
+-- select count(*) from web_feed where providerid = 1173;
+-- 
+-- select count(*) from web_feed where error = "updateDate";
+-- select * from web_feed;
 
 -- update web_feed set deleted = "True" where id = 3334433;
 

@@ -78,7 +78,7 @@ public class Web_feedController {
 //        System.out.println(web_feed1.getProvider_id());
 
         web_feed1.setImporteddate(getCurrentDate());
-        web_feed1.setPublisheddate(getCurrentDate());
+//        web_feed1.setPublisheddate(getCurrentDate());
         web_feed = feedRepository.save(web_feed1);
         if (web_feed != null){
             return new ResponseEntity<>(new Web_feed(), HttpStatus.CREATED);
@@ -184,9 +184,18 @@ public class Web_feedController {
         if (affected_row > 0){
             return new ResponseEntity<>("Updated", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Error occured", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error occured", HttpStatus.NOT_FOUND);
         }
     }
 
+    @GetMapping(path = "/number-of-errors")
+    public @ResponseBody ResponseEntity<Integer> getNumberErrors(@RequestParam("providerid") int providerid){
+        int affected_row = feedRepository.getNumberErrors("True", providerid);
+        if (affected_row > 0){
+            return new ResponseEntity<>(affected_row, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

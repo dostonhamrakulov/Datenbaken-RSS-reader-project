@@ -71,14 +71,48 @@ public class ImportRSS {
 
                 syndEntry = syndEntryList.get(i);
 
-                String date;
-                if (syndEntry.getPublishedDate() != null){
-                    date = convertDateToString(syndEntry.getPublishedDate());
+                String date= "";
+                String error = "False";
+                String title = "";
+                String link= "";
+                String desc= "";
+                String deleted = "False";
+
+//                syndEntry.getUp
+                if (syndEntry.getPublishedDate() == null){
+                    if (syndEntry.getUpdatedDate() == null){
+                        date = "null";
+                        error = "True";
+                    } else {
+                        date = Common_code.convertDateToString(syndEntry.getUpdatedDate());
+
+                    }
                 } else {
-                    date = "null";
+                    date = Common_code.convertDateToString(syndEntry.getPublishedDate());
                 }
 
-                Web_feed w = new Web_feed(syndEntry.getTitle(), syndEntry.getLink(), syndEntry.getDescription().getValue(), date, Common_code.getCurrentDate(), wfp.getId(), "False");
+
+                if (syndEntry.getTitle() != null){
+                    title = syndEntry.getTitle();
+                } else{
+                    title = "null";
+                    error = "title";
+                }
+
+                if (syndEntry.getDescription() != null){
+                    desc = syndEntry.getDescription().getValue();
+                } else {
+                    error = "desc";
+                    desc = "null";}
+
+                if (syndEntry.getLink() != null){
+                    link = syndEntry.getLink();
+                } else {
+                    error = "link";
+                    link = "null";
+                }
+
+                Web_feed w = new Web_feed(title, link, desc, date, Common_code.getCurrentDate(), wfp.getId(), deleted, error);
 
                 HttpHeaders headers = new HttpHeaders();
 
@@ -138,6 +172,7 @@ public class ImportRSS {
         wfp.setLatestrecorddate(pubDate);
 
         updateProvider(wfp);
+        updateErrorProvider(wfp);
 
     }
 
@@ -306,6 +341,36 @@ public class ImportRSS {
         return res1.getBody();
 
     }
+
+    public static void updateErrorProvider(Web_feed_providers wfp){
+        restTemplate = new RestTemplate();
+
+        ResponseEntity<Integer> er = restTemplate.exchange(
+                REST_SERVICE_URI + "feeds/number-of-errors?providerid="+wfp.getId(),
+                HttpMethod.GET, null, Integer.class);
+
+        if (er.getBody() != null){
+            wfp.setError(er.getBody());
+        } else {
+            wfp.setError(0);
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<Web_feed_providers> requestEntity1 = new HttpEntity<>(wfp, headers);
+
+
+        ResponseEntity<String> er1 = restTemplate.exchange(
+                REST_SERVICE_URI+"web-feed-provider/update-error-of-provider",
+                HttpMethod.PUT, requestEntity1, String.class);
+        if (er1.getStatusCode() == HttpStatus.OK){
+            System.out.println("updatedProvider");
+        }
+//        }
+
+
+    }
+
+
 
 
 
