@@ -21,11 +21,6 @@ if(isset($_POST['submit'])) {
     $data = json_encode($myObj);
     $url ="//web-feed-provider/add" ;
     $result = $obj->sendPostRequest($url,$data);
-//    echo "<pre>";
-//    print_r($result);
-//    echo "</pre>";
-//    die;
-
     echo '<script type="text/javascript">',
     'alert("Web Feed Provider Added Sucessfully");',
     '</script>'
@@ -39,6 +34,7 @@ if(isset($_POST['submit'])) {
             All Web Feed Providers
         </h2>
         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#addRss" aria-expanded="false" aria-controls="collapseExample">Add Web Feed Provider</button>
+        <button type="button" class="btn btn-success pull-right" >Update</button>
         <div class="row">
             <div id="addRss" class="collapse">
                 <div class="col-lg-6">
@@ -56,12 +52,13 @@ if(isset($_POST['submit'])) {
                 </div>
             </div>
         </div>
+        <br>
         <div class="row">
 
             <?php
             $results = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$_SESSION['user_id'] );
             $results = array_reverse($results);
-            echo "<table class='table table-striped'>";
+            echo "<table class='table table-striped' style='border: 1px solid'>";
             ?>
             <thead>
             <tr>

@@ -37,6 +37,7 @@ $obj= new myFunctions();
             if(isset($_SESSION['user_name'])){
              ?>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.php">Welcome: <?php echo $_SESSION['user_name']; ?></a></li>
                     <li><a href="web_feed.php">Web Feeds</a></li>
                     <li><a href="web_feed_providers.php">Web Feed Providers</a></li>
                     <li><a href="index.php"><span class="glyphicon glyphicon-user"></span> My Account</a></li>

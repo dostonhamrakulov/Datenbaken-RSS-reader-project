@@ -44,5 +44,21 @@ class myFunctions
         return $result;
     }
 
+    function sendPutRequest($url, $data){
+        $new_url = HOST.PORT.$url;
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $new_url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json','Content-Length: ' . strlen($data)));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response  = curl_exec($ch);
+        curl_close($ch);
+
+        $results = json_decode($response);
+        return $results;
+    }
+
 }
 ?>
