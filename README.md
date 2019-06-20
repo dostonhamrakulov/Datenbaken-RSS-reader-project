@@ -286,6 +286,23 @@ or
 0(cannot update) with Status code: NOT_FOUND 404
 ```
 
+* [X] - update a provider with new number of feeds, updateDate, LastAttempDate, LatestFeedDate
+  * [X] - http://localhost:8080/web-feed-provider/update-only-provider -- **PUT request**
+Request:
+```json
+{
+   
+	"id": 1173,
+	"name": "New name",
+	"link": "new url"
+
+}
+
+Reponse:
+Updated with Status code: OK 200
+or
+cannot update with Status code: NOT_FOUND 404
+```
 
 ## APIs for Web_feed:
 * [X] - getting a web_feed by id

@@ -81,6 +81,8 @@ public class UserController {
     @PostMapping(path = "/add-user")
     public @ResponseBody ResponseEntity<String> addUser(@RequestBody User user){
 
+        user.setFeedage(30);
+        user.setUpdateperiod(10);
         User user1 = userRepository.save(user);
         if (user1 != null){
             return new ResponseEntity<>("Created", HttpStatus.CREATED);
