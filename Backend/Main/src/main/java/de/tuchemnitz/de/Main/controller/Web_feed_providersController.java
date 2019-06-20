@@ -168,6 +168,24 @@ public class Web_feed_providersController {
         }
     }
 
+    @PutMapping(path = "/update-num-feed-of-provider")
+    public @ResponseBody ResponseEntity<String> updateNumfeeds(@RequestBody Web_feed_providers wfp){
+        int affected_row = 0;
+        affected_row = web_feed_providersRepository.updateNumfeeds(wfp.getNumfeeds(), wfp.getId());
+
+
+        System.out.println("---------------------------------------");
+        System.out.println("update number of feeds for a provider " + wfp.getId());
+        System.out.println("---------------------------------------");
+
+        if (affected_row > 0){
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("cannot update", HttpStatus.NOT_FOUND);
+        }
+
+    }
+
 
 
 

@@ -1,5 +1,6 @@
 package de.tuchemnitz.de.Main.controller;
 
+import de.tuchemnitz.de.Main.Common_code;
 import de.tuchemnitz.de.Main.ImportRSS;
 import de.tuchemnitz.de.Main.entity.Web_feed;
 import de.tuchemnitz.de.Main.entity.Web_feed_providers;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping(path="/feeds")
@@ -105,9 +107,9 @@ public class Web_feedController {
         }
     }
 
-    @DeleteMapping(path = "/delete-by-providerid/")
-    public @ResponseBody ResponseEntity<String> deleteByProviderid(@RequestParam("providerid") int providerid){
-        int affected_rows = feedRepository.deleteByProviderid(providerid);
+    @DeleteMapping(path = "/delete-by-providerid")
+    public @ResponseBody ResponseEntity<String> rvAllforProviderId(@RequestParam("providerid") int providerid){
+        int affected_rows = feedRepository.rvAllforProviderId(providerid);
 
         if (affected_rows > 0){
             return new ResponseEntity<>("Deleted", HttpStatus.OK);
@@ -150,9 +152,10 @@ public class Web_feedController {
     public @ResponseBody ResponseEntity<Integer> numFeedsOfProvider(@RequestParam("providerid") int providerid){
 
         int number_of_feeds = 0;
-        number_of_feeds = feedRepository.numFeedsOfProvider(providerid);
+        number_of_feeds = feedRepository.numOfFeedsOfAProvider(providerid);
 
         if (number_of_feeds > 0){
+            System.out.println("OUT");
             return new ResponseEntity<>(number_of_feeds, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);

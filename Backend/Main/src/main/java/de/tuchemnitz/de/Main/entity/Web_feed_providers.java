@@ -10,7 +10,8 @@ import javax.persistence.*;
         @NamedQuery(name = "Web_feed_providers.updateProvider",
                 query = "UPDATE Web_feed_providers w SET w.numfeeds = ?1, w.updateddate = ?2, w.lastattempt = ?3, w.latestrecorddate = ?4 WHERE w.id = ?5"),
         @NamedQuery(name = "Web_feed_providers.updateProviderOnly", query = "UPDATE Web_feed_providers w SET w.name = ?1, " +
-                "w.link = ?2 WHERE w.id = ?3")
+                "w.link = ?2 WHERE w.id = ?3"),
+        @NamedQuery(name = "Web_feed_providers.updateNumfeeds", query = "UPDATE Web_feed_providers w SET w.numfeeds = ?1 where w.id = ?2")
 })
 
 

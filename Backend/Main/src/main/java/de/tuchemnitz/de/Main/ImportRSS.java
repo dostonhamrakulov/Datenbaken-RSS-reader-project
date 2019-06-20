@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.ParameterizedType;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.*;
 
 import static de.tuchemnitz.de.Main.Common_code.*;
@@ -234,17 +235,57 @@ public class ImportRSS {
         }
     }
 
-    public static void updateProvider(Web_feed_providers wfp){
+    public static void dostonSometjong(int id, int numfeed){
         restTemplate = new RestTemplate();
-        ResponseEntity<Integer> res1 = restTemplate.exchange(
-                REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+wfp.getId(),
-                HttpMethod.GET, null, Integer.class);
 
-        wfp.setNumfeeds(res1.getBody());
+//        System.out.println("Begin");
+//        System.out.println("Providerid: " + providerid);
+//        String url_ = REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+providerid;
+//        System.out.println(url_);
+//        ResponseEntity<Integer> res21 = restTemplate.exchange(
+//                REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+providerid,
+//                HttpMethod.GET, null, Integer.class);
+
+//        int number = getNumberFeeds(providerid);
+//        System.out.println(number);
+        Web_feed_providers wfp = new Web_feed_providers();
+//        wfp.setNumfeeds(re3.getBody());
+        wfp.setId(id);
+        wfp.setNumfeeds(numfeed);
+
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<Web_feed_providers> requestEntity1 = new HttpEntity<>(wfp, headers);
 
-        if (res1.getStatusCode() == HttpStatus.OK){
+        ResponseEntity<String> re4 = restTemplate.exchange(
+                REST_SERVICE_URI+"web-feed-provider/update-num-feed-of-provider", HttpMethod.PUT,
+                requestEntity1, String.class
+        );
+
+        if (re4.getStatusCode() == HttpStatus.OK){
+            System.out.println("Num_feed is updated!");
+        }
+    }
+
+    public static void updateProvider(Web_feed_providers wfp){
+        restTemplate = new RestTemplate();
+        System.out.println("\n\n\n\n\n\n\n");
+        System.out.println("Worked");
+//        ResponseEntity<Integer> res1 = restTemplate.exchange(
+//                REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+wfp.getId(),
+//                HttpMethod.GET, null, Integer.class);
+
+//        wfp.setNumfeeds(res1.getBody());
+
+//        wfp.setNumfeeds());
+        System.out.println("\n\n\n\n\n\n\n");
+        int numFeed = getNumberFeeds(wfp.getId());
+        System.out.println("Worked");
+        dostonSometjong(wfp.getId(), numFeed);
+
+        HttpHeaders headers = new HttpHeaders();
+        HttpEntity<Web_feed_providers> requestEntity1 = new HttpEntity<>(wfp, headers);
+
+//        if (res1.getStatusCode() == HttpStatus.OK){
 
             ResponseEntity<Integer> res2 = restTemplate.exchange(
                     REST_SERVICE_URI+"web-feed-provider/update-provider",
@@ -252,13 +293,20 @@ public class ImportRSS {
             if (res2.getStatusCode() == HttpStatus.OK){
                 System.out.println("updatedProvider");
             }
-        }
-
-        System.out.println("\n==========");
-        System.out.println("Current: " + getCurrentDate());
-        System.out.println("Updated: " + wfp.getUpdateddate());
-
+//        }
 
     }
+
+    public static int getNumberFeeds(int id){
+        restTemplate = new RestTemplate();
+        ResponseEntity<Integer> res1 = restTemplate.exchange(
+        REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+id,
+        HttpMethod.GET, null, Integer.class);
+
+        return res1.getBody();
+
+    }
+
+
 
 }

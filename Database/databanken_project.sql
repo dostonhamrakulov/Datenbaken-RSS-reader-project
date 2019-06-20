@@ -125,4 +125,7 @@ select * from web_feed_providers wf where wf.user_id = 1;
 
 select count(*) from web_feed where providerid = 1173;
 
+select * from web_feed;
+
+
 SHOW GRANTS;
