@@ -186,63 +186,13 @@ public class Web_feed_providersController {
 
     }
 
-
-
-
-    //TODO - implement updating error status of the provider
-
-//    @PutMapping(path = "/update", consumes = "application/json")
-//    public @ResponseBody
-//    ResponseEntity<Web_feed_providers> update_provider(@RequestBody Web_feed_providers web_feed_providers){
-//
-//        Web_feed_providers web_feed_providers1 = web_feed_providersRepository.
-//
-//    }
-
-//    public void addingWeb_feedProvider(String url_){
-//        try {
-//            URL url  = new URL(url_);
-//
-//            XmlReader reader = null;
-//            reader = new XmlReader(url);
-//            SyndFeed feed = new SyndFeedInput().build(reader);
-////            feed
-//            System.out.println("Feed Author: "+ feed.getAuthor());
-//            System.out.println("Feed Title: " + feed.getTitle());
-//            System.out.println("SyndEntry started: ----------- ");
-//
-//            List<SyndEntry> syndEntryList = feed.getEntries();
-//            SyndEntry syndEntry;
-//            for (int i = 0; i < syndEntryList.size(); i++) {
-//                syndEntry = syndEntryList.get(i);
-//                System.out.println("\n item number: " + i);
-//                System.out.println("Title: " + syndEntry.getTitle());
-//                String date;
-//                if (syndEntry.getPublishedDate() != null){
-//                    DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.ENGLISH);
-//                    date = formatter.format(syndEntry.getPublishedDate());
-//                } else {
-//                    date = "null";
-//                }
-//
-//
-//                System.out.println("PubDate: " + date);
-//                System.out.println("Link: " + syndEntry.getLink());
-//                System.out.println("Desc: " + syndEntry.getDescription().getValue());
-//            }
-//
-//            reader.close();
-//
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
-//    }
-
-//    public void add_web_feeds(Web_feed web_feed_){
-//
-//        RestTemplate restTemplate = new RestTemplate();
-//        Web_feed web_feed = web_feed_;
-//        URI uri = restTemplate.postForLocation(REST_SERVICE_URI+"/user/", web_feed, Web_feed.class);
-//
-//    }
+    @PutMapping(path = "/update-error-of-provider")
+    public @ResponseBody ResponseEntity<String> updateError(@RequestBody Web_feed_providers wf){
+        int affected_row = web_feed_providersRepository.updateError(wf.getError(), wf.getId());
+        if (affected_row > 0){
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Error occured", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
