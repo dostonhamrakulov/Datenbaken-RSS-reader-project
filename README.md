@@ -529,6 +529,25 @@ or
 "Error occured" Status Code: INTERNAL_SERVER_ERROR
 ```
 
+* [X] - update "deleted" status of a feed
+  * [X] - http://localhost:8080/feeds/update-feed-by-user   --- **PUT request**
+Request
+```json
+{
+        "id": 3918,
+        "title": "New name",
+        "link": "htvdfvdfvdfvdftps://www.nytimes.com/2019/06/18/worlssdvsdfvsfvfd/africa/congo-ethnic-violence-ebola.html?emc=rss&partner=rss"
+        
+}
+
+Updated
+
+with Http Status: OK
+
+or
+"Error occured" Status Code: INTERNAL_SERVER_ERROR
+```
+
 
 ## APIs for User:
 

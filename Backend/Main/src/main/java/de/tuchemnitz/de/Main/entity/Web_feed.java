@@ -9,7 +9,8 @@ import javax.persistence.*;
         @NamedQuery(name = "Web_feed.rvAllforProviderId", query = "DELETE FROM Web_feed w where w.providerid = ?1"),
         @NamedQuery(name = "Web_feed.updateFeed", query = "UPDATE Web_feed w SET w.title = ?1, w.publisheddate = ?2 where w.link = ?3"),
         @NamedQuery(name = "Web_feed.numOfFeedsOfAProvider", query = "SELECT COUNT(w) from Web_feed w where w.providerid = ?1"),
-        @NamedQuery(name = "Web_feed.updateDeleted", query = "UPDATE Web_feed  w SET w.deleted = ?1 WHERE w.id = ?2")
+        @NamedQuery(name = "Web_feed.updateDeleted", query = "UPDATE Web_feed  w SET w.deleted = ?1 WHERE w.id = ?2"),
+        @NamedQuery(name = "Web_feed.updateFeedByUser", query = "UPDATE Web_feed w SET w.title = ?1, w.link = ?2 WHERE w.id = ?3")
 })
 
 //@Table(name= "web_feed")

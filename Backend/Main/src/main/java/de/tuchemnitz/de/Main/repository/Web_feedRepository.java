@@ -26,4 +26,8 @@ public interface Web_feedRepository extends CrudRepository<Web_feed, Integer> {
     @Transactional
     @Modifying
     public int updateDeleted(String deleted, int id);
+
+    @Transactional
+    @Modifying
+    public int updateFeedByUser(String title, String link, int id);
 }

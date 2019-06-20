@@ -172,4 +172,14 @@ public class Web_feedController {
             return new ResponseEntity<>("Error occured", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PutMapping(path = "/update-feed-by-user")
+    public @ResponseBody ResponseEntity<String> updateFeedByUser(@RequestBody Web_feed wf){
+        int affected_row = feedRepository.updateFeedByUser(wf.getTitle(), wf.getLink(), wf.getId());
+        if (affected_row > 0){
+            return new ResponseEntity<>("Updated", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Error occured", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
