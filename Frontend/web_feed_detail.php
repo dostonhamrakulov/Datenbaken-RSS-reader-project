@@ -18,17 +18,18 @@ $provider = $obj->sendGetRequest('//web-feed-provider/'.$result->providerid);
             <table>
                 <tr>
                     <td>Published Date :   </td>
-                    <td width="100px;">  <?php echo $result->published_date; ?></td>
+                    <td width="200px;">  <?php echo $result->publisheddate; ?></td>
                     <td>Imported Date : </td>
-                    <td  width="100px;"><?php echo $result->imported_date; ?></td>
+                    <td  width="200px;"><?php echo $result->importeddate; ?></td>
                     <td>Web Feed Provider : </td>
                     <td  width="100px;"><a href="web_feed_providers_detail.php?id=<?php echo $result->providerid; ?>"><?php echo $provider->name; ?></a></td>
-                    <td>Link to feed : </td>
+                    <td>Link to feed: </td>
                     <td><a href="<?php echo $result->link; ?>" target="_blank"><?php echo $result->link; ?></a></td>
                 </tr>
             </table>
         </div>
         <div class="row">
+            <br><br>
             <p>
                 <?php echo $result->description; ?>
             </p>
