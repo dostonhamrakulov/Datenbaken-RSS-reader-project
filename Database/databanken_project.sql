@@ -68,7 +68,7 @@ COMMIT;
 -- ,
 --  UNIQUE KEY `link` (`link`(255)
 
-select version();
+
 
 -- SHOW VARIABLES LIKE "%version%";
 
@@ -126,8 +126,10 @@ select * from user;
 
 -- select count(*) from web_feed where providerid = 1173;
 -- 
--- select count(*) from web_feed where error = "updateDate";
+-- select count(*) from web_feed where error = "False" and providerid = 4461;
 -- select * from web_feed;
+-- select * from web_feed_providers;
+-- update web_feed set error = 'True' where providerid = 4461;
 
 -- update web_feed set deleted = "True" where id = 3334433;
 
