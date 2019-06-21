@@ -10,6 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Cache;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +28,13 @@ public class Web_feedController {
     @Autowired
     Web_feedRepository feedRepository;
     Web_feed web_feed;
+
+//    EntityManagerFactory emf =
+//            Persistence.createEntityManagerFactory("Web_feedController");
+//
+//    EntityManager em = ...;
+//    Cache cache = em.getEntityManagerFactory().getCache();
+//cache.evictAll();
 
     @GetMapping(path = "/{id}")
     public @ResponseBody ResponseEntity<Web_feed> getWed_feed(@PathVariable("id") int id){
@@ -188,9 +199,10 @@ public class Web_feedController {
         }
     }
 
-    @GetMapping(path = "/number-of-errors")
-    public @ResponseBody ResponseEntity<Integer> getNumberErrors(@RequestParam("providerid") int providerid){
-        int affected_row = feedRepository.getNumberErrors("True", providerid);
+    @PostMapping(path = "/number-of-errors")
+    public @ResponseBody ResponseEntity<Integer> getNumberErrorsww(@RequestBody Web_feed wf){
+        int affected_row = 0;
+        affected_row = feedRepository.getNumberErrors("True", wf.getProviderid());
         if (affected_row > 0){
             return new ResponseEntity<>(affected_row, HttpStatus.OK);
         } else {

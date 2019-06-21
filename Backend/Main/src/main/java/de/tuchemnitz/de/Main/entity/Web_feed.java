@@ -1,5 +1,7 @@
 package de.tuchemnitz.de.Main.entity;
 
+import org.hibernate.CacheMode;
+
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -11,13 +13,18 @@ import javax.persistence.*;
         @NamedQuery(name = "Web_feed.numOfFeedsOfAProvider", query = "SELECT COUNT(w) from Web_feed w where w.providerid = ?1"),
         @NamedQuery(name = "Web_feed.updateDeleted", query = "UPDATE Web_feed  w SET w.deleted = ?1 WHERE w.id = ?2"),
         @NamedQuery(name = "Web_feed.updateFeedByUser", query = "UPDATE Web_feed w SET w.title = ?1, w.link = ?2 WHERE w.id = ?3"),
-        @NamedQuery(name = "Web_feed.getNumberErrors", query = "SELECT COUNT(w) FROM Web_feed w WHERE w.error = ?1 and w.providerid = ?2")
+        @NamedQuery(name = "Web_feed.getNumberErrors", query = "SELECT COUNT(w) FROM Web_feed w WHERE w.error = ?1 and w.providerid = ?2",
+                hints = {@QueryHint(name = "cacheMode", value = "REFRESH"),
+                        @QueryHint(name = "cacheable", value = "false")})
 })
 
 //@Table(name= "web_feed")
 public class Web_feed {
 
 //    private static final long serialVersionUID = 1L;
+    //jdbc:mysql://localhost:3306/databanken_project
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

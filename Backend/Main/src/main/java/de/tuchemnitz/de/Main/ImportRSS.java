@@ -11,9 +11,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.ParameterizedType;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.*;
 
 import static de.tuchemnitz.de.Main.Common_code.*;
@@ -172,7 +170,7 @@ public class ImportRSS {
         wfp.setLatestrecorddate(pubDate);
 
         updateProvider(wfp);
-        updateErrorProvider(wfp);
+
 
     }
 
@@ -229,6 +227,7 @@ public class ImportRSS {
 
                     adding_single(feed_p);
                     deleteOldFeeds(user, feed_p);
+                    updateErrorProvider(feed_p);
 
                 } else {
                     System.out.println("\n\n\nSkippen because of time");
@@ -344,18 +343,25 @@ public class ImportRSS {
 
     public static void updateErrorProvider(Web_feed_providers wfp){
         restTemplate = new RestTemplate();
-
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        Web_feed web_feed = new Web_feed();
+        web_feed.setProviderid(wfp.getId());
+        HttpEntity<Web_feed> entity = new HttpEntity<>(web_feed, headers);
+        System.out.println("Providerid: " + wfp.getId());
         ResponseEntity<Integer> er = restTemplate.exchange(
-                REST_SERVICE_URI + "feeds/number-of-errors?providerid="+wfp.getId(),
-                HttpMethod.GET, null, Integer.class);
+                REST_SERVICE_URI + "feeds/number-of-errors",
+                HttpMethod.POST, entity, Integer.class);
 
+//        ResponseEntity<Integer> er = restTemplate.postForEntity(REST_SERVICE_URI + "feeds/number-of-errors",
+//                entity, Integer.class);
+//        restTemplate.post
         if (er.getBody() != null){
             wfp.setError(er.getBody());
         } else {
             wfp.setError(0);
         }
 
-        HttpHeaders headers = new HttpHeaders();
         HttpEntity<Web_feed_providers> requestEntity1 = new HttpEntity<>(wfp, headers);
 
 
