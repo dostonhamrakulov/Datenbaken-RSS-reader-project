@@ -269,21 +269,11 @@ public class ImportRSS {
         }
     }
 
-    public static void dostonSometjong(int id, int numfeed){
+    public static void updateNumberOfFeeds(int id, int numfeed){
         restTemplate = new RestTemplate();
 
-//        System.out.println("Begin");
-//        System.out.println("Providerid: " + providerid);
-//        String url_ = REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+providerid;
-//        System.out.println(url_);
-//        ResponseEntity<Integer> res21 = restTemplate.exchange(
-//                REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+providerid,
-//                HttpMethod.GET, null, Integer.class);
 
-//        int number = getNumberFeeds(providerid);
-//        System.out.println(number);
         Web_feed_providers wfp = new Web_feed_providers();
-//        wfp.setNumfeeds(re3.getBody());
         wfp.setId(id);
         wfp.setNumfeeds(numfeed);
 
@@ -302,19 +292,10 @@ public class ImportRSS {
 
     public static void updateProvider(Web_feed_providers wfp){
         restTemplate = new RestTemplate();
-        System.out.println("\n\n\n\n\n\n\n");
-        System.out.println("Worked");
-//        ResponseEntity<Integer> res1 = restTemplate.exchange(
-//                REST_SERVICE_URI + "feeds/num-of-feeds-of-provider?providerid="+wfp.getId(),
-//                HttpMethod.GET, null, Integer.class);
 
-//        wfp.setNumfeeds(res1.getBody());
-
-//        wfp.setNumfeeds());
-        System.out.println("\n\n\n\n\n\n\n");
         int numFeed = getNumberFeeds(wfp.getId());
-        System.out.println("Worked");
-        dostonSometjong(wfp.getId(), numFeed);
+
+        updateNumberOfFeeds(wfp.getId(), numFeed);
 
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<Web_feed_providers> requestEntity1 = new HttpEntity<>(wfp, headers);

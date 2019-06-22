@@ -27,7 +27,7 @@ public interface Web_feed_providersRepository extends CrudRepository<Web_feed_pr
 
     @Transactional
     @Modifying
-    public int updateNumfeeds(int numfeeds, int id);
+    public int updateFeedsNumbers(int numfeeds, int id);
 
     @Transactional
     @Modifying
