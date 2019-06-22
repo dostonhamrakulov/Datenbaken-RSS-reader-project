@@ -183,6 +183,146 @@ RSS to Atom format or vice versa.
    * [X] - Converting JSON into RSS or ATOM **Sagar**
 
 
+## APIs for User:
+
+* [X] - add a user ---  **PUT request**
+   * [X] - http://localhost:8080/user/add-user
+Request:
+```json
+{
+        
+        "email": "user1@gmail.com",
+        "name": "user1",
+        "password":"user1@"
+}
+```
+
+
+Response:
+```json 
+Created - CREATED 301
+
+or bad quest
+```
+
+
+* [X] - log in a user request -- **POST request**
+   * [X] - http://localhost:8080/user/get-user
+```json
+{
+        
+        "email": "user1@gmail.com",
+        "password":"user1@"
+}
+```
+Response:
+```json
+{
+    "id": 1084,
+    "email": "user1@gmail.com",
+    "name": "user1",
+    "password": "user1@",
+    "status": 0,
+    "feedage": 0,
+    "updateperiod": 0
+}
+
+with Status code: FOUND 302
+or 
+HTTP Status Code: NOT_FOUND
+```
+
+
+* [X] - update feed-age by id and feed-age **PUT request**
+   * [X] - http://localhost:8080/user/update-feed-age
+Request:
+```json
+{
+    "id": 101,
+    "feedage": 22
+}
+```
+Response
+```json
+{
+    "id": 101,
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "status": 1,
+    "feedage": 22,
+    "updateperiod": 55
+}
+
+with Http Status: OK (200)
+
+if not found, it will return Status: BAD_REQUEST(400)
+```
+
+* [X] - update **update-period** by id and update-period **PUT request**
+   * [X] - http://localhost:8080/user/update-updateperiod
+Request:
+```json
+{
+    "id": 101,
+    "updateperiod": 66
+}
+```
+Response
+```json
+{
+    "id": 101,
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "status": 1,
+    "feedage": 22,
+    "updateperiod": 66
+}
+
+with Http Status: OK (200)
+
+if not found, it will return Status: BAD_REQUEST(400)
+```
+
+* [X] - get all users   --- **GET request**
+   * [X] - http://localhost:8080/user/all
+
+Response:
+```json
+[
+    {
+        "id": 101,
+        "name": "user1",
+        "email": "user1@gmail.com",
+        "status": 1,
+        "feedage": 11,
+        "updateperiod": 55
+    },
+...
+]
+
+with Http Status: FOUND (302)
+
+if not found, it will return Status: NOT_FOUND (404)
+```
+
+* [X] - get user by id --- --- **GET request**
+   * [X] - http://localhost:8080/user/?id=101
+Response:
+```json
+{
+    "id": 101,
+    "name": "user1",
+    "email": "user1@gmail.com",
+    "status": 1,
+    "feedage": 11,
+    "updateperiod": 5
+}
+
+with Http Status: FOUND (302)
+
+if not found, it will return Status: NOT_FOUND (404)
+```
+
 
 ## APIs for Web_feed_providers:
 
@@ -566,145 +706,7 @@ or
 
 
 
-## APIs for User:
 
-* [X] - add a user ---  **PUT request**
-   * [X] - http://localhost:8080/user/add-user
-Request:
-```json
-{
-        
-        "email": "user1@gmail.com",
-        "name": "user1",
-        "password":"user1@"
-}
-```
-
-
-Response:
-```json 
-Created - CREATED 301
-
-or bad quest
-```
-
-
-* [X] - log in a user request -- **POST request**
-   * [X] - http://localhost:8080/user/get-user
-```json
-{
-        
-        "email": "user1@gmail.com",
-        "password":"user1@"
-}
-```
-Response:
-```json
-{
-    "id": 1084,
-    "email": "user1@gmail.com",
-    "name": "user1",
-    "password": "user1@",
-    "status": 0,
-    "feedage": 0,
-    "updateperiod": 0
-}
-
-with Status code: FOUND 302
-or 
-HTTP Status Code: NOT_FOUND
-```
-
-
-* [X] - update feed-age by id and feed-age **PUT request**
-   * [X] - http://localhost:8080/user/update-feed-age
-Request:
-```json
-{
-    "id": 101,
-    "feedage": 22
-}
-```
-Response
-```json
-{
-    "id": 101,
-    "name": "user1",
-    "email": "user1@gmail.com",
-    "status": 1,
-    "feedage": 22,
-    "updateperiod": 55
-}
-
-with Http Status: OK (200)
-
-if not found, it will return Status: BAD_REQUEST(400)
-```
-
-* [X] - update **update-period** by id and update-period **PUT request**
-   * [X] - http://localhost:8080/user/update-updateperiod
-Request:
-```json
-{
-    "id": 101,
-    "updateperiod": 66
-}
-```
-Response
-```json
-{
-    "id": 101,
-    "name": "user1",
-    "email": "user1@gmail.com",
-    "status": 1,
-    "feedage": 22,
-    "updateperiod": 66
-}
-
-with Http Status: OK (200)
-
-if not found, it will return Status: BAD_REQUEST(400)
-```
-
-* [X] - get all users   --- **GET request**
-   * [X] - http://localhost:8080/user/all
-
-Response:
-```json
-[
-    {
-        "id": 101,
-        "name": "user1",
-        "email": "user1@gmail.com",
-        "status": 1,
-        "feedage": 11,
-        "updateperiod": 55
-    },
-...
-]
-
-with Http Status: FOUND (302)
-
-if not found, it will return Status: NOT_FOUND (404)
-```
-
-* [X] - get user by id --- --- **GET request**
-   * [X] - http://localhost:8080/user/?id=101
-Response:
-```json
-{
-    "id": 101,
-    "name": "user1",
-    "email": "user1@gmail.com",
-    "status": 1,
-    "feedage": 11,
-    "updateperiod": 5
-}
-
-with Http Status: FOUND (302)
-
-if not found, it will return Status: NOT_FOUND (404)
-```
 
 
 
