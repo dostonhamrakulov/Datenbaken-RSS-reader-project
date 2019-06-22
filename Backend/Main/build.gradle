@@ -1,9 +1,22 @@
+buildscript {
+	repositories { jcenter() }
+	dependencies {
+		classpath 'ca.cutterslade.gradle:gradle-dependency-analyze:1.2.0'
+	}
+}
+
+
+
+
 plugins {
 	id 'org.springframework.boot' version '2.1.5.RELEASE'
 	id 'java'
 }
 
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'ca.cutterslade.analyze'
 
 group = 'de.tu-chemnitz.de'
 version = '0.0.1-SNAPSHOT'
@@ -12,6 +25,7 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
@@ -25,6 +39,8 @@ dependencies {
 	compile group: 'com.rometools', name: 'rome', version: '1.5.0'
 //	compile('javax.xml.bind:jaxb-api:2.3.0')
 	compile group: 'javax.xml', name: 'jaxb-api', version: '2.1'
+
+
 
 //	compile group: 'org.hibernate', name: 'hibernate-core', version: '4.1.6.final'
 //	compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '4.1.6.Final'

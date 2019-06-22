@@ -1,6 +1,6 @@
 
 
--- create schema databanken_project;
+-- create schema databanken_project_main;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
@@ -93,7 +93,7 @@ SET GLOBAL time_zone = '+5:30';
 -- INSERT INTO `web_feed`(`id`, `title`, `link`, `description`, `published_date`, `imported_date`, `providerid`, `image`) VALUES (3,'Title3','Link3','Description3','2019/01/03','2019/05/07',3,'img_src_3');
 -- 
 -- 
--- INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (101,'user1@gmail.com','user1','user1_pass',1, 30, 5);
+INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (101,'user1@gmail.com','user1','user1_pass',1, 30, 5);
 -- INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (102,'user2@gmail.com','user2','user2_pass',1, 30, 1);
 -- INSERT INTO `user`(`id`, `email`, `name`, `password`, `status`, `feedage`, `updateperiod`) VALUES (103,'user3@gmail.com','user3','user3_pass',1, 30, 5);
 -- 
@@ -121,21 +121,21 @@ select * from user;
 -- update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1500;
 -- update web_feed w set w.importeddate = 'Mon, 10 Feb 2019 23:20:00 CEST' where w.id = 1501;
 -- 
--- select * from web_feed_providers wf where wf.user_id = 1;
+-- select * from web_feed_providers wf where wf.userid = 101;
 
 
--- select count(*) from web_feed where providerid = 1173;
+-- select count(*) from web_feed where providerid = 1;
 -- 
 -- select count(*) from web_feed where error = "False" and providerid = 4461;
 -- select * from web_feed;
 -- select * from web_feed_providers;
--- update web_feed set error = 'True' where providerid = 4461;
+-- update web_feed set error = 'True' where providerid = 1 and id < 5;
 
 -- update web_feed set deleted = "True" where id = 3334433;
 
--- insert into web_feed value(122221, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false"),
--- (22221, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false"),
--- (22222, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false"),
--- (222214, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1518, "false");
+-- insert into web_feed value(55, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
+-- (56, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
+-- (57, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
+-- (58, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False");
 -- 
 SHOW GRANTS;
