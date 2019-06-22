@@ -79,8 +79,13 @@ if(isset($_SESSION['user_name'])) {
                 </form>
             </div>
             <?php
-        }
+        }else{
+
+
         ?>
+            <h2>Welcome to RSS Management System</h2>
+            <h4>Please Login to continue!</h4>
+        <?php }?>
     </div>
 </div>
 

@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
             <!--            </div>-->
             <input type="submit" class="btn btn-primary btn-block btn-lg" name="submit" value="Login">
         </form>
-        <div class="text-center small">Already have an account? <a href="login.php">Log In</a></div>
+        <div class="text-center small">Already have an account? <a href="login.php">Sign Up</a></div>
     </div>
 </div>
 <?php include ('footer.php');?>

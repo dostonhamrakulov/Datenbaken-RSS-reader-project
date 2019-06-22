@@ -85,7 +85,7 @@ or disabled.
 * [X] - For each record, there is a detail view that shows the contents included in the web feed.
 * [ ] - The time interval for the web feed update blockade and the age for deleting old records can be set via the frontend.
 * [ ] - The complete web feed management takes place via the frontend, whereby at least the following options exist beyond the previous display options:
-  * [ ] - Insert new web feeds with address (URL) and display name, which is also used in the overview
+  * [ ] - Insert new web feeds with address (UsRL) and display name, which is also used in the overview
   * [ ] - Modify the entry of a web feed (change the URL or display name) while preserving existing records in the database
   * [ ] - Delete the entry of a web feed, deleting all associated data from the database
 * [ ] - It is possible to export the data of the web feeds selected in the frontend view as a new web feed in RSS or Atom format. This export should also be reachable via a normal URL with a GET request and contain all stored data. Ultimately, this should make it possible to transform a web feed from RSS to Atom format or vice versa.
