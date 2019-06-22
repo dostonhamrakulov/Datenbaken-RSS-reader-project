@@ -78,8 +78,12 @@ if(isset($_POST['submit'])) {
                     <td><?php echo $result->name ;?></td>
                     <td><a href="<?php echo $result->link; ?>" target="_blank"><?php echo $result->link; ?></a> </td>
                     <td><?php echo $result->updateddate; ?></td>
-                    <td><?php echo $result->numfeeds; ?></td>
-                    <td><?php echo $result->error; ?></td>
+                    <td><?php echo $obj->sendGetRequest("/feeds/num-of-feeds-of-provider?providerid=".$result->id ) ?></td>
+                    <td><?php
+                        $myObj = new \stdClass();
+                        $myObj->providerid =  $result->id;
+                        $data = json_encode($myObj);
+                        echo $obj->sendPostRequest('/feeds/number-of-errors',$data); ?></td>
                     <td>
                         <a href="edit_web_feed_providers.php?id=<?php echo $result->id; ?>"><span class="glyphicon glyphicon-edit"></a>
                         <a href="delete_web_feed_providers.php?id=<?php echo $result->id; ?>"></span> <span class="glyphicon glyphicon-remove-sign"></span></a>

@@ -8,6 +8,7 @@ if(isset($_POST['add_webfeed'])) {
     $myObj->publisheddate = date("Y-m-d h:i:sa");
     $myObj->importeddate = date("Y-m-d h:i:sa");
     $myObj->description = $_POST['description'];
+    $myObj->error = "False";
     $myObj->deleted = "False";
     $myObj->image = "Img";
     $data = json_encode($myObj);
