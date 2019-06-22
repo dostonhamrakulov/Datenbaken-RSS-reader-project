@@ -38,9 +38,9 @@ if(isset($_POST['submit'])){
             <!--                <label class="checkbox-inline"><input type="checkbox"> Remember me</label>-->
             <!--                <a href="#" class="forgot-link">Forgot Password?</a>-->
             <!--            </div>-->
-            <input type="submit" class="btn btn-primary btn-block btn-lg" name="submit" value="Login">
+            <input type="submit" class="btn btn-primary btn-block btn-lg" name="submit" value="Sign Up">
         </form>
-        <div class="text-center small">Already have an account? <a href="login.php">Sign Up</a></div>
+        <div class="text-center small">Already have an account? <a href="login.php">Log In</a></div>
     </div>
 </div>
 <?php include ('footer.php');?>
