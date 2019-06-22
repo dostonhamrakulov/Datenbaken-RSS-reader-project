@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Kafle Sagar
- * Date: 6/8/2019
- * Time: 1:15 AM
- */
+include ('header.php');
+//print_r($_GET['id']) ;
+//$idqw = isset($_GET['id']);
+//echo $idqw;
+$delete = $obj->sendPutRequest('/feeds/delete-feed?id='.$_GET['id'],'');
+
+    header("Location: web_feed.php?delete=success");
+
+    include ('footer.php');
+?>

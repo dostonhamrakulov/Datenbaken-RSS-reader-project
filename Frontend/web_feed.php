@@ -8,6 +8,7 @@ if(isset($_POST['add_webfeed'])) {
     $myObj->publisheddate = date("Y-m-d h:i:sa");
     $myObj->importeddate = date("Y-m-d h:i:sa");
     $myObj->description = $_POST['description'];
+    $myObj->deleted = "False";
     $myObj->image = "Img";
     $data = json_encode($myObj);
     $url ="/feeds/add" ;
@@ -20,6 +21,15 @@ if(isset($_POST['add_webfeed'])) {
 if(!isset($_SESSION['user_id'] )){
     echo "Please Login to continue";die;
 }
+if(isset($_GET['delete'])=='success'){
+    echo '<script type="text/javascript">',
+    'alert("Web Feed  Deleted Sucessfully");
+    window.location = \'web_feed.php\';
+    ',
+    '</script>'
+    ;
+}
+
 $providers = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$_SESSION['user_id'] );
 ?>
 <div class="container">
@@ -96,6 +106,7 @@ $providers = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$
                             $results = array_reverse($results);
                                 foreach ($results as $result){
                                     if (in_array($result->providerid, $provider_id)){
+                                        if($result->deleted=='False'){
                                     ?>
                             <tr>
                                 <td><input type="checkbox" name="web_id[]" value="<?php echo $result->id;?>"></td>
@@ -112,7 +123,7 @@ $providers = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$
                                 </td>
                             </tr>
                                 <?php
-                                    }}
+                                        }  }}
 //                   echo"</form>";
                 echo "</tbody>";
                 echo "</table>";
