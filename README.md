@@ -568,45 +568,53 @@ or
 
 ## APIs for User:
 
-* [X] - get all users   --- **GET request**
-   * [X] - http://localhost:8080/user/all
-
-Response:
+* [X] - add a user ---  **PUT request**
+   * [X] - http://localhost:8080/user/add-user
+Request:
 ```json
-[
-    {
-        "id": 101,
-        "name": "user1",
+{
+        
         "email": "user1@gmail.com",
-        "status": 1,
-        "feedage": 11,
-        "updateperiod": 55
-    },
-...
-]
-
-with Http Status: FOUND (302)
-
-if not found, it will return Status: NOT_FOUND (404)
+        "name": "user1",
+        "password":"user1@"
+}
 ```
 
-* [X] - get user by id --- --- **GET request**
-   * [X] - http://localhost:8080/user/?id=101
+
+Response:
+```json 
+Created - CREATED 301
+
+or bad quest
+```
+
+
+* [X] - log in a user request -- **POST request**
+   * [X] - http://localhost:8080/user/get-user
+```json
+{
+        
+        "email": "user1@gmail.com",
+        "password":"user1@"
+}
+```
 Response:
 ```json
 {
-    "id": 101,
-    "name": "user1",
+    "id": 1084,
     "email": "user1@gmail.com",
-    "status": 1,
-    "feedage": 11,
-    "updateperiod": 5
+    "name": "user1",
+    "password": "user1@",
+    "status": 0,
+    "feedage": 0,
+    "updateperiod": 0
 }
 
-with Http Status: FOUND (302)
-
-if not found, it will return Status: NOT_FOUND (404)
+with Status code: FOUND 302
+or 
+HTTP Status Code: NOT_FOUND
 ```
+
 
 * [X] - update feed-age by id and feed-age **PUT request**
    * [X] - http://localhost:8080/user/update-feed-age
@@ -658,48 +666,50 @@ with Http Status: OK (200)
 if not found, it will return Status: BAD_REQUEST(400)
 ```
 
-* [X] - add a user
-   * [X] - http://localhost:8080/user/add-user
-Request:
+* [X] - get all users   --- **GET request**
+   * [X] - http://localhost:8080/user/all
+
+Response:
 ```json
-{
-        
-        "email": "user1@gmail.com",
+[
+    {
+        "id": 101,
         "name": "user1",
-        "password":"user1@"
-}
-```
-Response:
-```json 
-Created - CREATED 301
-
-or bad quest
-```
-* [X] - login request -- **POST request**
-   * [X] - http://localhost:8080/user/get-user
-```json
-{
-        
         "email": "user1@gmail.com",
-        "password":"user1@"
-}
+        "status": 1,
+        "feedage": 11,
+        "updateperiod": 55
+    },
+...
+]
+
+with Http Status: FOUND (302)
+
+if not found, it will return Status: NOT_FOUND (404)
 ```
+
+* [X] - get user by id --- --- **GET request**
+   * [X] - http://localhost:8080/user/?id=101
 Response:
 ```json
 {
-    "id": 1084,
-    "email": "user1@gmail.com",
+    "id": 101,
     "name": "user1",
-    "password": "user1@",
-    "status": 0,
-    "feedage": 0,
-    "updateperiod": 0
+    "email": "user1@gmail.com",
+    "status": 1,
+    "feedage": 11,
+    "updateperiod": 5
 }
 
-with Status code: FOUND 302
-or 
-HTTP Status Code: NOT_FOUND
+with Http Status: FOUND (302)
+
+if not found, it will return Status: NOT_FOUND (404)
 ```
+
+
+
+
+
 
 
 
