@@ -1,12 +1,13 @@
 package de.tuchemnitz.de.Main;
 
+import static de.tuchemnitz.de.Main.ImportRSS.update_all_users_providers;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.*;
-
-import static de.tuchemnitz.de.Main.ImportRSS.*;
 
 @SpringBootApplication
 

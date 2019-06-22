@@ -168,7 +168,8 @@ public class Web_feedController {
     public @ResponseBody ResponseEntity<Integer> numFeedsOfProvider(@RequestParam("providerid") int providerid){
 
         int number_of_feeds = 0;
-        number_of_feeds = feedRepository.numOfFeedsOfAProvider(providerid);
+        String deleted = "False";
+        number_of_feeds = feedRepository.numOfFeedsOfAProvider(providerid, deleted);
 
         if (number_of_feeds > 0){
             System.out.println("OUT");
