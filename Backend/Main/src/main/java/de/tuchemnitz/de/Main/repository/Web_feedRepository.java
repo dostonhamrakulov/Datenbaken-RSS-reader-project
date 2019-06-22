@@ -21,7 +21,7 @@ public interface Web_feedRepository extends CrudRepository<Web_feed, Integer> {
     @Modifying
     public int updateFeed(String title, String publisheddate, String link);
 
-    public int numOfFeedsOfAProvider(int providerid);
+    public int numOfFeedsOfAProvider(int providerid, String deleted);
 
     @Transactional
     @Modifying
