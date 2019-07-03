@@ -70,7 +70,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\t\n        \"title\": \"Title_3\",\n        \"link\": \"Link4\",\n        \"description\": \"Description4\",\n        \"publisheddate\": \"cfbfgb1\",\n        \"importeddate\": \"bfgbfgb fg\",\n        \"providerid\": 1,\n        \"deleted\": \"False\"\n    }"
+							"raw": "{\n\t\t\n        \"title\": \"Title_3\",\n        \"link\": \"Link4\",\n        \"description\": \"Description4\",\n        \"publisheddate\": \"cfbfgb1\",\n        \"importeddate\": \"bfgbfgb fg\",\n        \"providerid\": 1,\n        \"deleted\": \"False\",\n        \"error\":\"False\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/feeds/add",
@@ -152,7 +152,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/delete-by-providerid?providerid=1869",
+							"raw": "http://localhost:8080/feeds/delete-by-providerid?providerid=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -165,7 +165,7 @@
 							"query": [
 								{
 									"key": "providerid",
-									"value": "1869"
+									"value": "2"
 								}
 							]
 						}
@@ -182,7 +182,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/feeds-of-provider/?providerid=1",
+							"raw": "http://localhost:8080/feeds/feeds-of-provider/?providerid=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -196,7 +196,7 @@
 							"query": [
 								{
 									"key": "providerid",
-									"value": "1"
+									"value": "2"
 								}
 							]
 						}
@@ -274,7 +274,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/feeds/num-of-feeds-of-provider?providerid=1173",
+							"raw": "http://localhost:8080/feeds/num-of-feeds-of-provider?providerid=2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -287,7 +287,7 @@
 							"query": [
 								{
 									"key": "providerid",
-									"value": "1173"
+									"value": "2"
 								}
 							]
 						}
@@ -380,6 +380,37 @@
 									"key": "id",
 									"value": "3918"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "number-of-errors",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"providerid\":1\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/feeds/number-of-errors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"feeds",
+								"number-of-errors"
 							]
 						}
 					},
@@ -489,7 +520,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": 103,\n    \"updateperiod\": 6\n}"
+							"raw": "{\n    \"id\": 101,\n    \"updateperiod\": 10\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/user/update-updateperiod",
@@ -567,6 +598,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "update-button",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/user/update-button?id=101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"update-button"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "101"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "APIs for User queiries"
@@ -608,7 +669,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/web-feed-provider/786",
+							"raw": "http://localhost:8080/web-feed-provider/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -616,7 +677,7 @@
 							"port": "8080",
 							"path": [
 								"web-feed-provider",
-								"786"
+								"1"
 							]
 						}
 					},
@@ -632,7 +693,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/web-feed-provider/3",
+							"raw": "http://localhost:8080/web-feed-provider/4409",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -640,7 +701,7 @@
 							"port": "8080",
 							"path": [
 								"web-feed-provider",
-								"3"
+								"4409"
 							]
 						}
 					},
@@ -660,7 +721,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml\",\n\t\"userid\":1548\n}"
+							"raw": "{\n\t\n\t\"name\":\"Name_1\",\n\t\"link\" : \"https://www.espn.com/espn/rss/news\",\n\t\"userid\":1\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080//web-feed-provider/add",
@@ -879,6 +940,38 @@
 								"",
 								"web-feed-provider",
 								"update-num-feed-of-provider"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update error flag",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 1173,\n        \"error\": 222\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080//web-feed-provider/update-error-of-provider",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"",
+								"web-feed-provider",
+								"update-error-of-provider"
 							]
 						}
 					},

@@ -324,6 +324,22 @@ with Http Status: FOUND (302)
 if not found, it will return Status: NOT_FOUND (404)
 ```
 
+* [X] - request for Update button --- --- **GET request**
+   * [X] - http://localhost:8080/user/update-button?id=101
+Response:
+```json
+{
+    "last_updated_date": "Wed, 03 Jul 2019 15:54:01 CEST",
+    "current_date": "Wed, 03 Jul 2019 16:02:11 CEST",
+    "updated_ago": "8",
+    "updated_willbe": "Wed, 03 Jul 2019 16:04:01 CEST",
+    "updated": "False"
+}
+
+with Http Status: OK
+```
+
+
 
 ## APIs for Web_feed_providers:
 
