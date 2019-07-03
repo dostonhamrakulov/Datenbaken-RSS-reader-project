@@ -329,9 +329,11 @@ if not found, it will return Status: NOT_FOUND (404)
 Response:
 ```json
 {
-	"False"   #if no updates are done
-...
-	"True"   # if any updates are done
+    "last_updated_date": "Wed, 03 Jul 2019 15:54:01 CEST",
+    "current_date": "Wed, 03 Jul 2019 16:02:11 CEST",
+    "updated_ago": "8",
+    "updated_willbe": "Wed, 03 Jul 2019 16:04:01 CEST",
+    "updated": "False"
 }
 
 with Http Status: OK
