@@ -1,8 +1,11 @@
 package de.tuchemnitz.de.Main.controller;
 
+import de.tuchemnitz.de.Main.Common_code;
 import de.tuchemnitz.de.Main.entity.User;
+import de.tuchemnitz.de.Main.entity.Web_feed_providers;
 import de.tuchemnitz.de.Main.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -10,7 +13,9 @@ import org.springframework.web.client.RestTemplate;
 import javax.jws.soap.SOAPBinding;
 import java.util.*;
 
-import static de.tuchemnitz.de.Main.Common_code.REST_SERVICE_URI;
+import static de.tuchemnitz.de.Main.Common_code.*;
+import static de.tuchemnitz.de.Main.Common_code.getCurrentDateinDate;
+import static de.tuchemnitz.de.Main.ImportRSS.adding_single;
 
 @RestController
 @RequestMapping(path="/user")
@@ -100,6 +105,54 @@ public class UserController {
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping(path="/update-button")
+    public @ResponseBody ResponseEntity<String> updateButton(@RequestParam("id") int userid){
+
+        restTemplate = new RestTemplate();
+
+        String url = REST_SERVICE_URI+"user/?id=" + userid;
+        ResponseEntity<User> re = restTemplate.exchange(url, HttpMethod.GET,
+                null, User.class);
+
+        User user = new User();
+        if (re.getStatusCode() == HttpStatus.FOUND){
+            user = re.getBody();
+        }
+
+        ResponseEntity<List<Web_feed_providers>> res2 = restTemplate.exchange(
+                REST_SERVICE_URI+"web-feed-provider/feed-providers-of-user/"+user.getId(), HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<Web_feed_providers>>(){});
+
+        List<Web_feed_providers> wpl = new ArrayList<>();
+        if (res2.getStatusCode() == HttpStatus.FOUND){
+            wpl = res2.getBody();
+        }
+
+        String responseString = "";
+
+        for (int j = 0; j < wpl.size(); j++) {
+
+            try{
+                System.out.println("\n\n\n\n");
+                System.out.println("User: " + user.getId());
+
+                Web_feed_providers feed_p = wpl.get(j);
+                Date lastUpdateDate = Common_code.convertStringToDate(feed_p.getUpdateddate());
+                lastUpdateDate = Common_code.addMinutes(lastUpdateDate, user.getUpdateperiod());
+
+                if (lastUpdateDate.before(getCurrentDateinDate())){
+                    adding_single(feed_p);
+                    responseString = "True";
+                } else {
+                    responseString = "False";
+                }
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return new ResponseEntity<>(responseString, HttpStatus.OK);
     }
 
     public User getUserIn(int id){

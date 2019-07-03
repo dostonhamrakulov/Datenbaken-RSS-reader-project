@@ -4,7 +4,6 @@ create schema if not exists db_project;
 -- --------------------------------------------------------
 
 use db_project;
-
 -- --------------------------------------------------------
 
 DROP TABLE IF EXISTS `user`;
@@ -108,9 +107,9 @@ SET GLOBAL time_zone = '+5:30';
 
 -- update web_feed set deleted = "True" where id = 3334433;
 
--- insert into web_feed value(55, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
--- (56, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
--- (57, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
--- (58, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False");
--- 
+insert into web_feed value(535, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
+(536, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
+(537, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False"),
+(538, "title", "link", "decs", "Thu, 20 Jun 2019 22:58:22 CEST", "Thu, 20 Jun 2019 22:58:22 CEST", 1, "False", "False");
+
 -- SHOW GRANTS;
