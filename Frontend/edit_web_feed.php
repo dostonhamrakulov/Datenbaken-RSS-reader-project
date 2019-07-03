@@ -14,10 +14,7 @@ if(isset($_POST['submit'])){
         $myObj->link = $_POST['rss_link'];
         $data = json_encode($myObj);
         $response = $obj->sendPutRequest('/feeds/update-feed-by-user', $data);
-        echo '<script type="text/javascript">',
-        'alert("Web feed Updated Sucessfully");',
-        '</script>'
-        ;
+        header("Location: web_feed.php?edit=success");
     }
 }
 $result = $obj->sendGetRequest('//feeds/'.$_GET['id']);

@@ -24,7 +24,14 @@ if(!isset($_SESSION['user_id'] )){
 }
 if(isset($_GET['delete'])=='success'){
     echo '<script type="text/javascript">',
-    'alert("Web Feed  Deleted Sucessfully");
+    'alert("Web Feed Deleted Sucessfully");
+    window.location = \'web_feed.php\';
+    ',
+    '</script>'
+    ;
+}elseif(isset($_GET['edit'])=='success'){
+    echo '<script type="text/javascript">',
+    'alert("Web Feed Edited Sucessfully");
     window.location = \'web_feed.php\';
     ',
     '</script>'
@@ -104,16 +111,16 @@ $providers = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$
 <!--                        <form action="export_web_feed.php" method="post">-->
 
                             <?php
-                            $results = array_reverse($results);
+//                            $results = array_reverse($results);
                                 foreach ($results as $result){
                                     if (in_array($result->providerid, $provider_id)){
                                         if($result->deleted=='False'){
                                     ?>
                             <tr>
                                 <td><input type="checkbox" name="web_id[]" value="<?php echo $result->id;?>"></td>
-                                <td><?php echo $result->title ;?></td>
+                                <td><?php echo  $obj->custom_echo($result->title, 50);?></td>
                                 <td><a href="<?php echo $result->link; ?>" target="_blank">Read Full</a> </td>
-                                <td><?php echo $result->description; ?></td>
+                                <td><?php echo $obj->custom_echo($result->description, 75); ?></td>
                                 <td><?php echo $result->publisheddate; ?></td>
                                 <td><?php echo $result->importeddate; ?></td>
                                 <td width="150px;"><?php echo array_search($result->providerid,$provider_id_name);?></td>

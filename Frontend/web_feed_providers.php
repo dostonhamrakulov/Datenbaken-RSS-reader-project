@@ -10,6 +10,13 @@ if(isset($_GET['delete'])=='success'){
     ',
     '</script>'
     ;
+}elseif(isset($_GET['edit'])=='success'){
+    echo '<script type="text/javascript">',
+    'alert("Web Feed Provider Edited Sucessfully");
+    window.location = \'web_feed_providers.php\';
+    ',
+    '</script>'
+    ;
 }
 if(isset($_POST['submit'])) {
     $feed_provider_name = $_POST['name'];

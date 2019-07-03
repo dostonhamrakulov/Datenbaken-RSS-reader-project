@@ -12,10 +12,11 @@ if(isset($_POST['submit'])){
     $myObj->link = $_POST['rss_link'];
     $data = json_encode($myObj);
     $response = $obj->sendPutRequest('/web-feed-provider/update-only-provider', $data);
-    echo '<script type="text/javascript">',
-    'alert("Web feed Provider Updated Sucessfully");',
-    '</script>'
-    ;
+//    echo '<script type="text/javascript">',
+//    'alert("Web feed Provider Updated Sucessfully");',
+//    '</script>'
+//    ;
+    header("Location: web_feed_providers.php?edit=success");
 }
 $result = $obj->sendGetRequest('//web-feed-provider/'.$_GET['id']);
 
