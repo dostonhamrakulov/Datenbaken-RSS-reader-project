@@ -324,6 +324,20 @@ with Http Status: FOUND (302)
 if not found, it will return Status: NOT_FOUND (404)
 ```
 
+* [X] - request for Update button --- --- **GET request**
+   * [X] - http://localhost:8080/user/update-button?id=101
+Response:
+```json
+{
+	"False"   #if no updates are done
+...
+	"True"   # if any updates are done
+}
+
+with Http Status: OK
+```
+
+
 
 ## APIs for Web_feed_providers:
 
