@@ -89,7 +89,7 @@ public class Web_feedController {
 //        System.out.println(web_feed1.getProvider_id());
 
         web_feed1.setImporteddate(getCurrentDate());
-//        web_feed1.setPublisheddate(getCurrentDate());
+        web_feed1.setPublisheddate(getCurrentDate());
         web_feed = feedRepository.save(web_feed1);
         if (web_feed != null){
             return new ResponseEntity<>(new Web_feed(), HttpStatus.CREATED);
