@@ -33,23 +33,21 @@ if(isset($_POST['submit'])) {
     '</script>'
     ;
 }
-//elseif(isset($_POST['update'])){
-//
+elseif(isset($_POST['update'])){
+
 //    $update = $obj->stringSendGetRequest('/user/update-button?id='.$_SESSION['user_id'],'');
-//    echo "<pre>";
-//    print_r($update);
-//    echo "</pre>";
-//    die;
-//    if($update=='True'){
-//        echo"<div class=\"btn btn-success\">
-//                Web Feed Updated Successfully!!
-//            </div>";
-//    }else{
-//        echo"<div class=\"btn btn-danger\">
-//                Web Feed cannot be updated !!
-//            </div>";
-//    }
-//}
+    $update = $obj->sendGetRequest('/user/update-button?id='.$_SESSION['user_id'],'');
+
+    if($update->updated=='True'){
+        echo"<div class=\"btn btn-success\">
+                Web Feed Updated Successfully!!.
+            </div>";
+    }else{
+        echo"<div class=\"btn btn-danger\">
+                Web Feed cannot be updated !! Last Updated ".$update->updated_ago." minutes ago.
+            </div>";
+    }
+}
 ?>
 
 <div class="container">
