@@ -3,7 +3,6 @@ include ('header.php');
 $result = $obj->sendGetRequest('//feeds/'.$_GET['id']);
 $provider = $obj->sendGetRequest('//web-feed-provider/'.$result->providerid);
 $providers = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$_SESSION['user_id'] );
-
 ?>
 
 <?php if(!empty($result)){
@@ -48,17 +47,17 @@ $providers = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$
                         <h4 class="text-center">Latest Web feeds</h4>
                         <?php
                         $results = $obj->sendGetRequest("/feeds/all");
-                        $results =  array_slice($results, 0, 11);;
-
+//                        $results =  array_slice($results, 0, 11);;
                         $provider_id=[];
                         $provider_id_name =[];
                         foreach ($providers as $provider){
                             $provider_id[] = $provider->id;
                             $provider_id_name[$provider->name] = $provider->id;
                         }
+                        $i=0;
                         foreach ($results as $result){
                         if (in_array($result->providerid, $provider_id)){
-                        if($result->deleted=='False'){
+                        if($result->deleted=='False' || $i<11){
                             ?>
                             <p class="latest-feed">
                                 <a href="web_feed_detail.php?id=<?php echo $result->id; ?>"><?php echo  $obj->custom_echo($result->title, 50);?></a>
@@ -66,6 +65,7 @@ $providers = $obj->sendGetRequest("/web-feed-provider/feed-providers-of-user/".$
                         <?php
                         }
                         }
+                        $i++;
                         }
                         ?>
 

@@ -72,5 +72,14 @@ class myFunctions
         }
     }
 
+    function stringSendGetRequest($url){
+        $new_url = HOST.PORT.$url;
+        $client = curl_init($new_url);
+        curl_setopt($client,CURLOPT_RETURNTRANSFER,true);
+        $response = curl_exec($client);
+
+        return $response;
+    }
+
 }
 ?>

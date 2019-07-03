@@ -33,7 +33,25 @@ if(isset($_POST['submit'])) {
     '</script>'
     ;
 }
+//elseif(isset($_POST['update'])){
+//
+//    $update = $obj->stringSendGetRequest('/user/update-button?id='.$_SESSION['user_id'],'');
+//    echo "<pre>";
+//    print_r($update);
+//    echo "</pre>";
+//    die;
+//    if($update=='True'){
+//        echo"<div class=\"btn btn-success\">
+//                Web Feed Updated Successfully!!
+//            </div>";
+//    }else{
+//        echo"<div class=\"btn btn-danger\">
+//                Web Feed cannot be updated !!
+//            </div>";
+//    }
+//}
 ?>
+
 <div class="container">
     <div class="web_feed_providers">
 
@@ -41,7 +59,9 @@ if(isset($_POST['submit'])) {
             All Web Feed Providers
         </h2>
         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#addRss" aria-expanded="false" aria-controls="collapseExample">Add Web Feed Provider</button>
-        <button type="button" class="btn btn-success pull-right" >Update</button>
+        <form method="post">
+            <button type="submit" name="update" class="btn btn-success pull-right" >Update</button>
+        </form>
         <div class="row">
             <div id="addRss" class="collapse">
                 <div class="col-lg-6">
