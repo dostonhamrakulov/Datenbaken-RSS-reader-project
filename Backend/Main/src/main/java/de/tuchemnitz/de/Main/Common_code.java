@@ -45,6 +45,23 @@ public class Common_code {
         return  cal.getTime();
     }
 
+    public static int differenceTime(String updateDate){
+
+        int difference = 0;
+        try {
+            Date updated = convertStringToDate(updateDate);
+
+            long difference2 = getCurrentDateinDate().getTime() - updated.getTime();
+            System.out.println(difference/1000);
+
+            difference2 = difference2/1000;
+            difference = (int) difference2;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return difference;
+    }
+
 //    public static String compareDates(String date1, String date2) throws Exception {
 //        sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
 //        Date d1 = convertStringToDate(date1);

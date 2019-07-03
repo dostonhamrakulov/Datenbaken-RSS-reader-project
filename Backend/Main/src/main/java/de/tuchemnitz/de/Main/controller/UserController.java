@@ -108,7 +108,7 @@ public class UserController {
     }
 
     @GetMapping(path="/update-button")
-    public @ResponseBody ResponseEntity<String> updateButton(@RequestParam("id") int userid){
+    public @ResponseBody ResponseEntity<Update> updateButton(@RequestParam("id") int userid){
 
         restTemplate = new RestTemplate();
 
@@ -121,6 +121,8 @@ public class UserController {
             user = re.getBody();
         }
 
+        Update update = new Update();
+
         ResponseEntity<List<Web_feed_providers>> res2 = restTemplate.exchange(
                 REST_SERVICE_URI+"web-feed-provider/feed-providers-of-user/"+user.getId(), HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Web_feed_providers>>(){});
@@ -129,8 +131,6 @@ public class UserController {
         if (res2.getStatusCode() == HttpStatus.FOUND){
             wpl = res2.getBody();
         }
-
-        String responseString = "";
 
         for (int j = 0; j < wpl.size(); j++) {
 
@@ -142,17 +142,29 @@ public class UserController {
                 Date lastUpdateDate = Common_code.convertStringToDate(feed_p.getUpdateddate());
                 lastUpdateDate = Common_code.addMinutes(lastUpdateDate, user.getUpdateperiod());
 
+                update.setLast_updated_date(feed_p.getUpdateddate());
+                update.setCurrent_date(Common_code.getCurrentDate());
+
+                int difference = Common_code.differenceTime(feed_p.getUpdateddate());
+
+                int minutes = difference/60;
+
+                update.setUpdated_ago("" + minutes);
+
+                Date willbe = Common_code.addMinutes(Common_code.convertStringToDate(feed_p.getUpdateddate()), user.getUpdateperiod());
+                update.setUpdated_willbe(Common_code.convertDateToString(willbe));
+
                 if (lastUpdateDate.before(getCurrentDateinDate())){
                     adding_single(feed_p);
-                    responseString = "True";
+                    update.setUpdated("True");
                 } else {
-                    responseString = "False";
+                    update.setUpdated("False");
                 }
             } catch (Exception e){
                 e.printStackTrace();
             }
         }
-        return new ResponseEntity<>(responseString, HttpStatus.OK);
+        return new ResponseEntity<>(update , HttpStatus.OK);
     }
 
     public User getUserIn(int id){
@@ -162,4 +174,55 @@ public class UserController {
     }
 
 
+}
+
+class Update{
+    String last_updated_date;
+    String current_date;
+    String updated_ago;
+    String updated_willbe;
+    String updated;
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
+
+    public Update() {
+    }
+
+    public String getLast_updated_date() {
+        return last_updated_date;
+    }
+
+    public void setLast_updated_date(String last_updated_date) {
+        this.last_updated_date = last_updated_date;
+    }
+
+    public String getCurrent_date() {
+        return current_date;
+    }
+
+    public void setCurrent_date(String current_date) {
+        this.current_date = current_date;
+    }
+
+    public String getUpdated_ago() {
+        return updated_ago;
+    }
+
+    public void setUpdated_ago(String updated_ago) {
+        this.updated_ago = updated_ago;
+    }
+
+    public String getUpdated_willbe() {
+        return updated_willbe;
+    }
+
+    public void setUpdated_willbe(String updated_willbe) {
+        this.updated_willbe = updated_willbe;
+    }
 }

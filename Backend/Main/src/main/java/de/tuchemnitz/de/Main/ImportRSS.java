@@ -21,7 +21,6 @@ public class ImportRSS {
     public ImportRSS() {
     }
 
-
     static RestTemplate restTemplate;
 
     public static void add_web_feeds() throws Exception {
@@ -198,13 +197,10 @@ public class ImportRSS {
         }
         for (int i = 0; i < userList.size(); i++) {
             User user = userList.get(i);
-            String current_date = getCurrentDate();
-
 
             ResponseEntity<List<Web_feed_providers>> re2 = restTemplate.exchange(
                     REST_SERVICE_URI+"web-feed-provider/feed-providers-of-user/"+user.getId(), HttpMethod.GET, null,
                     new ParameterizedTypeReference<List<Web_feed_providers>>(){});
-
 
             List<Web_feed_providers> wpl = new ArrayList<>();
             if (re2.getStatusCode() == HttpStatus.FOUND){
@@ -226,8 +222,8 @@ public class ImportRSS {
                 if (lastUpdateDate.before(getCurrentDateinDate())){
 
                     adding_single(feed_p);
-                    deleteOldFeeds(user, feed_p);
-                    updateErrorProvider(feed_p);
+//                    deleteOldFeeds(user, feed_p);
+//                    updateErrorProvider(feed_p);
 
                 } else {
                     System.out.println("\n\n\nSkippen because of time");
