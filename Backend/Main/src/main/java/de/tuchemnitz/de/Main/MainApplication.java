@@ -32,7 +32,6 @@ public class MainApplication {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                System.out.println("Date: " + Common_code.getCurrentDate());
             }
 		};
 		Timer timer = new Timer();

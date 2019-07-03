@@ -75,7 +75,7 @@ public class ImportRSS {
                 String desc= "";
                 String deleted = "False";
 
-//                syndEntry.getUp
+//                checking if a feed is broken
                 if (syndEntry.getPublishedDate() == null){
                     if (syndEntry.getUpdatedDate() == null){
                         date = "null";
@@ -87,7 +87,6 @@ public class ImportRSS {
                 } else {
                     date = Common_code.convertDateToString(syndEntry.getPublishedDate());
                 }
-
 
                 if (syndEntry.getTitle() != null){
                     title = syndEntry.getTitle();
@@ -146,7 +145,7 @@ public class ImportRSS {
                     if(responseEntity.getStatusCode() == HttpStatus.BAD_GATEWAY){
                         System.out.println("\n\n\n===================== BAD_GATEWAY =====================");
 
-                        System.out.println("Implement TODO - update error status of the provider");
+//                        System.out.println("Implement TODO - update error status of the provider");
 
                     }
 
@@ -155,9 +154,9 @@ public class ImportRSS {
 
 
                 } else {
-                    System.out.println("\n\n\n===================== SOMETHING ELSE happened in Feed creation =====================");
+//                    System.out.println("\n\n\n===================== SOMETHING ELSE happened in Feed creation =====================");
 
-                    System.out.println("Implement TODO - MAIN APplication");
+//                    System.out.println("Implement TODO - MAIN APplication");
 
                     wfp.setError(1);
                 }
@@ -213,11 +212,6 @@ public class ImportRSS {
                 Web_feed_providers feed_p = wpl.get(j);
                 Date lastUpdateDate = Common_code.convertStringToDate(feed_p.getUpdateddate());
                 lastUpdateDate = Common_code.addMinutes(lastUpdateDate, user.getUpdateperiod());
-
-                System.out.println("Current: " + getCurrentDate());
-                System.out.println("Updated_original: " + feed_p.getUpdateddate());
-                System.out.println("Updated_minutes_added: " + convertDateToString(lastUpdateDate));
-                System.out.println("Minutes: " + user.getUpdateperiod());
 
                 if (lastUpdateDate.before(getCurrentDateinDate())){
 
