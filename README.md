@@ -32,6 +32,8 @@ Frontend:
 >*Software Engineers, Web Developers, Freelancers*
 
 
+## Recorded video as demo:
+[Demo](https://youtu.be/8hbj5LLqEfs)
 
 ## Backend
 ### 2.2.1 Backend

@@ -82,6 +82,14 @@ Frontend send a request with link, and should there be user_id?
 	- once we delete provider_1 for user_1 then we will delete of feeds of provider_1 with providerid and user_2 will not see the feed from the same provider_1 until next time interval
 x
 
+
+
+
+
+
+
+
+
 worked rss links:
 	- https://www.espn.com/espn/rss/news
 	- https://www.espn.com/espn/rss/nfl/news
@@ -110,6 +118,40 @@ https://www.theregister.co.uk/business/channel/headlines.atom
 https://www.theregister.co.uk/emergent_tech/artificial_intelligence/headlines.atom
 https://www.theregister.co.uk/emergent_tech/internet_of_things/headlines.atom
 https://www.theregister.co.uk/bootnotes/stob/headlines.atom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Broken:
